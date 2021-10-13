@@ -1,29 +1,70 @@
-<h1><%= t('.sign_in') %></h1>
 <%= render 'layouts/flash_messages' %>
+<div class="container">
+  <div class="card-deck text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">ジョカツ川柳 投票フォーム</h4>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title pricing-card-title">ようこそ！</h2>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>概要</li>
+          <li>概要</li>
+        </ul>
+        <div class="user-signed">
+          <div class="signed-in text-left">
+            <%
+=begin%>
+ <h1><%= t('.sign_in') %></h1> 
+<%
+=end%>
+            <%= render 'layouts/flash_messages' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-  </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+              </div>
 
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
-  </div>
+              <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+              </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="form-group form-check">
-      <%= f.check_box :remember_me, class: 'form-check-input' %>
-      <%= f.label :remember_me, class: 'form-check-label' do %>
-        <%= resource.class.human_attribute_name('remember_me') %>
-      <% end %>
+              <% if devise_mapping.rememberable? %>
+                <div class="form-group form-check">
+                  <%= f.check_box :remember_me, class: 'form-check-input' %>
+                  <%= f.label :remember_me, class: 'form-check-label' do %>
+                    <%= resource.class.human_attribute_name('remember_me') %>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <div class="form-group">
+                <%= f.submit  t('.sign_in'), class: 'btn btn-primary btn-block' %>
+              </div>
+            <% end %>
+
+            <%
+=begin%>
+ <%= render 'voters/shared/links' %> 
+<%
+=end%>
+
+          </div>
+          <div class="signed-up">
+            <%= link_to "初めての方はこちら", new_voter_registration_path, class: 'btn btn-info btn-block' %>
+          </div>
+        </div>
+
+      </div>
     </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.submit  t('.sign_in'), class: 'btn btn-primary btn-block' %>
   </div>
-<% end %>
-
-<%= render 'voters/shared/links' %>
+  <%
+=begin%>
+ <div class="admin-login text-right">
+    <%= link_to "管理者の方はこちら", new_admin_session_path %>
+  </div>   
+<%
+=end%>
+</div>
