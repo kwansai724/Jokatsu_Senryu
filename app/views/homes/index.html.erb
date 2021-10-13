@@ -1,5 +1,33 @@
-
 <%= render 'layouts/flash_messages' %>
+<div class="container">
+  <div class="card-deck text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">ジョカツ川柳</h4>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title pricing-card-title">ようこそ！</h2>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>概要</li>
+          <li>概要</li>
+        </ul>
+        <div class="user-signed">
+          <div class="signed-up">
+            <%= link_to "初めての方はこちら", new_voter_registration_path, class: 'signed-up-btn' %>
+          </div>
+          <div class="signed-in">
+            <%= link_to "ご登録済みの方はこちら", new_voter_session_path, class: 'signed-in-btn' %>
+          </div>
+        </div>
 
-<h1>Homes#index</h1>
-<p>Find me in app/views/homes/index.html.erb</p>
+      </div>
+    </div>
+  </div>
+  <%
+=begin%>
+ <div class="admin-login text-right">
+    <%= link_to "管理者の方はこちら", new_admin_session_path %>
+  </div>   
+<%
+=end%>
+</div>
