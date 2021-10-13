@@ -1,3 +1,96 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-signed {
+  display: inline-flex;
+}
+
+// 新規登録ボタン
+.signed-up {
+  .signed-up-btn {
+    text-decoration: none;
+    color: #ffffff ;
+  }  
+}
+
+.signed-up a {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 10px;
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.signed-up a:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+// ログインボタン
+.signed-in {
+  .signed-in-btn {
+    text-decoration: none;
+    color: #ffffff ;
+  }  
+}
+
+.signed-in a {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: #f090f3;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 10px;
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.signed-in a:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+.card-header b {
+  color: #f090f3;
+}
+
+.form-label {
+  font-size: small;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+//スマホ用
+@media screen and (max-width:480px) {
+
+  .user-signed {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .signed-up a {
+    margin-top: 10px;
+    margin-right: 0;
+    font-size: 20px;
+  }
+
+  .signed-in a {
+    margin-top: 15px;
+    margin-left: 0;
+    font-size: 19px;
+  }
+
+
+  .card-header b {
+    font-size: 28px;
+  }
+
+}
