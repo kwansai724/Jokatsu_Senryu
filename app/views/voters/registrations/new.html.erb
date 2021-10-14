@@ -9,7 +9,6 @@
         <h2 class="card-title pricing-card-title">ようこそ！</h2>
         <ul class="list-unstyled mt-3 mb-4">
           <li>概要</li>
-          <li>概要</li>
         </ul>
         <div class="user-signed">
           <div class="signed-up text-left">
@@ -23,8 +22,18 @@
                 <%= bootstrap_devise_error_messages! %>
 
                 <div class="form-group">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
+                </div>
+
+                <div class="form-group">
                   <%= f.label :email %>
                   <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :group %>
+                  <%= f.select :group, ['WIP', '株式会社A', '株式会社B', '株式会社C'], { include_blank: '選択してください'}, autofocus: true, autocomplete: 'group', class: 'form-control' %>
                 </div>
 
                 <div class="form-group">

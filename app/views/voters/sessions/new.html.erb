@@ -9,7 +9,6 @@
         <h2 class="card-title pricing-card-title">ようこそ！</h2>
         <ul class="list-unstyled mt-3 mb-4">
           <li>概要</li>
-          <li>概要</li>
         </ul>
         <div class="user-signed">
           <div class="signed-in text-left">
@@ -26,10 +25,14 @@
                 <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
               </div>
 
-              <div class="form-group">
+              <%
+=begin%>
+ <div class="form-group">
                 <%= f.label :password %>
                 <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
-              </div>
+              </div> 
+<%
+=end%>
 
               <% if devise_mapping.rememberable? %>
                 <div class="form-group form-check">

@@ -25,6 +25,27 @@ class Voters::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  def create
+    #元の認証ロジック
+    #self.resource = warden.authenticate!(auth_options)
+
+    #emailだけでログインできるように変更
+    
+    if params[:voter]['email'].present?
+      self.resource = Voter.where(:email => params[:voter]['email']).first
+      if self.resource.present?
+        set_flash_message(:notice, :signed_in) if is_flashing_format?
+        sign_in(resource_name, resource)
+        yield resource if block_given?
+        respond_with resource, :location => after_sign_in_path_for(resource)
+      else
+        flash[:danger] = "Eメールが違います"
+        redirect_to root_path
+      end
+    end
+  end
+
+
   # ログイン後の画面遷移
   def after_sign_in_path_for(resource)
     voters_voters_index_path(resource)

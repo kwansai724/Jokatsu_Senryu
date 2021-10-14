@@ -3,6 +3,12 @@
 class Voters::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :group]) 
+  end
 
   # GET /resource/sign_up
   # def new
