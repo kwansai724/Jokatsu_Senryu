@@ -1,4 +1,7 @@
 <h1>仮ページ</h1>
-<p>Find me in app/views/voters/voters/index.html.erb</p>
+
+<p><%= @voter.name %></p>
+<p><%= @voter.email %></p>
+<p><%= @voter.group %></p>
 
 <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete, class: 'btn btn-secondary' %>
