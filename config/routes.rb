@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # 投票者ページ
   namespace :voters do
     get 'voters/index', to: 'voters#index'
+    get 'voters/admin', to: 'voters#admin'
   end  
 
 end
