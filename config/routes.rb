@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     :sessions => 'voters/sessions'
   }
 
-  # root 'homes#index'
+  # 投票者ページ
+  namespace :voters do
+    get 'voters/index', to: 'voters#index'
+  end  
+
 end
