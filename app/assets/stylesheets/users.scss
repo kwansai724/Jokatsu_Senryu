@@ -1,0 +1,75 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media screen and (min-width:768px) {
+  .users-table {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .users-th {
+    background: yellow;
+  }
+
+  .users-td {
+    padding-left: 30px;
+  }
+
+  .color-red {
+    margin-left: 10px;
+    color: red;
+  }
+
+  .color-pink {
+    font-size: 16px;
+    color: pink;
+  }
+
+}
+
+// @media screen and (min-width:480px) and ( max-width:768px) {
+
+// }
+
+// スマホ
+@media screen and (max-width: 768px) {
+  .pc {
+    margin: 0 auto;
+    font-size: 30px;
+  }
+
+  .users-table {
+    width: 100%;
+  }
+
+  .users-th {
+    font-size: 25px;
+    width: 40%;
+    height: 100px;
+    background: yellow;
+  }
+
+  .users-td {
+    font-size: 25px;
+    width: 60%;
+    padding-left: 30px;
+  }
+
+  .color-red {
+    margin-left: 10px;
+    color: red;
+  }
+
+  .color-pink {
+    font-size: 16px;
+    color: pink;
+  }
+
+  .input-form {
+    width: 350px;
+    height: 50px;
+  }
+
+
+}

@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ジョカツ川柳
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ Rails　   5.2.6
+ Ruby　    2.7.4
+ Gem　　   3.1.6
+ Git  　  2.30.1
+ SQLite3  3.32.3
