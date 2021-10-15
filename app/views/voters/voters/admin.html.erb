@@ -1,0 +1,8 @@
+<%= render 'layouts/flash_messages' %>
+<h1>管理者ページ（仮）</h1>
+
+<p><%= @voter.name %></p>
+<p><%= @voter.email %></p>
+<p><%= @voter.group %></p>
+
+<%= link_to 'ログアウト', destroy_voter_session_path, method: :delete, class: 'btn btn-secondary' %>
