@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :voters do
     get 'voters/index', to: 'voters#index'
     get 'voters/admin', to: 'voters#admin'
+    get 'voters/users_index', to: 'voters#users_index'
   end  
 
 end

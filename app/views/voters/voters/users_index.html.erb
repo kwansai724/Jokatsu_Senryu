@@ -1,0 +1,55 @@
+<%= render 'layouts/flash_messages' %>
+
+<div class="container mt-3 col-md-10 col-lg-8">
+
+  <form class="form-inline">
+    <h1>投稿者一覧</h1>
+    <!--名前で検索できるようにしたが、Postのidで検索できるようにした方が良いかも-->
+    <div class="search-form form-inline">
+      <%= form_with(scope: :search, url: voters_voters_users_index_path, method: :get, local: true) do |f| %>
+        <div class="form-group mx-sm-1 mb-2">
+          <%= f.text_field :name, value: @search_params[:name], placeholder: "名前で検索", class: "form-control" %>
+        </div>
+        <%= f.submit t('helpers.submit.search'), class: "btn btn-primary mb-2" %>
+      <% end %>
+    </div>
+  </form>
+
+  <% @users.each_with_index do |user| %>
+    <div class="row">
+      <div class="d-flex align-items-center border-top users-index col-4 col-lg-4">
+        名前:
+      </div>
+      <div class="d-flex align-items-center border-top users-index col-6 col-lg-6">
+        <%= user.name %>
+      </div>
+      <div class="d-flex align-items-center border-top users-index col-2">
+        <%= link_to "詳細", "#", class: "btn btn-dark mt-3 btn-sm" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="users-index mb-3 col-4">
+        Eメール:
+      </div>
+      <div class="users-index mb-3 col-8">
+        <%= user.email %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="d-flex align-items-center border-top col-12 pagenate">
+      <%
+=begin%>
+ <%= paginate @users %> 
+<%
+=end%>
+    </div>  
+  </div>
+  <% if params[:search].present? %>
+    <%= link_to "一覧へ戻る", voters_voters_users_index_path, class: "btn btn-secondary mt-2" %>
+  <% else %>
+    <%= link_to "戻る", voters_voters_admin_path, class: "btn btn-secondary mt-2" %>
+  <% end %>  
+</div>
+
+

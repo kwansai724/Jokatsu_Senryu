@@ -1,3 +1,33 @@
 // Place all the styles related to the voters/voters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// 顧客一覧、詳細画面
+.users-index {
+  font-weight: 600;
+}
+
+// 検索フォーム
+.search-form {
+  margin-left: auto;
+}
+
+
+
+//スマホ用
+@media screen and (max-width:480px) {
+
+
+  // 顧客一覧　ボタン
+  .users-index .btn {
+    font-size: small;
+  }
+
+  // 検索フォーム
+  .search-form {
+    margin-right: auto;
+  }
+  
+
+}
