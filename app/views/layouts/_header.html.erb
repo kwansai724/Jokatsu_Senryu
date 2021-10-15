@@ -1,7 +1,9 @@
 <header>
   <nav class="navbar navbar-expand navbar-light">
     <%= link_to "ジョカツ川柳", root_path, class: 'navbar-brand' %>
-    <div id="Navber">
+    <%
+=begin%>
+ <div id="Navber">
       <ul class="navbar-nav">
         <% if voter_signed_in? %>
           <li class="nav-item active">
@@ -19,6 +21,8 @@
           </li>
         <% end %>
       </ul>
-    </div>
+    </div> 
+<%
+=end%>
   </nav>
 </header>
