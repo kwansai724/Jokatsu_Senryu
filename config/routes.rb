@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     :sessions => 'voters/sessions'
   }
 
+  # 川柳投稿者
+  get 'users/index', to: 'users#index'
+  get 'users/new', to: 'users#new'
+  post 'users/create', to: 'users#create'
+
   # 投票者ページ
   namespace :voters do
     get 'voters/index', to: 'voters#index'
