@@ -14,7 +14,10 @@ class Voters::VotersController < ApplicationController
   def users_index
     @search_params = user_search_params
     @users = User.search(@search_params).paginate(page: params[:page])
-    # @users = User.search(@search_params).page(params[:page]).per(10)
+  end
+
+  def users_show
+    @user = User.find(params[:id])
   end
 
   private
