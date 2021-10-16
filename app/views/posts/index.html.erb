@@ -13,9 +13,11 @@
             <% @posts.each do |user|%>
               <p>
                 <% user.posts.each do |post| %>
-                <%= post.id %><%= post.first_phrase %><%= post.second_phrase %><%= post.third_phrase %>/(<%= post.pen_name %>)
+                  <% if post.first_phrase.present? %>
+                    <%= post.id %><%= post.first_phrase %><%= post.second_phrase %><%= post.third_phrase %>/(<%= post.pen_name %>)
+                    /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %><br>
+                  <% end %>
                 <% end %>
-                /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %>
               </p>  
             <% end %>
           </td>

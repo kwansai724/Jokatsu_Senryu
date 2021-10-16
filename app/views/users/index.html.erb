@@ -4,69 +4,23 @@
   <div class="row">
     <div class="col-mw-md col-mw-xl">
       <h1>入力フォーム</h1>
-      <%= f.fields_for "posts[]", @user.posts.build do |post| %>
-        <table border="1" bordercolor="#fff">
-          <tr>
-            <th class="users-th">作品①<span class="color-red">必須</span></th>
-            <td class="users-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">ペンネーム<span class="color-red">必須</span></th>
-            <td class="users-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">部門①<span class="color-red">必須</span></th>
-            <td class="users-td"><%= post.select :category, [["ママの部","ママの部"],["オフィス部門","オフィス部門"]],{ include_blank: ''} %></td>
-          </tr>
-          <tr>
-            <th class="users-th">作品②</th>
-            <td class="users-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">ペンネーム②</th>
-            <td class="users-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">部門②</th>
-            <td class="users-td"><%= post.select :category, [["ママの部","ママの部"],["オフィス部門","オフィス部門"]],{ include_blank: ''} %></td>
-          </tr>
-          <tr>
-            <th class="users-th">作品③</th>
-            <td class="users-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">ペンネーム③</th>
-            <td class="users-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">部門③</th>
-            <td class="users-td"><%= post.select :category, [["ママの部","ママの部"],["オフィス部門","オフィス部門"]],{ include_blank: ''} %></td>
-          </tr>
-          <tr>
-            <th class="users-th">作品④</th>
-            <td class="users-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">ペンネーム④</th>
-            <td class="users-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">部門④</th>
-            <td class="users-td"><%= post.select :category, [["ママの部","ママの部"],["オフィス部門","オフィス部門"]],{ include_blank: ''} %></td>
-          </tr>
-          <tr>
-            <th class="users-th">作品⑤</th>
-            <td class="users-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">ペンネーム⑤</th>
-            <td class="users-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
-          </tr>
-          <tr>
-            <th class="users-th">部門⑤</th>
-            <td class="users-td"><%= post.select :category, [["ママの部","ママの部"],["オフィス部門","オフィス部門"]],{ include_blank: ''} %></td>
-          </tr>    
-        </table>
+      <% @user.posts.each do |posts| %>
+        <%= f.fields_for :posts, posts do |post| %> 
+          <table border="1" bordercolor="#fff">
+            <tr>
+              <th class="users-th">作品<span class="color-red">必須</span></th>
+              <td class="users-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
+            </tr>
+            <tr>
+              <th class="users-th">ペンネーム<span class="color-red">必須</span></th>
+              <td class="users-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
+            </tr>
+            <tr>
+              <th class="users-th">部門<span class="color-red">必須</span></th>
+              <td class="users-td"><%= post.select :category, [["ママの部","ママの部"],["オフィス部門","オフィス部門"]],{ include_blank: ''} %></td>
+            </tr>     
+          </table>
+        <% end %>
       <% end %>
 
       <table border="1" bordercolor="#fff" class="users-table">
