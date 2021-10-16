@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
     @user = User.new(user_params)
     if @user.save
       flash[:success] = '投稿に成功しました。'

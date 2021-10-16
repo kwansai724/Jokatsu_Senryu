@@ -17,9 +17,7 @@ Rails.application.routes.draw do
 
   # 川柳投票
   get 'posts/index', to: 'posts#index'
-  get 'posts/new', to: 'posts#new'
-  get 'posts/create', to: 'posts#create'
-
+  
   # 投票者ページ
   namespace :voters do
     get 'voters/index', to: 'voters#index'
