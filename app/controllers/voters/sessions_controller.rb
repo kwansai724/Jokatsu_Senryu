@@ -57,7 +57,7 @@ class Voters::SessionsController < Devise::SessionsController
 
   # ログアウト後の画面遷移
   def after_sign_out_path_for(resource)
-    root_path
+    new_voter_session_path
   end
   
 end
