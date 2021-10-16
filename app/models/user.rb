@@ -9,4 +9,5 @@ class User < ApplicationRecord
     name_like(search_params[:name])
   end
   scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  
 end
