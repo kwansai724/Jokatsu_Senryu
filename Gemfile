@@ -13,6 +13,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'byebug'
 
 # ログイン機能
 gem 'devise'
