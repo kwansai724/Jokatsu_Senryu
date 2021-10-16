@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+  accepts_nested_attributes_for :posts, allow_destroy: true
 
   # 投稿者一覧の検索機能
   scope :search, -> (search_params) do
