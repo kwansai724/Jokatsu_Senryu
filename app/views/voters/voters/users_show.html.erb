@@ -60,11 +60,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="users-index mt-3 mb-3 col-4">
-      アンケート:
+    <div class="d-flex align-items-center border-bottom users-index mt-3 mb-3 col-4">
+      <p class="mb-3">アンケート:<p>
     </div>
-    <div class="users-index mt-3 mb-3 col-8">
-      <%= @user.questionary %>
+    <div class="d-flex align-items-center border-bottom users-index mt-3 mb-3 col-8">
+      <p class="mb-3"><%= @user.questionary %><p>
     </div>
   </div>
   <%= link_to "戻る", :back, class: "btn btn-secondary" %>
