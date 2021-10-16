@@ -16,9 +16,46 @@ class Voters::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  # 新規登録後、ブラウザを閉じて再度rootにアクセスしても新規登録後の画面に遷移するための設定
+  def create
+    # ここでUser.new（と同等の操作）を行う
+    build_resource(sign_up_params)
+
+    # ここでUser.save（と同等の操作）を行う
+    resource.save
+
+    if resource.persisted?
+    # 先程のresource.saveが成功していたら
+      if resource.active_for_authentication?
+      # confirmable/lockableどちらかのactive_for_authentication?がtrueだったら
+        # flashメッセージを設定
+        set_flash_message! :notice, :signed_up
+        # サインアップ操作
+        sign_up(resource_name, resource)
+        # リダイレクト先を指定
+        yield resource if block_given?
+        if self.resource.admin == false
+          session[:admin] = "false"
+          respond_with resource, :location => after_sign_in_path_for(resource)
+        elsif self.resource.admin == true
+          session[:admin] = "true"
+          respond_with resource, :location => after_sign_in_path_for(resource)
+        end
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        # sessionを削除
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+    # 先程のresource.saveが失敗していたら
+      # passwordとpassword_confirmationをnilにする
+      clean_up_passwords resource
+      # validatable有効時に、パスワードの最小値を設定する
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   # GET /resource/edit
   # def edit

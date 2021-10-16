@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  # rootを新規登録画面に設定
+  # rootの設定
   devise_scope :voter do
+    constraints -> request { request.session[:admin].present? } do
+      # ログインしてる時
+      root 'voters/voters#admin', constraints: LoggedInConstraint.new("true") # 管理者としてログインしている場合
+      root 'voters/voters#index', constraints: LoggedInConstraint.new("false") # 投票者としてログインしている場合
+    end
+    # ログインしてない時
     root "voters/registrations#new"
   end
 
