@@ -16,6 +16,14 @@
 
  @import "bootstrap";
 
+ body {
+  background-image: url("background.jpeg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
  // max-width
 .mw-md {
   max-width: 576px;

@@ -26,6 +26,12 @@ gem 'devise-i18n'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 
+# ページネーション
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
+#サンプル追加
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
