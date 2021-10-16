@@ -37,12 +37,8 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="d-flex align-items-center border-top col-12 pagenate">
-      <%
-=begin%>
- <%= paginate @users %> 
-<%
-=end%>
+    <div class="d-flex border-top col-12 pagenate">
+      <%= will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
     </div>  
   </div>
   <% if params[:search].present? %>
