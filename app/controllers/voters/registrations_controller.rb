@@ -95,7 +95,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    voters_voters_index_path(resource)
+    posts_index_path(resource)
   end
 
   # The path used after sign up for inactive accounts.

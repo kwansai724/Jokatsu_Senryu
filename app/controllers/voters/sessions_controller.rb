@@ -57,7 +57,7 @@ class Voters::SessionsController < Devise::SessionsController
     if current_voter.admin == true
       voters_voters_admin_path(resource)
     else
-      voters_voters_index_path(resource)
+      posts_index_path(resource)
     end
   end
 
