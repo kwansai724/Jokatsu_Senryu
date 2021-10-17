@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    @user = User.new
+    5.times {@user.posts.build}
   end
 
   def new
@@ -11,13 +13,14 @@ class UsersController < ApplicationController
       flash[:success] = '投稿に成功しました。'
       redirect_to users_index_path
     else
-      render :index
+      flash[:danger] = "登録は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+      redirect_to users_index_path
     end
   end
 
   private
   
   def user_params
-    params.permit(:name, :email, :gender, :address, :profession, :age, :note, :questionary)
+    params.require(:user).permit(:name, :email, :gender, :address, :profession, :age, :note, :questionary, posts_attributes:[:first_phrase, :second_phrase, :third_phrase, :pen_name, :category, :id])
   end
 end
