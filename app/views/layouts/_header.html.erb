@@ -11,11 +11,15 @@
         <li class="nav-item active nav-link">
           グループ：<%= current_voter.group %>
         </li>
+        <% if current_voter.admin == false %>
+          <li class="nav-item active">
+            <%= link_to 'アカウント編集', edit_voter_registration_path, class: 'nav-link' %>
+        　</li>
+        <% end %>
         <li class="nav-item active">
           <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete, class: 'nav-link' %>
         </li>
       </ul>
-
     </nav>
   </header> 
 <% end %>

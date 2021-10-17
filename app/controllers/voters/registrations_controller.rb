@@ -2,13 +2,8 @@
 
 class Voters::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :group]) 
-  end
 
   # GET /resource/sign_up
   # def new
@@ -81,17 +76,28 @@ class Voters::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+   # 更新（編集の反映）時にパスワード入力を省く
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  # 更新後のパスを指定
+  def after_update_path_for(resource)
+    posts_index_path(resource)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :group]) 
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :group])
+  end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
