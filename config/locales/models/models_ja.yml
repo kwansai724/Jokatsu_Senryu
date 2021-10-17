@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+        user:
+          id: ID
+          name: お名前
+          email: メールアドレス
+          gender: 性別
+          address: お住まい
+          profession: ご職業
+          age: 年代
+          questionary: アンケート
