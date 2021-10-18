@@ -2,7 +2,7 @@
 
 <%= form_with() do |f| %>
   <div class="row">
-    <div class="col-mw-md col-mw-xl">
+    <div class="col-mw-md col-mw-xl center-block">
       <h1>応募作品一覧</h1>
       <table border=1>
         <tr>
@@ -10,16 +10,16 @@
         </tr>
         <tr>
           <td>
+            <span class="post-index-td">
             <% @posts.each do |user|%>
-              <p>
-                <% user.posts.each do |post| %>
-                  <% if post.first_phrase.present? %>
-                    <%= post.id %><%= post.first_phrase %><%= post.second_phrase %><%= post.third_phrase %>/(<%= post.pen_name %>)
-                    /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %><br>
-                  <% end %>
+              <% user.posts.each do |post| %>
+                <% if post.first_phrase.present? %>
+                  <%= post.id %><%= post.first_phrase %><%= post.second_phrase %><%= post.third_phrase %>/(<%= post.pen_name %>)
+                  /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %><br>
                 <% end %>
-              </p>  
+              <% end %>
             <% end %>
+            </span>
           </td>
         </tr>
         <tr>
