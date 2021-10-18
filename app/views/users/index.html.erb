@@ -1,30 +1,30 @@
 <% provide(:title, "input_form") %>
 <%= form_with(model: @user, url: users_create_path, local: true) do |f| %>
-
+  
   <div class="row">
-    <div class="col-mw-md col-mw-xl">
+    <div class="col-mw-md col-mw-xl center-block">
       <h1>入力フォーム</h1>
       <% @user.posts.each do |posts| %>
         <%= f.fields_for :posts, posts do |post| %> 
-          <table border="1" bordercolor="#fff">
+          <table border="1" bordercolor="#fff" class="users-table">
             <tr>
-              <th class="users-th">作品<span class="color-red">必須</span></th>
+              <th class="users-th">作品</th>
               <td class="users-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
             </tr>
             <tr>
-              <th class="users-th">ペンネーム<span class="color-red">必須</span></th>
+              <th class="users-th"><span class="font-pn">ペンネーム</span></th>
               <td class="users-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
             </tr>
             <tr>
-              <th class="users-th">部門<span class="color-red">必須</span></th>
-              <td class="users-td"><%= post.select :category, [["ママの部","ママの部"],["オフィス部門","オフィス部門"]],{ include_blank: ''} %></td>
+              <th class="users-th">部門</th>
+              <td class="users-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣感謝の部","本当にありがとう❣感謝の部"],["あるある❣の部","あるある❣の部"],["涙がポロ❣の部","涙がポロ❣の部"],["輝け❣私のライフスタイルの部","輝け❣私のライフスタイルの部"],["心がきゅん❣私の癒しの部","心がきゅん❣私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''} %></td>
             </tr>     
           </table>
         <% end %>
       <% end %>
 
       <table border="1" bordercolor="#fff" class="users-table">
-        <tr><th>ご本人ついて</th></tr>
+        <tr><th class="users-th2">ご本人ついて</th></tr>
         <tr>
           <th class="users-th">お名前<span class="color-red">必須</span></th>
           <td class="users-td"><%= f.text_field :name, class: "input-form" %></td>
@@ -56,7 +56,7 @@
           </td>
         </tr>
         <tr>
-          <th class="users-th">メールアドレス<span class="color-red">必須</span></th>
+          <th class="users-th"><span class="users-email">メールアドレス</span><span class="color-red">必須</span></th>
           <td class="users-td">
             <p class="color-pink">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
             <%= f.email_field :email, class: "input-form" %>
@@ -91,5 +91,3 @@
     </div>
   </div>
 <% end %>
-
-

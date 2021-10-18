@@ -2,16 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.center-block{
+  margin: 0 auto;
+}
+
 .users-table {
-  margin: 20px auto;
   width: 90%;
+  margin: 10px;
 }
 
 .users-th {
   width: 30%;
   background: yellow;
+  padding-left: 5px;
 }
-
+.users-th2{
+  background: none;
+}
 .users-td {
   padding-left: 30px;
 }
@@ -31,6 +38,10 @@
   color: pink;
 }
 
+.users-email {
+  font-size: 14px;
+}
+
 .btn {
   margin-top: 10px;
 }
@@ -40,8 +51,13 @@
 }
 
 @media screen and (max-width: 576px) {
+  .users-table {
+    margin: 10px auto;
+  }
+
   .users-th {
-    padding-left: 10px;
+    width: 200px;
+    padding-left: 15px;
     font-size: 12px; 
   }
 
@@ -53,5 +69,10 @@
     padding-left: 10px;
   }
 
-    
+  .font-pn{
+    font-size: 10px;
+  } 
+  .users-email {
+    font-size: 10px;
+  }
 }
