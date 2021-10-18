@@ -11,13 +11,20 @@ h1 {
   text-align: center;
 }
 
-table {
+.center-block {
   margin: 0 auto;
-  width: 90%;
+}
+
+table {
+  margin-left: 10px;
 }
 
 th {
   background: yellow;
+}
+
+.post-index-td{
+  font-size: 9px;
 }
 
 .btn {
