@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # 川柳投稿者
   get 'users/index', to: 'users#index'
+  post 'users/confilrm', to: 'users#confilrm'
   get 'users/new', to: 'users#new'
   post 'users/create', to: 'users#create'
 

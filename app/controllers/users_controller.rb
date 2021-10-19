@@ -7,14 +7,21 @@ class UsersController < ApplicationController
   def new
   end
 
+  # 確認画面
+  def confilrm
+    @user = User.new(user_params)
+  end
+
   def create
     @user = User.new(user_params)
-    if @user.save
-      flash[:success] = '投稿に成功しました。'
-      redirect_to users_index_path
-    else
-      flash[:danger] = "登録は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
-      redirect_to users_index_path
+      if params[:back]
+        redirect_to users_index_path
+      elsif @user.save
+        flash[:success] = '投稿に成功しました。'
+        redirect_to users_index_path
+      else
+        flash[:danger] = "登録は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+        redirect_to users_index_path
     end
   end
 
