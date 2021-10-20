@@ -4,24 +4,25 @@ class UsersController < ApplicationController
     5.times {@user.posts.build}
   end
 
-  def new
-  end
-
   # 確認画面
-  def confilrm
+  def confirm
     @user = User.new(user_params)
+    if @user.invalid?
+      flash[:danger] = @user.errors.full_messages.join("<br>")
+      redirect_to users_path
+    end
   end
 
   def create
     @user = User.new(user_params)
       if params[:back]
-        redirect_to users_index_path
+        render :index 
       elsif @user.save
         flash[:success] = '投稿に成功しました。'
-        redirect_to users_index_path
+        redirect_to users_path
       else
-        flash[:danger] = "登録は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
-        redirect_to users_index_path
+        flash[:danger] = "投稿は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+        redirect_to users_path
     end
   end
 

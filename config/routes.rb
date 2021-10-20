@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   }
 
   # 川柳投稿者
-  get 'users/index', to: 'users#index'
-  post 'users/confilrm', to: 'users#confilrm'
-  get 'users/new', to: 'users#new'
-  post 'users/create', to: 'users#create'
+  resources :users, only: [:create, :index] do
+    collection do
+      post :confirm
+    end
+  end
 
   # 川柳投票
   get 'posts/index', to: 'posts#index'
