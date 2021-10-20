@@ -6,9 +6,17 @@
   margin: 0 auto;
 }
 
+.info {
+  margin-left: 15px;
+}
+
 .users-table {
   width: 90%;
   margin: 10px;
+}
+
+.senryu-td {
+  padding-left: 30px;
 }
 
 .users-th {
@@ -16,9 +24,7 @@
   background: yellow;
   padding-left: 5px;
 }
-.users-th2{
-  background: none;
-}
+
 .users-td {
   padding-left: 30px;
 }
@@ -34,7 +40,7 @@
 }
 
 .color-pink {
-  font-size: 9px;
+  font-size: 12px;
   color: pink;
 }
 
@@ -50,14 +56,37 @@
   text-align: center;
 }
 
+// confirm
+.confirm-th {
+  background: none;
+}
+
+.actions {
+  text-align: center;
+}
+
+.confirm-btn {
+  margin-left: 10px;
+}
+
 @media screen and (max-width: 576px) {
   .users-table {
     margin: 10px auto;
   }
 
+  .senryu-th {
+    width: 25%;
+    padding-left: 10px;
+  }
+
+  .senryu-td {
+    font-size: 12px;
+    padding-left: 10px;
+  }
+
   .users-th {
     width: 200px;
-    padding-left: 15px;
+    padding-left: 10px;
     font-size: 12px; 
   }
 
@@ -74,5 +103,23 @@
   } 
   .users-email {
     font-size: 10px;
+  }
+
+  // confilrm
+  .confirm-th {
+    background: none;
+    font-size: 9px;
+  }
+
+  .confirm-td {
+    font-size: 9px;
+  }
+
+  .actions {
+    margin-top: 10px;
+  }
+
+  .confirm-btn {
+    margin-left: 10px;
   }
 }
