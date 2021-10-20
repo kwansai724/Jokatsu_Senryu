@@ -85,7 +85,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
 
   # 更新後のパスを指定
   def after_update_path_for(resource)
-    posts_index_path(resource)
+    posts_path(resource)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -101,7 +101,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    posts_index_path(resource)
+    posts_path(resource)
   end
 
   # The path used after sign up for inactive accounts.

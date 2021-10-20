@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_132444) do
+ActiveRecord::Schema.define(version: 2021_10_20_135202) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "voter_id"
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "like_post"
+    t.boolean "like_post", default: false
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["voter_id", "post_id"], name: "index_likes_on_voter_id_and_post_id", unique: true
     t.index ["voter_id"], name: "index_likes_on_voter_id"

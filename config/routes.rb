@@ -22,8 +22,10 @@ Rails.application.routes.draw do
   post 'users/create', to: 'users#create'
 
   # 川柳投票
-  get 'posts/index', to: 'posts#index'
-  
+  resources :posts do
+    resource :likes, only: [:create, :destroy]
+  end
+
   # 投票者ページ
   namespace :voters do
     # get 'voters/index', to: 'voters#index'

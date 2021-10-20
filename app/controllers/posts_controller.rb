@@ -5,4 +5,8 @@ class PostsController < ApplicationController
     @posts = User.eager_load(:posts).all
   end
 
+  def update
+
+  end
+
 end

@@ -1,5 +1,30 @@
 <% provide(:title, "posts_index") %>
 
+<%= form_with(to_xml: @posts) do |f| %>
+  <% @posts.each do |user|%>
+    <% user.posts.each do |post| %>
+      <% if post.first_phrase.present? %>
+        <div class="checkbox">
+          <%= f.check_box :like_post, { checked: false }, "true", "false" %>
+        </div>
+        <div class="main-posts">
+          <%= post.id %><%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %>/(<%= post.pen_name %>)
+          /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %><br>
+        </div>  
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="post-index-btn">
+    <%= f.submit "内容確認画面へ", class: "btn btn-secondary" %>
+  </div>
+<% end %>  
+
+
+
+
+
+
+
 <%= form_with() do |f| %>
   <div class="row">
     <div class="col-mw-md col-mw-xl center-block">
