@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       if params[:back]
         render :index 
       elsif @user.save
+        PostedMailer.send_mail(@user).deliver_now #メール送信
         flash[:success] = '投稿に成功しました。'
         redirect_to users_path
       else
