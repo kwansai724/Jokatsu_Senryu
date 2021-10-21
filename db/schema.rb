@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_140841) do
+ActiveRecord::Schema.define(version: 2021_10_21_105009) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "voter_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["voter_id", "post_id"], name: "index_likes_on_voter_id_and_post_id", unique: true
+    t.index ["voter_id"], name: "index_likes_on_voter_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "first_phrase"
@@ -21,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_140841) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "like_post", default: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
