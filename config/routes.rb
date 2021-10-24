@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-
   # rootの設定
   devise_scope :voter do
     constraints -> request { request.session[:admin].present? } do
       # ログインしてる時
       root 'voters/voters#admin', constraints: LoggedInConstraint.new("true") # 管理者としてログインしている場合
-      root 'posts#index', constraints: LoggedInConstraint.new("false") # 投票者としてログインしている場合
+      root 'voterposts#index', constraints: LoggedInConstraint.new("false") # 投票者としてログインしている場合
     end
     # ログインしてない時
     root "voters/registrations#new"
@@ -22,9 +21,13 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-
+  resources :posts
+  
   # 川柳投票
-  resources :posts do
+  resources :voterposts do
+    member do
+      post :create_voterpost
+    end
     resource :likes, only: [:create, :destroy]
   end
 

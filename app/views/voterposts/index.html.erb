@@ -1,0 +1,21 @@
+<% provide(:title, "voterposts_index") %>
+<div class="row">
+  <div class="col-mw-md col-mw-xl center-block">
+    <h1>応募作品一覧</h1>
+    <table border=1>
+      <tr>
+        <th>応募作品</th>
+      </tr>
+      <tr>
+        <td>
+          <span class="voterpost-index-td">
+            <%= render 'post' %>
+          </span>
+        </td>
+      </tr>
+    </table>
+    <div class="voterpost-index-btn">
+      <%= link_to "内容確認画面へ", voterpost_path(current_voter), class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

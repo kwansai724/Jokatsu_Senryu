@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_21_105009) do
+ActiveRecord::Schema.define(version: 2021_10_23_144709) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "voter_id"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2021_10_21_105009) do
     t.string "questionary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "voterposts", force: :cascade do |t|
+    t.string "favorite_post"
+    t.string "reason"
+    t.integer "voter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["voter_id"], name: "index_voterposts_on_voter_id"
   end
 
   create_table "voters", force: :cascade do |t|

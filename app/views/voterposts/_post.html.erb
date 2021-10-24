@@ -1,0 +1,28 @@
+<h3>いいね件数: <%= current_voter.favorites.count %></h3>
+<p>１５件まで投票できます。（設定まだ。）</p>
+<% @posts.each do |user| %>
+  <% user.posts.each do |post| %>
+    <% if post.first_phrase.present? %>
+      <!-- すでに「いいね！」されている時の表示 -->
+      <% if current_voter.favorites.include?(post) %>     
+        <%= form_with(model: @like, url: voterpost_likes_path(post, id: post.id), local: true, method: :delete) do |f| %>
+          <%= f.hidden_field :post_id, value: post.id %>
+          <%# <%= f.submit 'いいね！解除' %> 
+        <% end %>
+        <%= form_with(model: @like, url: voterpost_path(post, id: post.id), local: true, method: :delete) do |f| %>
+          <%= f.hidden_field :post_id, value: post.id %>
+          <%= f.submit 'いいね！解除' %>
+        <% end %>
+
+      <% else %>
+        <!-- まだ「いいね！」していない時の表示 -->
+        <%= form_with(model: @like, url: voterpost_likes_path(post), local: true) do |f| %>
+          <%= f.hidden_field :post_id, value: post.id %>
+          <%= f.submit 'いいね！' %>
+        <% end %>
+      <% end %>
+      &nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br>
+      <hr>
+    <% end %>
+  <% end %>
+<% end %>

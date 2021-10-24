@@ -11,17 +11,11 @@
         <tr>
           <td>
             <span class="post-index-td">
-            <% @posts.each do |user|%>
-              <% user.posts.each do |post| %>
-                <% if post.first_phrase.present? %>
-                  <%= post.id %><%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %>/(<%= post.pen_name %>)
-                  /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %><br>
-                <% end %>
-              <% end %>
-            <% end %>
+              <%# <%= render 'post' %> 
             </span>
           </td>
         </tr>
+        
         <tr>
           <th>推薦したいお気に入りの川柳<span class="color-red">必須</span></th>
         </tr>
@@ -29,13 +23,14 @@
           <td>
             1作品だけを選んでください。<br>
             No.
+            <%= f.text_field :favorite_post %>
           </td>
         </tr>
         <tr>
           <th>推薦理由</th>
         </tr>
         <tr>
-          <td>テキストフォーム</td>
+          <td class="post-index-textarea" ><%= f.text_area :reason, size: "50x2" %></td>
         </tr>
       </table>
       <div class="post-index-btn">
