@@ -29,10 +29,10 @@ class Voters::SessionsController < Devise::SessionsController
     #元の認証ロジック
     #self.resource = warden.authenticate!(auth_options)
 
-    #emailだけでログインできるように変更
+    #nameだけでログインできるように変更
     
-    if params[:voter]['email'].present?
-      self.resource = Voter.where(:email => params[:voter]['email']).first
+    if params[:voter]['name'].present?
+      self.resource = Voter.where(:name => params[:voter]['name']).first
       if self.resource.present?
         set_flash_message(:notice, :signed_in) if is_flashing_format?
         sign_in(resource_name, resource)
@@ -45,7 +45,7 @@ class Voters::SessionsController < Devise::SessionsController
           respond_with resource, :location => after_sign_in_path_for(resource)
         end
       else
-        flash[:danger] = "Eメールが違います"
+        flash[:danger] = "登録された名前が違います"
         redirect_to root_path
       end
     end
