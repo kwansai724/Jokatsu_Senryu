@@ -5,6 +5,8 @@ class Staff < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :authentication_keys => [:login_id]
 
+  validates :login_id, presence: true, length: { is: 8 }
+
   #登録時にメールアドレスを不要とする
   def email_required?
     false

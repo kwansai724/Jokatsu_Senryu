@@ -1,24 +1,30 @@
-<% if voter_signed_in? %>
+<% if voter_signed_in? || staff_signed_in? %>
   <header>
     <nav class="navbar navbar-expand navbar-light">
       <ul class="navbar-nav mr-auto">
         <p class='navbar-brand'>ジョカツ川柳</p>
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item active nav-link">
-          氏名：<%= current_voter.name %>
-        </li>  
-        <li class="nav-item active nav-link">
-          グループ：<%= current_voter.group %>
-        </li>
-        <% if current_voter.admin == false %>
+        <% if voter_signed_in? %>
+          <li class="nav-item active nav-link">
+            氏名：<%= current_voter.name %>
+          </li>  
+          <li class="nav-item active nav-link">
+            グループ：<%= current_voter.group %>
+          </li>
+          <% if current_voter.admin == false %>
+            <li class="nav-item active">
+              <%= link_to 'アカウント編集', edit_voter_registration_path, class: 'nav-link' %>
+          　</li>
+          <% end %>
           <li class="nav-item active">
-            <%= link_to 'アカウント編集', edit_voter_registration_path, class: 'nav-link' %>
-        　</li>
-        <% end %>
-        <li class="nav-item active">
-          <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete, class: 'nav-link' %>
-        </li>
+            <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <% elsif staff_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to 'ログアウト', destroy_staff_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <% end %> 
       </ul>
     </nav>
   </header> 

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   devise_scope :voter do
     constraints -> request { request.session[:admin].present? } do
       # ログインしてる時
-      root 'voters/voters#admin', constraints: LoggedInConstraint.new("true") # 管理者としてログインしている場合
+      # root 'voters/voters#admin', constraints: LoggedInConstraint.new("true") # 管理者としてログインしている場合
       root 'posts#index', constraints: LoggedInConstraint.new("false") # 投票者としてログインしている場合
+
     end
     # ログインしてない時
     root "voters/registrations#new"
@@ -40,6 +41,13 @@ Rails.application.routes.draw do
     get 'voters/admin', to: 'voters#admin'
     get 'voters/users_index', to: 'voters#users_index'
     get 'voters/users_show', to: 'voters#users_show'
-  end  
+  end
+
+  # 管理者・スタッフページ
+  namespace :staffs do
+    get 'staffs/toppage', to: 'staffs#toppage'
+    get 'staffs/index', to: 'staffs#index'
+  end
+
 
 end

@@ -1,15 +1,51 @@
 # 開発環境用
 
-# 管理者
-Voter.create!(
-  name: "管理者",
-  email: "admin@email.com",
-  group: "administrator",
+# # 管理者
+# Voter.create!(
+#   name: "管理者",
+#   email: "admin@email.com",
+#   group: "administrator",
+#   admin: true,
+#   password: "password",
+#   password_confirmation: "password"
+# )
+# puts "管理者アカウント作成"
+
+# 管理者（WIP)
+Staff.create!(
+  login_id: "1234567w",
   admin: true,
   password: "password",
   password_confirmation: "password"
 )
-puts "管理者アカウント作成"
+puts "管理者（WIP)アカウント作成"
+
+# 管理者（株式会社A)
+Staff.create!(
+  login_id: "1234567a",
+  admin: false,
+  password: "password",
+  password_confirmation: "password"
+)
+puts "管理者（株式会社A)アカウント作成"
+
+# 管理者（株式会社B)
+Staff.create!(
+  login_id: "1234567b",
+  admin: false,
+  password: "password",
+  password_confirmation: "password"
+)
+puts "管理者（株式会社B)アカウント作成"
+
+# 管理者（株式会社C)
+Staff.create!(
+  login_id: "1234567c",
+  admin: false,
+  password: "password",
+  password_confirmation: "password"
+)
+puts "管理者（株式会社C)アカウント作成"
 
 
 # 投票者(WIP)
