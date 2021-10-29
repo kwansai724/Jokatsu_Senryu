@@ -16,4 +16,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # updateで登録するためにvoter_idを最初に登録
+  def voter_id    
+    @voter = Voter.find(current_voter.id)
+    if @voter.voterposts.present? == false
+      @voterpost = @voter.voterposts.create!(voter_id: current_voter.id)
+    else 
+      @voter.voterposts.each do |v|
+        if current_voter.id != v.voter_id 
+          @voterpost = @voter.voterposts.create!(voter_id: current_voter.id)
+        end
+      end  
+    end
+  end
+
 end

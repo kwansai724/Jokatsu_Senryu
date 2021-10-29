@@ -1,43 +1,38 @@
 <% provide(:title, "voterposts_show") %>
-<%= form_with(model: @voterpost, url: create_voterpost_voterpost_path) do|f| %>
-  <div class="row">
-    <div class="col-mw-md col-mw-xl center-block">
-      <h1>確認画面</h1>
-      <div>
-	      <table class="table">
-          <% @check.each do |post| %>
-            <tr>
-              <%# <th class="confirm-th">川柳</th> %>
-              <td class="confirm-td">
-                &nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)
-              </td>
-            </tr>
-          <% end %>
-          <tr>
-            <th>推薦したいお気に入りの川柳<span class="color-red">必須</span></th>
-          </tr>            
-          <tr>
-            <td>
-              1作品だけを選んでください。<br>
-              No.
-              <%= f.text_field :favorite_post %>
-            </td>
-          </tr>
-          <tr>
-            <th>推薦理由</th>
-          </tr>
-          <tr>
-            <td class="voterpost-index-textarea">
-            <%= f.text_area :reason, size: "50x2" %>
-            </td> 
-          </tr>
-        </table>
-      </div>
-      <div class="actions">
-        <%= f.submit '投票画面に戻る', name: 'back', class: "btn btn-secondary confirm-btn" %>
-        <%= f.submit '投票する', class: "btn btn-success confirm-btn" %>
-      </div>        
-      </div>
+<div class="row">
+  <div class="col-mw-md col-mw-xl center-block">
+    <h1>応募作品一覧</h1>
+    <table border=1>
+      <tr>
+        <th>応募作品</th>
+      </tr>
+      <tr>
+        <td>
+          <span class="voterpost-index-td">
+            <p>いいね件数: <%= current_voter.favorites.count %></p>
+              <p>１５件まで投票できます。（設定まだ。）</p>
+              <% @posts.each do |user| %>
+                <% user.posts.each do |post| %>
+                  <% if post.first_phrase.present? %>
+                    <!-- すでに「いいね！」されている時の表示 -->
+                    <% if current_voter.favorites.include?(post) %>  
+                      <div class="narabi"><%= button_to '投票中', voterpost_likes_path(post, post_id: post.id), method: :delete, class:"btn btn-danger" %></div>
+                      <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %>
+                     <% else %>
+                      <div class="narabi"><%= button_to '未投票', voterpost_likes_path(post, post_id: post.id), class: "btn btn-secondary" %></div>
+                      <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br></div>
+                    <% end %>
+                    <hr>
+                  <% end %>
+                <% end %>
+              <% end %> 
+          </span>
+        </td>
+      </tr>
+    </table>
+    <div class="voterpost-index-btn">
+    <%= link_to '前ページに戻る', voterposts_path(current_voter), class: "btn btn-secondary confirm-btn" %>
+      <%= link_to "内容確認画面へ", edit_voterpost_path(current_voter), class: "btn btn-secondary" %>
     </div>
   </div>
-<% end %>
+</div>

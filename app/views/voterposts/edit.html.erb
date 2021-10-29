@@ -1,0 +1,42 @@
+<% provide(:title, "voterposts_edit") %>
+<%= form_with(model: @voterpost, url: voterpost_path(current_voter.id), local:true, method: :patch) do|f| %>
+  <div class="row">
+    <div class="col-mw-md col-mw-xl center-block">
+      <h1>確認画面</h1>
+      <div>
+	      <table class="table">
+          <% @check.each do |post| %>
+            <tr>
+              <td class="confirm-td">
+                &nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <th>推薦したいお気に入りの川柳<span class="color-red">必須</span></th>
+          </tr>            
+          <tr>
+            <td>
+              1作品だけを選んでください。<br>
+              No.
+              <%= f.text_field :favorite_post %>
+            </td>
+          </tr>
+          <tr>
+            <th>推薦理由</th>
+          </tr>
+          <tr>
+            <td class="voterpost-index-textarea">
+            <%= f.text_area :reason, size: "50x2" %>
+            </td> 
+          </tr>
+        </table>
+      </div>
+      <div class="actions">
+        <%= f.submit '投票画面に戻る', name: 'back', class: "btn btn-secondary confirm-btn" %>
+        <%= f.submit '投票する', class: "btn btn-success confirm-btn" %>
+      </div>        
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # 川柳投票
   resources :voterposts do
     member do
-      post :create_voterpost
+      # post :create_voterpost
     end
     resource :likes, only: [:create, :destroy]
   end
