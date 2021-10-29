@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     :sessions => 'voters/sessions'
   }
 
+  devise_for :staffs, :controllers => {
+    :registrations => 'staffs/registrations',
+    :sessions => 'staffs/sessions'
+  }
+
+
   # 川柳投稿者
   resources :users, only: [:create, :index] do
     collection do
