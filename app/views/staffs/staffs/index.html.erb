@@ -1,0 +1,32 @@
+
+<div class="row">
+  <div class="col-mw-md col-mw-xl center-block">
+    <h1><%= params[:group_name] %> の投票結果</h1>
+    <h3 class="mt-5">部門：<%= params[:category_name] %></h3>
+    <h3 class="mb-3">投稿数：<%= Post.where(category: params[:category_name]).count %>句</h3>
+    <% if params[:group_name] == "wip" %>
+      <div class="group-btn mb-4">
+        <%= link_to "株式会社A", staffs_staffs_index_path(group_name: "sponser_a", category_name: params[:category_name], admin: current_staff.admin), class: "btn btn-primary" %>
+        <%= link_to "株式会社B", staffs_staffs_index_path(group_name: "sponser_b", category_name: params[:category_name], admin: current_staff.admin), class: "btn btn-primary" %>
+        <%= link_to "株式会社C", staffs_staffs_index_path(group_name: "sponser_c", category_name: params[:category_name], admin: current_staff.admin), class: "btn btn-primary" %>
+      </div>
+      <div class="result-posts">
+        <% @posts.each do |user|%>
+          <% user.posts.each do |post| %>
+            <% if post.first_phrase.present? && post.category == params[:category_name] %>
+              <%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %>/(<%= post.pen_name %>)
+              /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %>【名前：<%= user.name %> / Eメール：<%= user.email %>】<br>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% elsif params[:group_name] == "sponser_a" %>
+      <%= render "result_posts" %>
+    <% elsif params[:group_name] == "sponser_b" %>
+      <%= render "result_posts" %>
+    <% elsif params[:group_name] == "sponser_c" %>
+      <%= render "result_posts" %>
+    <% end %>
+    <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div>

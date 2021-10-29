@@ -53,11 +53,12 @@ class Staffs::SessionsController < Devise::SessionsController
 
   # ログイン後の画面遷移
   def after_sign_in_path_for(resource)
-    if current_staff.admin == true
-      staffs_staffs_toppage_path(resource)
-    else
-      staffs_staffs_index_path(resource)
-    end
+    staffs_staffs_toppage_path(resource)
+    # if current_staff.admin == true
+    #   staffs_staffs_toppage_path(resource)
+    # else
+    #   staffs_staffs_index_path(resource)
+    # end
   end
 
   # ログアウト後の画面遷移

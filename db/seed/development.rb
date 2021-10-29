@@ -15,6 +15,7 @@
 Staff.create!(
   login_id: "1234567w",
   admin: true,
+  group_name: "wip",
   password: "password",
   password_confirmation: "password"
 )
@@ -24,6 +25,7 @@ puts "管理者（WIP)アカウント作成"
 Staff.create!(
   login_id: "1234567a",
   admin: false,
+  group_name: "sponser_a",
   password: "password",
   password_confirmation: "password"
 )
@@ -33,6 +35,7 @@ puts "管理者（株式会社A)アカウント作成"
 Staff.create!(
   login_id: "1234567b",
   admin: false,
+  group_name: "sponser_b",
   password: "password",
   password_confirmation: "password"
 )
@@ -42,6 +45,7 @@ puts "管理者（株式会社B)アカウント作成"
 Staff.create!(
   login_id: "1234567c",
   admin: false,
+  group_name: "sponser_c",
   password: "password",
   password_confirmation: "password"
 )

@@ -49,5 +49,4 @@ Rails.application.routes.draw do
     get 'staffs/index', to: 'staffs#index'
   end
 
-
 end
