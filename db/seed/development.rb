@@ -269,7 +269,7 @@ puts "投稿川柳作成5"
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
-  category = "本当にありがとう❣感謝の部"
+  category = "本当にありがとう❣️感謝の部"
   user_id = n+27
   Post.create!(
     first_phrase: first_phrase,
@@ -288,7 +288,7 @@ puts "投稿川柳作成6"
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
-  category = "あるある❣の部"
+  category = "あるある❣️の部"
   user_id = n+32
   Post.create!(
     first_phrase: first_phrase,
@@ -307,7 +307,7 @@ puts "投稿川柳作成7"
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
-  category = "涙がポロ❣の部"
+  category = "涙がポロ❣️の部"
   user_id = n+37
   Post.create!(
     first_phrase: first_phrase,
@@ -326,7 +326,7 @@ puts "投稿川柳作成8"
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
-  category = "輝け❣私のライフスタイルの部"
+  category = "輝け❣️私のライフスタイルの部"
   user_id = n+42
   Post.create!(
     first_phrase: first_phrase,
@@ -345,7 +345,7 @@ puts "投稿川柳作成9"
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
-  category = "心がきゅん❣私の癒しの部"
+  category = "心がきゅん❣️私の癒しの部"
   user_id = n+47
   Post.create!(
     first_phrase: first_phrase,

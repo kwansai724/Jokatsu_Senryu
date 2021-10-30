@@ -11,7 +11,7 @@
         <%= link_to "株式会社C", staffs_staffs_index_path(group_name: "sponser_c", category_name: params[:category_name], admin: current_staff.admin), class: "btn btn-primary" %>
       </div>
       <div class="result-posts">
-        <% @posts.each do |user|%>
+        <% @users.each do |user|%>
           <% user.posts.each do |post| %>
             <% if post.first_phrase.present? && post.category == params[:category_name] %>
               <%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %>/(<%= post.pen_name %>)

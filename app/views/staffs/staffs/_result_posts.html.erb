@@ -1,6 +1,6 @@
 
 <div class="result-posts">
-  <% @posts.each do |user| %>
+  <% @users.each do |user| %>
     <% user.posts.each do |post| %>
       <% if post.first_phrase.present? && post.category == params[:category_name] %>
         <%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %>/(<%= post.pen_name %>)

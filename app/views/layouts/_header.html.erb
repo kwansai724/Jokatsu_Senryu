@@ -27,6 +27,9 @@
             </li>
           <% end %>
           <li class="nav-item active nav-link">
+            <%= link_to "csv出力",staffs_staffs_index_path(format: :csv), data: { confirm: "CSVを出力します。よろしいですか？" } %>
+          </li>
+          <li class="nav-item active nav-link">
             グループ：<%= current_staff.group_name %>
           </li>
           <li class="nav-item active">
