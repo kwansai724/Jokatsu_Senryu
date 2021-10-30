@@ -2,7 +2,7 @@ require 'csv'
 
 class Staffs::StaffsController < ApplicationController
   before_action :staff_only, only: [:toppage, :index]
-  # before_action :correct_staff
+  before_action :correct_staff
 
   def toppage
   end
