@@ -21,6 +21,11 @@
             <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% elsif staff_signed_in? %>
+          <% if current_staff.admin == true %>
+            <li class="nav-item active nav-link">
+              <%= link_to "川柳投稿者一覧", staffs_staffs_users_index_path %>
+            </li>
+          <% end %>
           <li class="nav-item active nav-link">
             グループ：<%= current_staff.group_name %>
           </li>

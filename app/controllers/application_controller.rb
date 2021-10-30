@@ -29,11 +29,14 @@ class ApplicationController < ActionController::Base
 
   # 各企業の画面閲覧制限
   def correct_staff
-    if current_staff.admin == false
+    if current_staff.present? && current_staff.admin == false
       unless current_staff.id == params[:format].to_i || current_staff.group_name == params[:group_name]
         flash[:danger] = "閲覧出来ません。"
         redirect_back(fallback_location: staffs_staffs_toppage_url(format: current_staff.id))
       end
+    elsif current_staff.nil?
+      flash[:danger] = "閲覧出来ません。"
+      redirect_back(fallback_location: root_url)
     end
   end
 
