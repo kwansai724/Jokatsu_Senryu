@@ -1,0 +1,27 @@
+// Place all the styles related to the Staffs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list-group-flush {
+  padding-top: 10px;
+  // text-align: center;
+}
+
+.staff_screen--list {
+  list-style: none;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+//スマホ用↲
+@media screen and (max-width:480px) {
+
+  .staff_screen--list {
+    list-style: none;
+    display: flex;
+  }
+
+  .staff_screen--list .btn {
+    margin-bottom: 5px;
+  }
+}
