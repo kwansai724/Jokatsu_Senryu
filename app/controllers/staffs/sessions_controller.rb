@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Voters::SessionsController < Devise::SessionsController
+class Staffs::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -29,16 +29,21 @@ class Voters::SessionsController < Devise::SessionsController
     #元の認証ロジック
     #self.resource = warden.authenticate!(auth_options)
 
-    #nameだけでログインできるように変更
+    #login_idだけでログインできるように変更
     
-    if params[:voter]['name'].present?
-      self.resource = Voter.where(:name => params[:voter]['name']).first
+    if params[:staff]['login_id'].present?
+      self.resource = Staff.where(:login_id => params[:staff]['login_id']).first
       if self.resource.present?
         set_flash_message(:notice, :signed_in) if is_flashing_format?
         sign_in(resource_name, resource)
         yield resource if block_given?
-          session[:voter_id] = "voter"  
+        if self.resource.admin == false
+          session[:admin] = "false"
           respond_with resource, :location => after_sign_in_path_for(resource)
+        elsif self.resource.admin == true
+          session[:admin] = "true"
+          respond_with resource, :location => after_sign_in_path_for(resource)
+        end
       else
         flash[:danger] = "登録された名前が違います"
         redirect_to root_path
@@ -46,19 +51,19 @@ class Voters::SessionsController < Devise::SessionsController
     end
   end
 
-
   # ログイン後の画面遷移
   def after_sign_in_path_for(resource)
-    if current_voter.admin == true
-      voters_voters_admin_path(resource)
-    else
-      posts_path(resource)
-    end
+    staffs_staffs_toppage_path(resource)
+    # if current_staff.admin == true
+    #   staffs_staffs_toppage_path(resource)
+    # else
+    #   staffs_staffs_index_path(resource)
+    # end
   end
 
   # ログアウト後の画面遷移
   def after_sign_out_path_for(resource)
-    new_voter_session_path
+    new_staff_session_path
   end
-  
+
 end

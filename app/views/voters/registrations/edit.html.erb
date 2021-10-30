@@ -9,11 +9,6 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
     <%= f.label :group %>
     <%= f.select :group, ['WIP', '株式会社A', '株式会社B', '株式会社C'], { include_blank: '選択してください'}, autofocus: true, autocomplete: 'group', class: 'form-control' %>
   </div>
@@ -22,6 +17,6 @@
     <%= f.submit t('.update'), class: 'btn btn-primary btn-block' %>
   </div>
   <div>
-    <%= link_to "戻る", posts_path, class: 'btn btn-secondary btn-block' %>
+    <%= link_to "戻る", posts_path(format: current_voter.id), class: 'btn btn-secondary btn-block' %>
   </div>
 <% end %>

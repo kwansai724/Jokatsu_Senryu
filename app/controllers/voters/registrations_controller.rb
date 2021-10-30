@@ -29,13 +29,8 @@ class Voters::RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         # リダイレクト先を指定
         yield resource if block_given?
-        if self.resource.admin == false
-          session[:admin] = "false"
+          session[:voter_id] = "voter"  
           respond_with resource, :location => after_sign_in_path_for(resource)
-        elsif self.resource.admin == true
-          session[:admin] = "true"
-          respond_with resource, :location => after_sign_in_path_for(resource)
-        end
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         # sessionを削除
