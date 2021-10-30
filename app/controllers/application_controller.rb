@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # 各投票者の画面閲覧制限
+  def correct_voter
+    if current_voter.present?
+      unless current_voter.id == params[:format].to_i
+        flash[:danger] = "閲覧出来ません。"
+        redirect_back(fallback_location: posts_url(format: current_voter.id))
+      end
+    end
+  end
+  
   # スタッフ画面閲覧制限
   def staff_only
     unless current_staff.present?
@@ -17,13 +27,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def correct_voter
-  #   @voter = current_voter
-  #   redirect_to(root_url)  unless current_voter.id == params[:format]
-  # end
-
-  
-
+  # 各企業の画面閲覧制限
+  def correct_staff
+    if current_staff.admin == false
+      unless current_staff.id == params[:format].to_i || current_staff.group_name == params[:group_name]
+        flash[:danger] = "閲覧出来ません。"
+        redirect_back(fallback_location: staffs_staffs_toppage_url(format: current_staff.id))
+      end
+    end
+  end
 
   private
 
