@@ -1,21 +1,29 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # 管理者画面閲覧制限
-  def admin_only
-    unless current_voter.present? && current_voter.admin == true
-      flash[:danger] = "管理者しか閲覧出来ません。"
-      redirect_back(fallback_location: "/voters/voters/index")
+  # 投票者画面閲覧制限
+  def voter_only
+    unless current_voter.present?
+      flash[:danger] = "投票者しか閲覧出来ません。"
+      redirect_back(fallback_location: root_url)
     end
   end
 
-  # 投票者画面閲覧制限
-  def voter_only
-    unless current_voter.present? && current_voter.admin == false
-      flash[:danger] = "投票者しか閲覧出来ません。"
-      redirect_back(fallback_location: "/voters/voters/admin")
+  # スタッフ画面閲覧制限
+  def staff_only
+    unless current_staff.present?
+      flash[:danger] = "管理者・スタッフしか閲覧出来ません。"
+      redirect_back(fallback_location: root_url)
     end
   end
+
+  # def correct_voter
+  #   @voter = current_voter
+  #   redirect_to(root_url)  unless current_voter.id == params[:format]
+  # end
+
+  
+
 
   private
 

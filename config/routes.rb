@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
-  # rootの設定
-  devise_scope :voter do
-    constraints -> request { request.session[:admin].present? } do
-      # ログインしてる時
-      # root 'voters/voters#admin', constraints: LoggedInConstraint.new("true") # 管理者としてログインしている場合
-      root 'posts#index', constraints: LoggedInConstraint.new("false") # 投票者としてログインしている場合
+  # # rootの設定
+  # devise_scope :voter do
+  #   constraints -> request { request.session[:admin].present? } do
+  #     # ログインしてる時
+  #     # root 'voters/voters#admin', constraints: LoggedInConstraint.new("true") # 管理者としてログインしている場合
+  #     root 'posts#index', constraints: LoggedInConstraint.new("false") # 投票者としてログインしている場合
 
+  #   end
+  #   # ログインしてない時
+  #   root "voters/registrations#new"
+  # end
+
+  devise_scope :voter do
+    constraints -> request { request.session[:admin].present? || request.session[:voter_id].present? } do
+      root 'posts#index', as: :public_root, constraints: LoggedInConstraint.new("voter") # 投票者としてログインしている場合
+      root 'staffs/staffs#toppage', constraints: LoggedInConstraint.new("true") # WIPとしてログインしている場合
+      root 'staffs/staffs#toppage', constraints: LoggedInConstraint.new("false") # スポンサー企業としてログインしている場合
     end
-    # ログインしてない時
     root "voters/registrations#new"
   end
 

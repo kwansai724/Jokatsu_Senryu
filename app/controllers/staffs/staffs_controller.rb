@@ -1,4 +1,5 @@
 class Staffs::StaffsController < ApplicationController
+  before_action :staff_only, only: [:toppage, :index]
 
   def toppage
   end
