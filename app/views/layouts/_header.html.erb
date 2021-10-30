@@ -1,6 +1,51 @@
 <% if voter_signed_in? || staff_signed_in? %>
   <header>
-    <nav class="navbar navbar-expand navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">ジョカツ川柳</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <% if voter_signed_in? %>
+            <li class="nav-item active nav-link">
+              氏名：<%= current_voter.name %>
+            </li>  
+            <li class="nav-item active nav-link">
+              グループ：<%= current_voter.group %>
+            </li>
+            <li class="nav-item active nav-link">
+              <%= link_to 'アカウント編集', edit_voter_registration_path %>
+          　</li>
+            <li class="nav-item active nav-link">
+              <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete %>
+            </li>
+          <% elsif staff_signed_in? %>
+            <li class="nav-item active nav-link">
+              グループ：<%= current_staff.group_name %>
+            </li>
+            <% if current_staff.admin == true %>
+              <li class="nav-item active nav-link">
+                <%= link_to "川柳投稿者一覧", staffs_staffs_users_index_path %>
+              </li>
+            <% end %>
+            <li class="nav-item active nav-link">
+              <%= link_to "csv出力",staffs_staffs_index_path(format: :csv), data: { confirm: "CSVを出力します。よろしいですか？" } %>
+            </li>
+            <li class="nav-item active nav-link">
+              <%= link_to 'ログアウト', destroy_staff_session_path, method: :delete %>
+            </li>
+          <% end %> 
+        </ul>
+      </div>
+    </nav>
+  </header> 
+<% end %>
+
+    <%
+=begin%>
+ <nav class="navbar navbar-expand navbar-light">
       <ul class="navbar-nav mr-auto">
         <p class='navbar-brand'>ジョカツ川柳</p>
       </ul>
@@ -37,6 +82,6 @@
           </li>
         <% end %> 
       </ul>
-    </nav>
-  </header> 
-<% end %>
+    </nav> 
+<%
+=end%>

@@ -3,12 +3,14 @@
   <% @users.each do |user| %>
     <% user.posts.each do |post| %>
       <% if post.first_phrase.present? && post.category == params[:category_name] %>
-        <%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %>/(<%= post.pen_name %>)
-        /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %>
-        <% if params[:admin] == "true" %>
-          【名前：<%= user.name %> / Eメール：<%= user.email %>】
-        <% end %>  
-        <br>
+        <div class="main-index d-flex border-bottom mb-2">
+          <%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %> /(<%= post.pen_name %>)
+          /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %>
+          <% if params[:admin] == "true" %>
+            【名前：<%= user.name %> / Eメール：<%= user.email %>】
+          <% end %>  
+          <br>
+        </div>  
       <% end %>
     <% end %>
   <% end %>

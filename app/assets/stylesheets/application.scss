@@ -42,7 +42,31 @@
   @extend .alert-danger;
 }
 
+.navbar {
+  background-color: rgb(141, 174, 236);
+}
 
+a.navbar-brand {
+  font-family: serif;
+  font-weight: 800;
+}
+
+.nav-link a {
+  color: black;
+  text-decoration: underline;
+}
+
+.nav-link a:hover {
+  color: blue;
+}
+
+@media screen and (max-width:480px) {
+
+  .card-header h4 {
+    font-size: large;
+  }
+
+}
 
 /* debug */
 
