@@ -1,8 +1,8 @@
 <% provide(:title, "voterposts_edit") %>
-<%= form_with(model: @voterpost, url: voterpost_path(current_voter.id), local:true, method: :patch) do|f| %>
+<%= form_with(model: @voterpost, url: voterpost_path(current_voter.id, @category), local:true, method: :patch) do|f| %>
   <div class="row">
     <div class="col-mw-md col-mw-xl center-block">
-      <h1>確認画面</h1>
+      <h4 class="category-show">【<%= @category %>】確認画面</h4>
       <div>
 	      <table class="table">
           <% @check.each do |post| %>
@@ -19,7 +19,29 @@
             <td>
               1作品だけを選んでください。<br>
               No.
-              <%= f.text_field :favorite_post %>
+              <% if params[:format] == "女性パワーで未来を変えるの部" %>
+                <%= f.text_field :favorite_post1 %>
+              <% elsif params[:format] == "ジェンダー・多様性の部" %>
+                <%= f.text_field :favorite_post2 %>
+              <% elsif params[:format] == "はたらく女子の部" %>
+                <%= f.text_field :favorite_post3 %>
+              <% elsif params[:format] == "ママ・子どもの部" %>
+                <%= f.text_field :favorite_post4 %>
+              <% elsif params[:format] == "名もなき家事の部" %>
+                <%= f.text_field :favorite_post5 %>
+              <% elsif params[:format] == "本当にありがとう❣️感謝の部" %>
+                <%= f.text_field :favorite_post6 %>
+              <% elsif params[:format] == "あるある❣️の部" %>
+                <%= f.text_field :favorite_post7 %>
+              <% elsif params[:format] == "涙がポロ❣️の部" %>
+                <%= f.text_field :favorite_post8 %>
+              <% elsif params[:format] == "輝け❣️私のライフスタイルの部" %>
+                <%= f.text_field :favorite_post9 %>
+              <% elsif params[:format] == "心がきゅん❣️私の癒しの部" %>
+                <%= f.text_field :favorite_post10 %>
+              <% elsif params[:format] == "SDGsアクションの部" %>
+                <%= f.text_field :favorite_post11 %>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -27,14 +49,36 @@
           </tr>
           <tr>
             <td class="voterpost-index-textarea">
-            <%= f.text_area :reason, size: "50x2" %>
+            <% if params[:format] == "女性パワーで未来を変えるの部" %>
+              <%= f.text_area :reason1, size: "50x2" %>
+            <% elsif params[:format] == "ジェンダー・多様性の部" %>
+              <%= f.text_area :reason2, size: "50x2" %>
+            <% elsif params[:format] == "はたらく女子の部" %>
+              <%= f.text_area :reason3, size: "50x2" %>
+            <% elsif params[:format] == "ママ・子どもの部" %>
+              <%= f.text_area :reason4, size: "50x2" %>
+            <% elsif params[:format] == "名もなき家事の部" %>
+              <%= f.text_area :reason5, size: "50x2" %>
+            <% elsif params[:format] == "本当にありがとう❣️感謝の部" %>
+              <%= f.text_area :reason6, size: "50x2" %>
+            <% elsif params[:format] == "あるある❣️の部" %>
+              <%= f.text_area :reason7, size: "50x2" %>
+            <% elsif params[:format] == "涙がポロ❣️の部" %>
+              <%= f.text_area :reason8, size: "50x2" %>
+            <% elsif params[:format] == "輝け❣️私のライフスタイルの部" %>
+              <%= f.text_area :reason9, size: "50x2" %>
+            <% elsif params[:format] == "心がきゅん❣️私の癒しの部" %>
+              <%= f.text_area :reason10, size: "50x2" %>
+            <% elsif params[:format] == "SDGsアクションの部" %>
+              <%= f.text_area :reason11, size: "50x2" %>
+            <% end %>
             </td> 
           </tr>
         </table>
       </div>
       <div class="actions">
-        <%= f.submit '投票画面に戻る', name: 'back', class: "btn btn-secondary confirm-btn" %>
-        <%= f.submit '投票する', class: "btn btn-success confirm-btn" %>
+        <%= f.submit '投票画面に戻る', name: 'back', class: "btn-gradient confirm-btn" %>
+        <%= f.submit '投票する', name: @category, class: "btn-gradient-radius confirm-btn" %>
       </div>        
       </div>
     </div>
