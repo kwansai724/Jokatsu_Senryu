@@ -27,6 +27,6 @@
     <% elsif params[:group_name] == "sponser_c" %>
       <%= render "result_posts" %>
     <% end %>
-    <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path, class: "btn btn-secondary mt-3" %>
+    <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn btn-secondary mt-3" %>
   </div>
 </div>
