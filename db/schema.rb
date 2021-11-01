@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_29_162734) do
+ActiveRecord::Schema.define(version: 2021_10_30_162929) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "voter_id"
@@ -62,6 +62,35 @@ ActiveRecord::Schema.define(version: 2021_10_29_162734) do
     t.string "questionary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "voterposts", force: :cascade do |t|
+    t.integer "favorite_post1"
+    t.string "reason1"
+    t.integer "favorite_post2"
+    t.string "reason2"
+    t.integer "favorite_post3"
+    t.string "reason3"
+    t.integer "favorite_post4"
+    t.string "reason4"
+    t.integer "favorite_post5"
+    t.string "reason5"
+    t.integer "favorite_post6"
+    t.string "reason6"
+    t.integer "favorite_post7"
+    t.string "reason7"
+    t.integer "favorite_post8"
+    t.string "reason8"
+    t.integer "favorite_post9"
+    t.string "reason9"
+    t.integer "favorite_post10"
+    t.string "reason10"
+    t.integer "favorite_post11"
+    t.string "reason11"
+    t.integer "voter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["voter_id"], name: "index_voterposts_on_voter_id"
   end
 
   create_table "voters", force: :cascade do |t|

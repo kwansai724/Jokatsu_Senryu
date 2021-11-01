@@ -25,9 +25,10 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-
+  resources :posts
+  
   # 川柳投票
-  resources :posts do
+  resources :voterposts do
     resource :likes, only: [:create, :destroy]
   end
 

@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  favorite_post1: 1
+  reason1: MyString
+  favorite_post2: 1
+  reason2: MyString
+  favorite_post3: 1
+  reason3: MyString
+  favorite_post4: 1
+  reason4: MyString
+  favorite_post5: 1
+  reason5: MyString
+  favorite_post6: 1
+  reason6: MyString
+  favorite_post7: 1
+  reason7: MyString
+  favorite_post8: 1
+  reason8: MyString
+  favorite_post9: 1
+  reason9: MyString
+  favorite_post10: 1
+  reason10: MyString
+  favorite_post11: 1
+  reason11: MyString
+  voter: one
+
+two:
+  favorite_post1: 1
+  reason1: MyString
+  favorite_post2: 1
+  reason2: MyString
+  favorite_post3: 1
+  reason3: MyString
+  favorite_post4: 1
+  reason4: MyString
+  favorite_post5: 1
+  reason5: MyString
+  favorite_post6: 1
+  reason6: MyString
+  favorite_post7: 1
+  reason7: MyString
+  favorite_post8: 1
+  reason8: MyString
+  favorite_post9: 1
+  reason9: MyString
+  favorite_post10: 1
+  reason10: MyString
+  favorite_post11: 1
+  reason11: MyString
+  voter: two
