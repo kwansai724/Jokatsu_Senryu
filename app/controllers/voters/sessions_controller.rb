@@ -49,11 +49,7 @@ class Voters::SessionsController < Devise::SessionsController
 
   # ログイン後の画面遷移
   def after_sign_in_path_for(resource)
-    if current_voter.admin == true
-      voters_voters_admin_path(resource)
-    else
-      posts_path(resource)
-    end
+    voterposts_path(resource)
   end
 
   # ログアウト後の画面遷移

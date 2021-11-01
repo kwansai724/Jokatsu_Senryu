@@ -1,6 +1,7 @@
 class VoterpostsController < ApplicationController
-  before_action :voter_only, only: [:index]
+  before_action :voter_only
   before_action :voter_id, only: [:index]
+  before_action :correct_voter, only: [:index]
 
   # カテゴリー選択
   def index
@@ -18,7 +19,7 @@ class VoterpostsController < ApplicationController
     elsif params[:name] == "ジェンダー・多様性の部"
       @posts = User.eager_load(:posts).where(posts: {category: "ジェンダー・多様性の部"})
       @category = "ジェンダー・多様性の部"
-      @category_count =  current_voter.favorites.where(category: "ジェンダー・多様性の部").count
+      @category_count = current_voter.favorites.where(category: "ジェンダー・多様性の部").count
     elsif params[:name] == "はたらく女子の部"
       @posts = User.eager_load(:posts).where(posts: {category: "はたらく女子の部"})
       @category = "はたらく女子の部"
