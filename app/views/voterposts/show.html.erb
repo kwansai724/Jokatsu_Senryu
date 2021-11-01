@@ -1,0 +1,42 @@
+<% provide(:title, "voterposts_show") %>
+<div class="row">
+  <div class="col-mw-md col-mw-xl center-block">
+    <h4 class="category-show">【<%= @category %>】応募作品一覧</h4>
+    <table border=1>
+      <tr>
+        <th>応募作品</th>
+      </tr>
+      <tr>
+        <td>
+          <span class="voterpost-index-td">
+            <% if @category_count == nil %>
+              <p>投稿件数: 0件</p>
+            <% else %>
+              <p>投稿件数: <%= @category_count %>件</p>
+            <% end %>
+            <%# <p>１５件まで投票できます。（設定まだ。）</p> %>
+            <% @posts.each do |user| %>
+              <% user.posts.each do |post| %>
+                <% if post.first_phrase.present? %>
+                  <!-- すでに「いいね！」されている時の表示 -->
+                  <% if current_voter.favorites.include?(post) %>  
+                    <div class="narabi"><%= button_to '投票中', voterpost_likes_path(post, post_id: post.id), method: :delete, class:"btn-gradient-radius" %></div>
+                    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br></div>
+                  <% else %>
+                    <div class="narabi"><%= button_to '未投票', voterpost_likes_path(post, post_id: post.id), class: "btn-gradient" %></div>
+                    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br></div>
+                  <% end %>
+                  <hr>
+                <% end %>
+              <% end %>
+            <% end %>
+          </span>
+        </td>
+      </tr>
+    </table>
+    <div class="voterpost-index-btn">
+      <%= link_to '前ページに戻る', voterposts_path(current_voter), class: "btn-gradient confirm-btn" %>
+      <%= link_to "内容確認画面へ", edit_voterpost_path(current_voter, @category), class: "btn-gradient-radius" %>
+    </div>
+  </div>
+</div>

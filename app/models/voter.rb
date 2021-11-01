@@ -1,8 +1,9 @@
 class Voter < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :posts, through: :likes
-  has_many :likes
+  has_many :voterposts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :favorites, through: :likes, source: :post
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable,

@@ -1,0 +1,73 @@
+<% provide(:title, "voterposts_index") %>
+
+<div class="row">
+  <div class="col-mw-md col-mw-xl center-block">
+    <%# <%= link_to "一覧投票ページへ", voterpost_path(@posts), class: "btn btn-secondary" <br> %>
+    <table class="table">
+      <tr>
+        <th class="index-th">○月○日まで再投票可能です。</th>
+      </tr> 
+      <tr>
+        <td>
+          <% @voterposts.each do |v| %>
+            <% if v.favorite_post1.present? %>
+              <%= link_to "【女性パワーで未来を変えるの部】投票済み", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【女性パワーで未来を変えるの部】", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post2.present? %>
+              <%= link_to "【ジェンダー・多様性の部】投票済み", voterpost_path(@posts, name: 'ジェンダー・多様性の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【ジェンダー・多様性の部】", voterpost_path(@posts, name: 'ジェンダー・多様性の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post3.present? %>
+              <%= link_to "【はたらく女子の部】投票済み", voterpost_path(@posts, name: 'はたらく女子の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【はたらく女子の部】", voterpost_path(@posts, name: 'はたらく女子の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post4.present? %>
+              <%= link_to "【ママ・子どもの部】投票済み", voterpost_path(@posts, name: 'ママ・子どもの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【ママ・子どもの部】", voterpost_path(@posts, name: 'ママ・子どもの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post5.present? %>
+              <%= link_to "【名もなき家事の部】投票済み", voterpost_path(@posts, name: '名もなき家事の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【名もなき家事の部】", voterpost_path(@posts, name: '名もなき家事の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post6.present? %>
+              <%= link_to "【本当にありがとう❣️感謝の部】投票済み", voterpost_path(@posts, name: '本当にありがとう❣️感謝の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【本当にありがとう❣️感謝の部】", voterpost_path(@posts, name: '本当にありがとう❣️感謝の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post7.present? %>
+              <%= link_to "【あるある❣️の部】投票済み", voterpost_path(@posts, name: 'あるある❣️の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【あるある❣️の部】", voterpost_path(@posts, name: 'あるある❣️の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post8.present? %>
+              <%= link_to "【涙がポロ❣️の部】投票済み", voterpost_path(@posts, name: '涙がポロ❣️の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【涙がポロ❣️の部】", voterpost_path(@posts, name: '涙がポロ❣️の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post9.present? %>
+              <%= link_to "【輝け❣️私のライフスタイルの部】投票済み", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【輝け❣️私のライフスタイルの部】", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post10.present? %>
+              <%= link_to "【心がきゅん❣️私の癒しの部】投票済み", voterpost_path(@posts, name: '心がきゅん❣️私の癒しの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【心がきゅん❣️私の癒しの部】", voterpost_path(@posts, name: '心がきゅん❣️私の癒しの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post11.present? %>
+              <%= link_to "【SDGsアクションの部】投票済み", voterpost_path(@posts, name: 'SDGsアクションの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "【SDGsアクションの部】", voterpost_path(@posts, name: 'SDGsアクションの部'), class: "btn-gradient-radius" %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
