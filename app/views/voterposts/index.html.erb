@@ -11,7 +11,7 @@
         <td>
           <% @voterposts.each do |v| %>
             <% if v.favorite_post1.present? %>
-              <%= link_to "【女性パワーで未来を変えるの部】投票済み", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient" %>
+              <%= link_to "【女性パワーで未来を変えるの部】投票済み", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient voterpost-index-td" %>
             <% else %>
               <%= link_to "【女性パワーで未来を変えるの部】", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient-radius" %>
             <% end %>
@@ -51,7 +51,7 @@
               <%= link_to "【涙がポロ❣️の部】", voterpost_path(@posts, name: '涙がポロ❣️の部'), class: "btn-gradient-radius" %>
             <% end %>
             <% if v.favorite_post9.present? %>
-              <%= link_to "【輝け❣️私のライフスタイルの部】投票済み", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient" %>
+              <%= link_to "【輝け❣️私のライフスタイルの部】投票済み", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient voterpost-index-td" %>
             <% else %>
               <%= link_to "【輝け❣️私のライフスタイルの部】", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient-radius" %>
             <% end %>
