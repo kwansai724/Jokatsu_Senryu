@@ -4,6 +4,7 @@
     <% user.posts.each do |post| %>
       <% if post.first_phrase.present? && post.category == params[:category_name] %>
         <div class="main-index d-flex border-bottom mb-2">
+          【得票数：<%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count %> 】
           <%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %> /(<%= post.pen_name %>)
           /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %>
           <% if params[:admin] == "true" %>

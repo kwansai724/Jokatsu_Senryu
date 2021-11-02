@@ -27,7 +27,8 @@ class Staffs::StaffsController < ApplicationController
         posts.each do |post|
           user = User.find_by(id: post.user_id)
           values = [post.first_phrase, post.second_phrase, post.third_phrase, post.pen_name, post.category,
-                    user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary]
+                    user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary,
+                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count]
           csv << values
         end
       end
@@ -39,7 +40,8 @@ class Staffs::StaffsController < ApplicationController
         posts.each do |post|
           user = User.find_by(id: post.user_id)
           values = [post.first_phrase, post.second_phrase, post.third_phrase, post.pen_name, post.category,
-                    user.gender, user.address, user.profession, user.age, user.note, user.questionary]
+                    user.gender, user.address, user.profession, user.age, user.note, user.questionary,
+                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count]
           csv << values
         end
       end
