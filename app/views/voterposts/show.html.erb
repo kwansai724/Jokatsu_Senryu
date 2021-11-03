@@ -21,14 +21,9 @@
               <% user.posts.each do |post| %>
                 <% if post.first_phrase.present? %>
                   <!-- すでに「いいね！」されている時の表示 -->
-                  <% if current_voter.favorites.include?(post) %>  
-                    <div class="narabi"><%= button_to '投票中', voterpost_likes_path(post, post_id: post.id), method: :delete, class:"btn-gradient-radius" %></div>
-                    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br></div>
-                  <% else %>
-                    <div class="narabi"><%= button_to '未投票', voterpost_likes_path(post, post_id: post.id), class: "btn-gradient" %></div>
-                    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br></div>
-                  <% end %>
-                  <hr>
+                  <div id="likes_buttons_<%= post.id %>">  
+                    <%= render partial: 'likes/like', locals: { post: post, user: user} %> 
+                  </div>
                 <% end %>
               <% end %>
             <% end %>
