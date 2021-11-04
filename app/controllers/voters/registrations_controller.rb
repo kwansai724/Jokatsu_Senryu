@@ -29,7 +29,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         # リダイレクト先を指定
         yield resource if block_given?
-          session[:voter_id] = "voter"  
+          session[:voter_id] = "voter"
           respond_with resource, :location => after_sign_in_path_for(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
@@ -80,7 +80,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
 
   # 更新後のパスを指定
   def after_update_path_for(resource)
-    posts_path(resource)
+    voterposts_path(resource)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -96,7 +96,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    posts_path(resource)
+    voterposts_path(resource)
   end
 
   # The path used after sign up for inactive accounts.

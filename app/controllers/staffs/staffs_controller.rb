@@ -1,7 +1,7 @@
 require 'csv'
 
 class Staffs::StaffsController < ApplicationController
-  before_action :staff_only, only: [:toppage, :index]
+  before_action :staff_only
   before_action :correct_staff
 
   def toppage
@@ -21,25 +21,27 @@ class Staffs::StaffsController < ApplicationController
   def send_posts_csv(posts)
     if current_staff.admin == true
       csv_data = CSV.generate do |csv|
-        header = %w(上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 投票数)
+        header = %w(上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数)
         csv << header
 
         posts.each do |post|
           user = User.find_by(id: post.user_id)
           values = [post.first_phrase, post.second_phrase, post.third_phrase, post.pen_name, post.category,
-                    user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary]
+                    user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary,
+                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count]
           csv << values
         end
       end
     else
       csv_data = CSV.generate do |csv|
-        header = %w(上の句 中の句 下の句 ペンネーム 部門 性別 お住まい 職業 年代 メッセージ アンケート 投票数)
+        header = %w(上の句 中の句 下の句 ペンネーム 部門 性別 お住まい 職業 年代 メッセージ アンケート 得票数)
         csv << header
 
         posts.each do |post|
           user = User.find_by(id: post.user_id)
           values = [post.first_phrase, post.second_phrase, post.third_phrase, post.pen_name, post.category,
-                    user.gender, user.address, user.profession, user.age, user.note, user.questionary]
+                    user.gender, user.address, user.profession, user.age, user.note, user.questionary,
+                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count]
           csv << values
         end
       end
@@ -56,6 +58,17 @@ class Staffs::StaffsController < ApplicationController
     @user = User.find(params[:id])
     @posts = Post.where(user_id: @user.id)
   end
+
+  def voterposts_index
+    @voters_admin = Voter.all.order(:group)
+    @voters = Voter.where(group: current_staff.group_name)
+  end
+
+  def voterposts_show
+    @voter = Voter.find(params[:id])
+    @voterpost = Voterpost.find_by(voter_id: @voter.id)
+  end
+
 
   private
 

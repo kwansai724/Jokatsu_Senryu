@@ -13,6 +13,24 @@
   margin-right: 5px;
 }
 
+// toppageボタン
+.btn-gradient-radius {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  // color: #FFF;
+  color: #000;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+}
+
+.btn-gradient-radius:hover {
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  text-decoration: none
+}
+
 //スマホ用↲
 @media screen and (max-width:480px) {
 
@@ -24,4 +42,33 @@
   .staff_screen--list .btn {
     margin-bottom: 5px;
   }
+
+  .staff-toppage h1 {
+    font-size: 30px;
+  }
+
+  .staff-index h1 {
+    font-size: 30px;
+  }
+
+  .staff-index h3 {
+    font-size: 18px;
+  }
+
+  .result-posts {
+    font-size: 15px;
+  }
+
+  .users-index h1 {
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .users-show h1 {
+    font-size: 30px;
+  }
+
+  
+
 }

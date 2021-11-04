@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
 
   # 各投票者の画面閲覧制限
   def correct_voter
-    if current_voter.present?
+    if current_voter.present? && params[:format].present?
       unless current_voter.id == params[:format].to_i
         flash[:danger] = "閲覧出来ません。"
-        redirect_back(fallback_location: posts_url(format: current_voter.id))
+        redirect_back(fallback_location: voterposts_url(format: current_voter.id))
       end
     end
   end

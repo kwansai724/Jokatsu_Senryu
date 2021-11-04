@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_scope :voter do
     constraints -> request { request.session[:admin].present? || request.session[:voter_id].present? } do
-      root 'posts#index', as: :public_root, constraints: LoggedInConstraint.new("voter") # 投票者としてログインしている場合
+      root 'voterposts#index', as: :public_root, constraints: LoggedInConstraint.new("voter") # 投票者としてログインしている場合
       root 'staffs/staffs#toppage', constraints: LoggedInConstraint.new("true") # WIPとしてログインしている場合
       root 'staffs/staffs#toppage', constraints: LoggedInConstraint.new("false") # スポンサー企業としてログインしている場合
     end
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  resources :posts
+  # resources :posts
   
   # 川柳投票
   resources :voterposts do
@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     get 'staffs/index', to: 'staffs#index'
     get 'staffs/users_index', to: 'staffs#users_index'
     get 'staffs/users_show', to: 'staffs#users_show'
+    get 'staffs/voterposts_index', to: 'staffs#voterposts_index'
+    get 'staffs/voterposts_show', to: 'staffs#voterposts_show'
   end
 
 end
