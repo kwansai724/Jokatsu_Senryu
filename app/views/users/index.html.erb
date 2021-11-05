@@ -8,6 +8,12 @@
         <%= f.fields_for :posts, posts do |post| %> 
           <table border="1" bordercolor="#fff" class="users-table">
             <tr>
+              <th class="senryu-th">部門</th>
+              <td class="senryu-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],
+                  ["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣️感謝の部","本当にありがとう❣️感謝の部"],["あるある❣️の部","あるある❣️の部"],["涙がポロ❣️の部","涙がポロ❣️の部"],
+                  ["輝け❣️私のライフスタイルの部","輝け❣️私のライフスタイルの部"],["心がきゅん❣️私の癒しの部","心がきゅん❣️私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''} %></td>
+            </tr> 
+            <tr>
               <th class="senryu-th">作品</th>
               <td class="senryu-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %>
                 <%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
@@ -16,12 +22,6 @@
               <th class="senryu-th"><span class="font-pn">ペンネーム</span></th>
               <td class="senryu-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
             </tr>
-            <tr>
-              <th class="senryu-th">部門</th>
-              <td class="senryu-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],
-                  ["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣️感謝の部","本当にありがとう❣️感謝の部"],["あるある❣️の部","あるある❣️の部"],["涙がポロ❣️の部","涙がポロ❣️の部"],
-                  ["輝け❣️私のライフスタイルの部","輝け❣️私のライフスタイルの部"],["心がきゅん❣️私の癒しの部","心がきゅん❣️私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''} %></td>
-            </tr>     
           </table>
         <% end %>
       <% end %>
@@ -46,7 +46,7 @@
           </td>
         </tr>
         <tr>
-          <th class="users-th">ご職業</th>
+          <th class="users-th">ご職業<span class="color-red">必須</span></th>
           <td class="users-td">
             <%= f.select :profession, [["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]],{ include_blank: ''}, class: "input-form", required: true %>
           </td>
@@ -54,7 +54,7 @@
         <tr>
           <th class="users-th">年代<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :age, [["小学生","小学生"],["中学生","中学生"],["高校生","高校生"],["大学生","大学生"],["20代","20代"],["30代","30代"],["40代","40代"],["50代","50代"],["60代","60代"],["70代","70代"],["80代","80代"]],{ include_blank: ''}, class: "input-form", required: true %>
+            <%= f.select :age, [["小学生","小学生"],["中学生","中学生"],["高校生","高校生"],["大学生","大学生"],["20代","20代"],["30代","30代"],["40代","40代"],["50代","50代"],["60代","60代"],["70代","70代"],["80代以上","80代以上"]],{ include_blank: ''}, class: "input-form", required: true %>
           </td>
         </tr>
         <tr>
@@ -76,9 +76,9 @@
             <%= f.radio_button :questionary, "公式ホームページ", required: true %>公式ホームページ<br>
             <%= f.radio_button :questionary, "公式Facebookページ" %>公式Facebookページ<br>
             <%= f.radio_button :questionary, "公式Instagram" %>公式Instagram<br>
-            <%= f.radio_button :questionary, "公式ライン" %>公式ライン<br>
+            <%= f.radio_button :questionary, "公式ライン" %>公式LINE<br>
             <%= f.radio_button :questionary, "川柳募集サイト" %>川柳募集サイト<br>
-            <%= f.radio_button :questionary, "メンバーのブログや投稿、シェアなど" %>メンバーのブログや投稿、シェアなど<br>
+            <%= f.radio_button :questionary, "メンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
             <%= f.radio_button :questionary, "WEBやSNS記事" %>WEBやSNS記事<br>
             <%= f.radio_button :questionary, "新聞や雑誌などのメディア" %>新聞や雑誌などのメディア<br>
             <%= f.radio_button :questionary, "検索サーチ" %>検索サーチ<br>
