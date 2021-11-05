@@ -11,11 +11,11 @@
       <tr>
         <td>
           <span class="voterpost-index-td">
-            <% if @category_count == nil %>
-              <p>投票件数: 0件</p>
-            <% else %>
-              <p>投票件数: <%= @category_count %>件</p>
-            <% end %>
+            <%# <% if @category_count == nil  %>
+              <%# <p>投票件数: 0件</p> %>
+            <%# <% else %> 
+              <%# <p>投票件数: <%= @category_count 件</p> %>
+            <%# <% end  %>
             <%# <p>１５件まで投票できます。（設定まだ。）</p> %>
             <% @posts.each do |user| %>
               <% user.posts.each do |post| %>
