@@ -34,7 +34,7 @@
       <table border="0" class="users-table">
         <tr>
           <th class="users-th">お名前<span class="color-red">　　　必須</span></th>
-          <td class="users-td"><%= f.text_field :name, size: "27x1", class: "input-form", required: true %></td>
+          <td class="users-td"><%= f.text_field :name, size: "25x1", class: "input-form", required: true %></td>
         </tr>
         <tr>
           <th class="users-th">性別<span class="color-red">　　　　必須</span></th>
@@ -70,14 +70,14 @@
         <tr>
           <th class="users-th"><span class="users-email">メールアドレス</span><span class="color-red">必須</span></th>
           <td class="users-td">
-            <p class="color-pink">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
-            <%= f.email_field :email, size: "32x1", class: "input-form", required: true %>
+            <p class="color-pink mt-2">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
+            <%= f.email_field :email, size: "25x5", class: "input-form", required: true %>
             <p class="color-pink">jokatsu.senryu@gmail.comからのメールが受信できるように設定をお願いします。</p>
           </td>
         </tr>
         <tr>
           <th class="users-th">メッセージ</th>
-          <td class="users-td"><%= f.text_area :note, size: "40x5", class: "input-form" %></td>
+          <td class="users-td"><%= f.text_area :note, size: "25x5", class: "input-form" %></td>
         </tr>
         <tr>
           <th class="users-th">アンケート<span class="color-red">　必須</span></th>
