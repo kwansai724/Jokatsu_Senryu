@@ -126,10 +126,6 @@
 
 // 槇変更分----------------------------------------------------------------------------------------
 
-// .main-table {
-//   width: 100%;
-// }
-
 .center-block{
   margin: 0 auto;
 }
@@ -152,9 +148,9 @@
   width: 15%;
 }
 
-// .senryu-td {
-//   padding-left: 30px;
-// }
+.senryu-td {
+  padding-left: 30px;
+}
 
 .users-table {
   margin: 10px;
@@ -247,6 +243,11 @@
   .font-pn{
     font-size: 12px;
   } 
+
+  .font-category-phrase {
+    font-size: 14px;
+  }
+
   .users-email {
     font-size: 10px;
   }

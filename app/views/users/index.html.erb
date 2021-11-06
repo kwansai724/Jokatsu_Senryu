@@ -4,19 +4,19 @@
   <div class="title mb-3">
     <h1>ジョカツ川柳 投稿フォーム</h1>
   </div>  
-  <div class="container">
-    <div class="col-mw-md col-mw-xl center-block main-table">
+  <div class="row">
+    <div class="col-mw-md col-mw-xl col-lg-10 center-block">
       <% @user.posts.each do |posts| %>
         <%= f.fields_for :posts, posts do |post| %> 
           <table border="0" class="senryu-table">
             <tr>
-              <th class="senryu-th">部門</th>
+              <th class="senryu-th"><span class="font-category-phrase">部 門</th>
               <td class="senryu-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],
                   ["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣️感謝の部","本当にありがとう❣️感謝の部"],["あるある❣️の部","あるある❣️の部"],["涙がポロ❣️の部","涙がポロ❣️の部"],
                   ["輝け❣️私のライフスタイルの部","輝け❣️私のライフスタイルの部"],["心がきゅん❣️私の癒しの部","心がきゅん❣️私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''} %></td>
             </tr> 
             <tr>
-              <th class="senryu-th">作品</th>
+              <th class="senryu-th"><span class="font-category-phrase">作 品</th>
               <td class="senryu-td">
                 <%= post.text_field :first_phrase, placeholder: "上の句", size: "27x1", class: "input-width" %>
                 <%= post.text_field :second_phrase, placeholder: "中の句", size: "27x1", class: "input-width" %>
@@ -77,7 +77,7 @@
         </tr>
         <tr>
           <th class="users-th">メッセージ</th>
-          <td class="users-td"><%= f.text_area :note, size: "25x5", class: "input-form" %></td>
+          <td class="users-td"><%= f.text_area :note, size: "25x4", class: "input-form" %></td>
         </tr>
         <tr>
           <th class="users-th">アンケート<span class="color-red">必須</span></th>
