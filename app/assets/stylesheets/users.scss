@@ -205,6 +205,10 @@
   margin-left: 10px;
 }
 
+.confirm-post {
+  font-weight: 600;
+}
+
 @media screen and (max-width: 576px) {
 
   .title h1 {
@@ -265,4 +269,13 @@
   .confirm-btn {
     margin-left: 10px;
   }
+
+  .header-name {
+    font-size: 12px;
+  }
+
+  .confirm-post {
+    font-size: 14px;
+  }  
+
 }
