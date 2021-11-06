@@ -1,8 +1,7 @@
 <% provide(:title, "voterposts_show") %>
 <div class="row">
   <div class="col-mw-md col-mw-xl center-block voterposts">
-    <h4 class="category-show">【<%= @category %>】</h4>
-    <p class="font-size">応募作品一覧</p>
+    <h3 class="category-show mb-3">【<%= @category %>】</h4>
     <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
     <table border=1>
       <tr>
@@ -35,7 +34,7 @@
         <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
       </div>
     <div class="voterpost-index-btn">
-      <%= link_to '前ページに戻る', voterposts_path(current_voter), class: "btn-gradient confirm-btn" %>
+      <%= link_to '前ページに戻る', voterposts_path(current_voter), class: "mr-2 btn-gradient confirm-btn" %>
       <%= link_to "内容確認画面へ", edit_voterpost_path(current_voter, @category), class: "btn-gradient-radius" %>
     </div>
   </div>

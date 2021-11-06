@@ -1,7 +1,9 @@
 <%= form_with(model: @user, url: users_path, local: true) do |f| %>
   <div class="row">
     <div class="col-mw-md col-mw-xl center-block">
-      <h1>確認画面</h1>
+      <div class="title mb-3">
+        <h1>確認画面</h1>
+      </div>  
       <%= f.hidden_field :name %>
       <%= f.hidden_field :gender %>
       <%= f.hidden_field :address %>
@@ -22,26 +24,28 @@
       <div class="table-responsive">
 	      <table class="table">
           <% @user.posts.each do |posts| %>
-            <tr>
-              <th class="confirm-th">川柳</th>
-              <td class="confirm-td">
-                <%= posts.first_phrase %>
-                <%= posts.second_phrase %>
-                <%= posts.third_phrase %>
-              </td>
-            </tr>
-            <tr>
-              <th class="confirm-th">ペンネーム</th>
-              <td class="confirm-td"><%= posts.pen_name %></td>
-            </tr>
-            <tr>
-              <th class="confirm-th">部門</th>
-              <td class="confirm-td"><%= posts.category %></td>
-            </tr>
+            <% if posts.first_phrase.present? %>
+              <tr>
+                <th class="confirm-th">川柳</th>
+                <td class="confirm-td">
+                  <%= posts.first_phrase %>
+                  <%= posts.second_phrase %>
+                  <%= posts.third_phrase %>
+                </td>
+              </tr>
+              <tr>
+                <th class="confirm-th">ペンネーム</th>
+                <td class="confirm-td"><%= posts.pen_name %></td>
+              </tr>
+              <tr>
+                <th class="confirm-th">部門</th>
+                <td class="confirm-td"><%= posts.category %></td>
+              </tr>
+            <% end %>
           <% end %>
         </table>
           
-          <table class="table">
+        <table class="table">
           <tr><th class="confirm-th">お名前</th><td class="confirm-td"><%= @user.name %></td></tr>
           <tr><th class="confirm-th">性別</th><td class="confirm-td"><%= @user.gender %></td></tr>
           <tr><th class="confirm-th">お住まい</th><td class="confirm-td"><%= @user.address %></td></tr>
