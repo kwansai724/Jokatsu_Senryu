@@ -49,7 +49,7 @@ puts "管理者（株式会社C)アカウント作成"
   name  = "wip#{n+1}"
   email = "voter-#{n+1}@email.com"
   group = "WIP"
-  favorite_post = Faker::Number.between(from: 1, to: 5000)
+  favorite_post = Faker::Number.between(from: 1, to: 4000)
   reason = Faker::Lorem.sentence
   admin = "false"
   password = "password"
@@ -72,7 +72,7 @@ puts "投票者(WIP)作成"
   name  = "株式会社a#{n+1}"
   email = "voter-#{n+6}@email.com"
   group = "株式会社A"
-  favorite_post = Faker::Number.between(from: 1, to: 5000)
+  favorite_post = Faker::Number.between(from: 1, to: 4000)
   reason = Faker::Lorem.sentence
   admin = "false"
   password = "password"
@@ -95,7 +95,7 @@ puts "投票者(株式会社A)作成"
   name  = "株式会社b#{n+1}"
   email = "voter-#{n+11}@email.com"
   group = "株式会社B"
-  favorite_post = Faker::Number.between(from: 1, to: 5000)
+  favorite_post = Faker::Number.between(from: 1, to: 4000)
   reason = Faker::Lorem.sentence
   admin = "false"
   password = "password"
@@ -118,7 +118,7 @@ puts "投票者(株式会社B)作成"
   name  = "株式会社c#{n+1}"
   email = "voter-#{n+16}@email.com"
   group = "株式会社C"
-  favorite_post = Faker::Number.between(from: 1, to: 5000)
+  favorite_post = Faker::Number.between(from: 1, to: 4000)
   reason = Faker::Lorem.sentence
   admin = "false"
   password = "password"
@@ -137,7 +137,7 @@ puts "投票者(株式会社C)作成"
 
 
 # 投稿者
-5550.times do |n|
+4450.times do |n|
   name  = Faker::Name.name
   email = "sample-#{n+1}@email.com"
   gender = Faker::Gender.binary_type
@@ -161,7 +161,7 @@ puts "投稿者作成"
 
 
 # 投稿川柳(女性パワーで未来を変えるの部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
@@ -180,13 +180,13 @@ end
 puts "投稿川柳作成1"
 
 # 投稿川柳(ジェンダー・多様性の部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "ジェンダー・多様性の部"
-  user_id = n+501
+  user_id = n+401
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -199,13 +199,13 @@ end
 puts "投稿川柳作成2"
 
 # 投稿川柳(はたらく女子の部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "はたらく女子の部"
-  user_id = n+1001
+  user_id = n+801
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -218,13 +218,13 @@ end
 puts "投稿川柳作成3"
 
 # 投稿川柳(ママ・子どもの部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "ママ・子どもの部"
-  user_id = n+1501
+  user_id = n+1201
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -237,13 +237,13 @@ end
 puts "投稿川柳作成4"
 
 # 投稿川柳(名もなき家事の部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "名もなき家事の部"
-  user_id = n+2001
+  user_id = n+1601
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -256,13 +256,13 @@ end
 puts "投稿川柳作成5"
 
 # 投稿川柳(本当にありがとう❣感謝の部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "本当にありがとう❣️感謝の部"
-  user_id = n+2501
+  user_id = n+2001
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -275,13 +275,13 @@ end
 puts "投稿川柳作成6"
 
 # 投稿川柳(あるある❣の部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "あるある❣️の部"
-  user_id = n+3001
+  user_id = n+2401
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -294,13 +294,13 @@ end
 puts "投稿川柳作成7"
 
 # 投稿川柳(涙がポロ❣の部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "涙がポロ❣️の部"
-  user_id = n+3501
+  user_id = n+2801
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -313,13 +313,13 @@ end
 puts "投稿川柳作成8"
 
 # 投稿川柳(輝け❣私のライフスタイルの部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "輝け❣️私のライフスタイルの部"
-  user_id = n+4001
+  user_id = n+3201
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -332,13 +332,13 @@ end
 puts "投稿川柳作成9"
 
 # 投稿川柳(心がきゅん❣私の癒しの部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "心がきゅん❣️私の癒しの部"
-  user_id = n+4501
+  user_id = n+3601
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
@@ -351,13 +351,13 @@ end
 puts "投稿川柳作成10"
 
 # 投稿川柳(SDGsアクションの部)
-500.times do |n|
+400.times do |n|
   first_phrase = Faker::Lorem.word
   second_phrase = Faker::Lorem.word
   third_phrase = Faker::Lorem.word
   pen_name = Faker::Name.name
   category = "SDGsアクションの部"
-  user_id = n+5001
+  user_id = n+4001
   Post.create!(
     first_phrase: first_phrase,
     second_phrase: second_phrase,
