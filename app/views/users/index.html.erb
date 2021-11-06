@@ -5,7 +5,7 @@
     <h1>ジョカツ川柳 投稿フォーム</h1>
   </div>  
   <div class="container">
-    <div class="col-12 center-block main-table">
+    <div class="col-mw-md col-mw-xl center-block main-table">
       <% @user.posts.each do |posts| %>
         <%= f.fields_for :posts, posts do |post| %> 
           <table border="0" class="senryu-table">
@@ -33,11 +33,11 @@
       <h4 class="info mt-3">ご本人ついて</h4>
       <table border="0" class="users-table">
         <tr>
-          <th class="users-th">お名前<span class="color-red">　　　必須</span></th>
+          <th class="users-th">お名前<span class="color-red">必須</span></th>
           <td class="users-td"><%= f.text_field :name, size: "25x1", class: "input-form", required: true %></td>
         </tr>
         <tr>
-          <th class="users-th">性別<span class="color-red">　　　　必須</span></th>
+          <th class="users-th">性別<span class="color-red">必須</span></th>
           <td class="users-td">
             <%= f.radio_button :gender, "女性", required: true %>女性<br>
             <%= f.radio_button :gender, "男性" %>男性<br>
@@ -45,7 +45,7 @@
           </td>
         </tr>
         <tr>
-          <th class="users-th">お住まい<span class="color-red">　　必須</span></th>
+          <th class="users-th">お住まい<span class="color-red">必須</span></th>
           <td class="users-td">
             <%= f.select :address, options_for_select([["東京都","東京都"],["--------","---"],["北海道","北海道"],["青森県","青森県"],["岩手県","岩手県"],["宮城県","宮城県"],["秋田県","秋田県"],["山形県","山形県"],["福島県","福島県"],
             ["--------","---"],["茨城県","茨城県"],["栃木県","栃木県"],["群馬県","群馬県"],["埼玉県","埼玉県"],["千葉県","千葉県"],["神奈川県","神奈川県"],["--------","---"],["新潟県","新潟県"],["富山県","富山県"],["石川県","石川県"],["福井県","福井県"],["山梨県","山梨県"],["長野県","長野県"],
@@ -55,14 +55,14 @@
           </td>
         </tr>
         <tr>
-          <th class="users-th">ご職業<span class="color-red">　　　必須</span></th>
+          <th class="users-th">ご職業<span class="color-red">必須</span></th>
           <td class="users-td">
             <%= f.select :profession, [["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],
             ["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]],{ include_blank: ''}, class: "input-form", required: true %>
           </td>
         </tr>
         <tr>
-          <th class="users-th">年代<span class="color-red">　　　　必須</span></th>
+          <th class="users-th">年代<span class="color-red">必須</span></th>
           <td class="users-td">
             <%= f.select :age, [["小学生","小学生"],["中学生","中学生"],["高校生","高校生"],["大学生","大学生"],["20代","20代"],["30代","30代"],["40代","40代"],["50代","50代"],["60代","60代"],["70代","70代"],["80代以上","80代以上"]],{ include_blank: ''}, class: "input-form", required: true %>
           </td>
@@ -80,7 +80,7 @@
           <td class="users-td"><%= f.text_area :note, size: "25x5", class: "input-form" %></td>
         </tr>
         <tr>
-          <th class="users-th">アンケート<span class="color-red">　必須</span></th>
+          <th class="users-th">アンケート<span class="color-red">必須</span></th>
           <td class="users-td">
             <p class="color-pink mt-2">この企画を何でお知りになりましたか？</p>
             <%= f.radio_button :questionary, "公式ホームページ", required: true %>公式ホームページ<br>
