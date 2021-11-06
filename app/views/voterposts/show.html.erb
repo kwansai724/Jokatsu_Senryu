@@ -17,14 +17,12 @@
               <%# <p>投票件数: <%= @category_count 件</p> %>
             <%# <% end  %>
             <%# <p>１５件まで投票できます。（設定まだ。）</p> %>
-            <% @posts.each do |user| %>
-              <% user.posts.each do |post| %>
-                <% if post.first_phrase.present? %>
-                  <!-- すでに「いいね！」されている時の表示 -->
-                  <div id="likes_buttons_<%= post.id %>">  
-                    <%= render partial: 'likes/like', locals: { post: post, user: user} %> 
-                  </div>
-                <% end %>
+            <% @posts.each do |post| %>
+              <% if post.first_phrase.present? %>
+                <!-- すでに「いいね！」されている時の表示 -->
+                <div id="likes_buttons_<%= post.id %>">  
+                  <%= render partial: 'likes/like', locals: { post: post, user: post.user} %> 
+                </div>
               <% end %>
             <% end %>
           </span>
