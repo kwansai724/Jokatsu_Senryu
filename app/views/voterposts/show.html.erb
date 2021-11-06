@@ -1,6 +1,6 @@
 <% provide(:title, "voterposts_show") %>
 <div class="row">
-  <div class="col-mw-md col-mw-xl center-block">
+  <div class="col-mw-md col-mw-xl center-block voterposts">
     <h4 class="category-show">【<%= @category %>】</h4>
     <p class="font-size">応募作品一覧</p>
     <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>

@@ -1,7 +1,7 @@
 <% provide(:title, "voterposts_edit") %>
 <%= form_with(model: @voterpost, url: voterpost_path(current_voter.id, @category), local:true, method: :patch) do|f| %>
   <div class="row">
-    <div class="col-mw-md col-mw-xl center-block">
+    <div class="col-mw-md col-mw-xl center-block voterposts">
       <div class="edit-body">
         <h4 class="category-show">【<%= @category %>】</h4>
         <p class="font-size">確認画面</p>

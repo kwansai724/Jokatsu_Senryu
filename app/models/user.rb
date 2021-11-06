@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :profession, presence: true
   validates :age, presence: true
+  validates :note, length: { maximum: 1000 }
   validates :questionary, presence: true
   
   # 投稿者一覧の検索機能

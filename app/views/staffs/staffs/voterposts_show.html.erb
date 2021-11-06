@@ -2,7 +2,7 @@
   <h1 class="mb-5"><%= @voter.name %>さんの詳細</h1>
 </div>  
 
-<table class="table table-bordered">
+<table class="table table-bordered staff-table">
   <tr>
     <th class="col-3">部門</th>
     <th class="col-2">ナンバー１川柳</th>
@@ -64,6 +64,6 @@
     <td><%= @voterpost.reason11 if @voterpost.present? %></td>
   </tr>
 </table>
-<%= link_to "戻る", staffs_staffs_voterposts_index_path, class: "btn btn-secondary" %>
+<%= link_to "戻る", staffs_staffs_voterposts_index_path, class: "btn-gradient confirm-btn" %>
 
 
