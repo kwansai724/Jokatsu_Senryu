@@ -2,7 +2,7 @@
 <%= form_with(model: @user, url: confirm_users_path(@user), local: true) do |f| %>
   
   <div class="row">
-    <div class="col-10 center-block">
+    <div class="col-10 center-block main-table">
       <div class="title mb-3">
         <h1>ジョカツ川柳 投稿フォーム</h1>
       </div>  
@@ -34,7 +34,7 @@
       <table border="0" class="users-table">
         <tr>
           <th class="users-th">お名前<span class="color-red">　　　必須</span></th>
-          <td class="users-td"><%= f.text_field :name, size: "30x1", class: "input-form", required: true %></td>
+          <td class="users-td"><%= f.text_field :name, size: "27x1", class: "input-form", required: true %></td>
         </tr>
         <tr>
           <th class="users-th">性別<span class="color-red">　　　　必須</span></th>
