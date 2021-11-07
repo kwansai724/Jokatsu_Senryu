@@ -6,6 +6,7 @@
       <%= f.hidden_field :gender %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :profession %>
+      <%= f.hidden_field :other %>
       <%= f.hidden_field :age %>
       <%= f.hidden_field :email %>
       <%= f.hidden_field :note %>
@@ -40,12 +41,12 @@
             </tr>
           <% end %>
         </table>
-          
+          <h4 class="info">ご本人ついて</h4>
           <table class="table">
           <tr><th class="confirm-th">お名前</th><td class="confirm-td"><%= @user.name %></td></tr>
           <tr><th class="confirm-th">性別</th><td class="confirm-td"><%= @user.gender %></td></tr>
           <tr><th class="confirm-th">お住まい</th><td class="confirm-td"><%= @user.address %></td></tr>
-          <tr><th class="confirm-th">職業</th><td class="confirm-td"><%= @user.profession %></td></tr>
+          <tr><th class="confirm-th">職業</th><td class="confirm-td"><%= @user.profession %><br><%= @user.other %></td></tr>
           <tr><th class="confirm-th">年代</th><td class="confirm-td"><%= @user.age %></td></tr>
           <tr><th class="confirm-th">メールアドレス</th><td class="confirm-td"><%= @user.email %></td></tr>
           <tr><th class="confirm-th">メッセージ</th><td class="confirm-td"><%= @user.note %></td></tr>
