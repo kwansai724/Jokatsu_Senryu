@@ -1,40 +1,35 @@
 <% provide(:title, "input_form") %>
 <%= form_with(model: @user, url: confirm_users_path(@user), local: true) do |f| %>
-
-  <div class="title mb-3">
-    <h1>ジョカツ川柳 投稿フォーム</h1>
-  </div>  
+  
   <div class="row">
-    <div class="col-mw-md col-mw-xl col-lg-10 center-block">
+    <div class="col-mw-md col-mw-xl center-block">
+      <h1>入力フォーム</h1>
       <% @user.posts.each do |posts| %>
         <%= f.fields_for :posts, posts do |post| %> 
-          <table border="0" class="senryu-table">
+          <table border="1" bordercolor="#fff" class="users-table">
             <tr>
-              <th class="senryu-th"><span class="font-category-phrase">部 門</th>
+              <th class="senryu-th">部門</th>
               <td class="senryu-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],
                   ["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣️感謝の部","本当にありがとう❣️感謝の部"],["あるある❣️の部","あるある❣️の部"],["涙がポロ❣️の部","涙がポロ❣️の部"],
                   ["輝け❣️私のライフスタイルの部","輝け❣️私のライフスタイルの部"],["心がきゅん❣️私の癒しの部","心がきゅん❣️私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''} %></td>
             </tr> 
             <tr>
-              <th class="senryu-th"><span class="font-category-phrase">作 品</th>
-              <td class="senryu-td">
-                <%= post.text_field :first_phrase, placeholder: "上の句", size: "27x1", class: "input-width" %>
-                <%= post.text_field :second_phrase, placeholder: "中の句", size: "27x1", class: "input-width" %>
-                <%= post.text_field :third_phrase, placeholder: "下の句", size: "27x1", class: "input-width" %>
-              </td>
+              <th class="senryu-th">作品</th>
+              <td class="senryu-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %>
+                <%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
             </tr>
             <tr>
               <th class="senryu-th"><span class="font-pn">ペンネーム</span></th>
-              <td class="senryu-td"><%= post.text_field :pen_name, size: "27x1", placeholder: "ペンネーム" %></td>
+              <td class="senryu-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
             </tr>
           </table>
         <% end %>
       <% end %>
-      <h4 class="info mt-3">ご本人ついて</h4>
-      <table border="0" class="users-table">
+      <h4 class="info">ご本人ついて</h4>
+      <table border="1" bordercolor="#fff" class="users-table">
         <tr>
           <th class="users-th">お名前<span class="color-red">必須</span></th>
-          <td class="users-td"><%= f.text_field :name, size: "25x1", class: "input-form", required: true %></td>
+          <td class="users-td"><%= f.text_field :name, class: "input-form", required: true %></td>
         </tr>
         <tr>
           <th class="users-th">性別<span class="color-red">必須</span></th>
@@ -47,18 +42,13 @@
         <tr>
           <th class="users-th">お住まい<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :address, options_for_select([["東京都","東京都"],["--------","---"],["北海道","北海道"],["青森県","青森県"],["岩手県","岩手県"],["宮城県","宮城県"],["秋田県","秋田県"],["山形県","山形県"],["福島県","福島県"],
-            ["--------","---"],["茨城県","茨城県"],["栃木県","栃木県"],["群馬県","群馬県"],["埼玉県","埼玉県"],["千葉県","千葉県"],["神奈川県","神奈川県"],["--------","---"],["新潟県","新潟県"],["富山県","富山県"],["石川県","石川県"],["福井県","福井県"],["山梨県","山梨県"],["長野県","長野県"],
-            ["--------","---"],["岐阜県","岐阜県"],["静岡県","静岡県"],["愛知県","愛知県"],["三重県","三重県"],["--------","---"],["滋賀県","滋賀県"],["京都府","京都府"],["大阪府","大阪府"],["兵庫県","兵庫県"],["奈良県","奈良県"],["和歌山県","和歌山県"],
-            ["--------","---"],["鳥取県","鳥取県"],["島根県","島根県"],["岡山県","岡山県"],["広島県","広島県"],["山口県","山口県"],["--------","---"],["徳島県","徳島県"],["香川県","香川県"],["愛媛県","愛媛県"],["高知県","高知県"],
-            ["--------","---"],["福岡県","福岡県"],["佐賀県","佐賀県"],["長崎県","長崎県"],["熊本県","熊本県"],["大分県","大分県"],["宮崎県","宮崎県"],["鹿児島県","鹿児島県"],["沖縄県","沖縄県"]], disabled: "---"),{ include_blank: ''}, class: "input-form", required: true %>
+            <%= f.select :address, options_for_select([["東京都","東京都"],["--------","---"],["北海道","北海道"],["青森県","青森県"],["岩手県","岩手県"],["宮城県","宮城県"],["秋田県","秋田県"],["山形県","山形県"],["福島県","福島県"],["--------","---"],["茨城県","茨城県"],["栃木県","栃木県"],["群馬県","群馬県"],["埼玉県","埼玉県"],["千葉県","千葉県"],["神奈川県","神奈川県"],["--------","---"],["新潟県","新潟県"],["富山県","富山県"],["石川県","石川県"],["福井県","福井県"],["山梨県","山梨県"],["長野県","長野県"],["--------","---"],["岐阜県","岐阜県"],["静岡県","静岡県"],["愛知県","愛知県"],["三重県","三重県"],["--------","---"],["滋賀県","滋賀県"],["京都府","京都府"],["大阪府","大阪府"],["兵庫県","兵庫県"],["奈良県","奈良県"],["和歌山県","和歌山県"],["--------","---"],["鳥取県","鳥取県"],["島根県","島根県"],["岡山県","岡山県"],["広島県","広島県"],["山口県","山口県"],["--------","---"],["徳島県","徳島県"],["香川県","香川県"],["愛媛県","愛媛県"],["高知県","高知県"],["--------","---"],["福岡県","福岡県"],["佐賀県","佐賀県"],["長崎県","長崎県"],["熊本県","熊本県"],["大分県","大分県"],["宮崎県","宮崎県"],["鹿児島県","鹿児島県"],["沖縄県","沖縄県"]], disabled: "---"),{ include_blank: ''}, class: "input-form", required: true %>
           </td>
         </tr>
         <tr>
           <th class="users-th">ご職業<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :profession, [["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],
-            ["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]],{ include_blank: ''}, class: "input-form", required: true %>
+            <%= f.select :profession, [["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]],{ include_blank: ''}, class: "input-form", required: true %>
           </td>
         </tr>
         <tr>
@@ -68,27 +58,27 @@
           </td>
         </tr>
         <tr>
-          <th class="users-th">Eメール</span><span class="color-red">必須</span></th>
+          <th class="users-th"><span class="users-email">メールアドレス</span><span class="color-red">必須</span></th>
           <td class="users-td">
-            <p class="color-pink mt-2">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
-            <%= f.email_field :email, size: "25x5", class: "input-form", required: true %>
-            <p class="color-pink">jokatsu.senryu@gmail.comからのメールが受信できるように設定をお願いします。</p>
+            <p class="color-pink">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
+            <%= f.email_field :email, class: "input-form", required: true %>
+            <p class="color-pink">Office.wip2030@gmail.comからのメールが受信できるように設定をお願いします。</p>
           </td>
         </tr>
         <tr>
           <th class="users-th">メッセージ</th>
-          <td class="users-td"><%= f.text_area :note, size: "25x4", class: "input-form" %></td>
+          <td class="users-td"><%= f.text_area :note, class: "input-form" %></td>
         </tr>
         <tr>
           <th class="users-th">アンケート<span class="color-red">必須</span></th>
           <td class="users-td">
-            <p class="color-pink mt-2">この企画を何でお知りになりましたか？</p>
+            <p class="color-pink">この企画を何でお知りになりましたか？</p>
             <%= f.radio_button :questionary, "公式ホームページ", required: true %>公式ホームページ<br>
             <%= f.radio_button :questionary, "公式Facebookページ" %>公式Facebookページ<br>
             <%= f.radio_button :questionary, "公式Instagram" %>公式Instagram<br>
-            <%= f.radio_button :questionary, "公式LINE" %>公式LINE<br>
+            <%= f.radio_button :questionary, "公式ライン" %>公式LINE<br>
             <%= f.radio_button :questionary, "川柳募集サイト" %>川柳募集サイト<br>
-            <%= f.radio_button :questionary, "WIPメンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
+            <%= f.radio_button :questionary, "メンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
             <%= f.radio_button :questionary, "WEBやSNS記事" %>WEBやSNS記事<br>
             <%= f.radio_button :questionary, "新聞や雑誌などのメディア" %>新聞や雑誌などのメディア<br>
             <%= f.radio_button :questionary, "検索サーチ" %>検索サーチ<br>
