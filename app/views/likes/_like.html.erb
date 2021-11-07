@@ -2,10 +2,10 @@
   <!-- すでに「いいね！」されている時の表示 -->
   <% if current_voter.favorites.include?(post) %>  
     <div class="narabi"><%= button_to '投票中', voterpost_likes_path(post, post_id: post.id), method: :delete, remote: true, class:"btn-gradient-radius" %></div>
-    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br></div>
+    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= post.user.gender%>/<%= post.user.address%>/<%= post.user.profession%>/<%= post.user.age %><br></div>
   <% else %>
     <div class="narabi"><%= button_to '未投票', voterpost_likes_path(post, post_id: post.id), remote: true, class: "btn-gradient" %></div>
-    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= user.gender%>/<%= user.address%>/<%= user.profession%>/<%= user.age %><br></div>
+    <div class="narabi">&nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)/<%= post.user.gender%>/<%= post.user.address%>/<%= post.user.profession%>/<%= post.user.age %><br></div>
   <% end %>
   <hr>
 <% end %>
