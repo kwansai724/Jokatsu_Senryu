@@ -60,11 +60,11 @@ class Staffs::StaffsController < ApplicationController
 
   def send_users_csv(users)
     csv_data = CSV.generate do |csv|
-      header = %w(No 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート)
+      header = %w(No 氏名 Email 性別 お住まい 職業 （職業：その他） 年代 メッセージ アンケート)
       csv << header
 
       users.each do |user|
-        values = [user.id, user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary]
+        values = [user.id, user.name, user.email, user.gender, user.address, user.profession, user.other, user.age, user.note, user.questionary]
         csv << values
       end
     end
