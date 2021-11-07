@@ -13,47 +13,47 @@ class VoterpostsController < ApplicationController
   # 一覧
   def show
     if params[:name] == "女性パワーで未来を変えるの部"
-      @posts = User.eager_load(:posts).where(posts: {category: "女性パワーで未来を変えるの部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "女性パワーで未来を変えるの部").paginate(page: params[:page],per_page: 120)
       @category = "女性パワーで未来を変えるの部"
       @category_count = current_voter.favorites.where(category: "女性パワーで未来を変えるの部").count
     elsif params[:name] == "ジェンダー・多様性の部"
-      @posts = User.eager_load(:posts).where(posts: {category: "ジェンダー・多様性の部"}).paginate(page: params[:page],per_page: 120)
+      @posts =Post.eager_load(:user).where(category: "ジェンダー・多様性の部").paginate(page: params[:page],per_page: 120)
       @category = "ジェンダー・多様性の部"
       @category_count = current_voter.favorites.where(category: "ジェンダー・多様性の部").count
     elsif params[:name] == "はたらく女子の部"
-      @posts = User.eager_load(:posts).where(posts: {category: "はたらく女子の部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "はたらく女子の部").paginate(page: params[:page],per_page: 120)
       @category = "はたらく女子の部"
       @category_count = current_voter.favorites.where(category: "はたらく女子の部").count
     elsif params[:name] == "ママ・子どもの部"
-      @posts = User.eager_load(:posts).where(posts: {category: "ママ・子どもの部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "ママ・子どもの部").paginate(page: params[:page],per_page: 120)
       @category = "ママ・子どもの部"
       @category_count = current_voter.favorites.where(category: "ママ・子どもの部").count
     elsif params[:name] == "名もなき家事の部"
-      @posts = User.eager_load(:posts).where(posts: {category: "名もなき家事の部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "名もなき家事の部").paginate(page: params[:page],per_page: 120)
       @category = "名もなき家事の部"
       @category_count = current_voter.favorites.where(category: "名もなき家事の部").count
     elsif params[:name] == "本当にありがとう❣️感謝の部"
-      @posts = User.eager_load(:posts).where(posts: {category: "本当にありがとう❣️感謝の部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "本当にありがとう❣️感謝の部").paginate(page: params[:page],per_page: 120)
       @category = "本当にありがとう❣️感謝の部"
       @category_count = current_voter.favorites.where(category: "本当にありがとう❣️感謝の部").count
     elsif params[:name] == "あるある❣️の部"
-      @posts = User.eager_load(:posts).where(posts: {category: "あるある❣️の部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "あるある❣️の部").paginate(page: params[:page],per_page: 120)
       @category = "あるある❣️の部"
       @category_count = current_voter.favorites.where(category: "あるある❣️の部").count
     elsif params[:name] == "涙がポロ❣️の部"
-      @posts = User.eager_load(:posts).where(posts: {category: "涙がポロ❣️の部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "涙がポロ❣️の部").paginate(page: params[:page],per_page: 120)
       @category = "涙がポロ❣️の部"
       @category_count = current_voter.favorites.where(category: "涙がポロ❣️の部").count
     elsif params[:name] == "輝け❣️私のライフスタイルの部"
-      @posts = User.eager_load(:posts).where(posts: {category: "輝け❣️私のライフスタイルの部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "輝け❣️私のライフスタイルの部").paginate(page: params[:page],per_page: 120)
       @category = "輝け❣️私のライフスタイルの部"
       @category_count = current_voter.favorites.where(category: "輝け❣️私のライフスタイルの部").count
     elsif params[:name] == "心がきゅん❣️私の癒しの部"
-      @posts = User.eager_load(:posts).where(posts: {category: "心がきゅん❣️私の癒しの部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "心がきゅん❣️私の癒しの部").paginate(page: params[:page],per_page: 120)
       @category = "心がきゅん❣️私の癒しの部"
       @category_count = current_voter.favorites.where(category: "心がきゅん❣️私の癒しの部").count
     elsif params[:name] == "SDGsアクションの部"
-      @posts = User.eager_load(:posts).where(posts: {category: "SDGsアクションの部"}).paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "SDGsアクションの部").paginate(page: params[:page],per_page: 120)
       @category = "SDGsアクションの部"
       @category_count = current_voter.favorites.where(category: "SDGsアクションの部").count
     end
@@ -99,7 +99,10 @@ class VoterpostsController < ApplicationController
   
   def update
     @voter = Voter.find(params[:id])
-    @voterpost = @voter.voterposts.find_by(voter_id: params[:voter_id])
+    @voterpost = @voter.voterposts.find_by(voter_id: params[:id])
+    
+    
+    # byebug
     if params[:back]
       if params[:format] == "女性パワーで未来を変えるの部"
         redirect_to voterpost_path(name: "女性パワーで未来を変えるの部")
@@ -128,100 +131,224 @@ class VoterpostsController < ApplicationController
       if params[:favorite_post1] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "女性パワーで未来を変えるの部")
-      else
-        @voter.voterposts.update(voterpost_params1)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post1].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "女性パワーで未来を変えるの部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post1].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post1].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "女性パワーで未来を変えるの部")
+        elsif @confirmid == params[:favorite_post1].to_i
+          @voter.voterposts.update(voterpost_params1)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
+      
     elsif params[:format] == "ジェンダー・多様性の部"
       if params[:favorite_post2] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "ジェンダー・多様性の部")
-      else
-        @voter.voterposts.update(voterpost_params2)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post2].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "ジェンダー・多様性の部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post2].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post2].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "ジェンダー・多様性の部")
+        elsif @confirmid == params[:favorite_post2].to_i  
+          @voter.voterposts.update(voterpost_params2)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     elsif params[:format] == "はたらく女子の部"
       if params[:favorite_post3] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "はたらく女子の部")
-      else
-        @voter.voterposts.update(voterpost_params3)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post3].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "はたらく女子の部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post3].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post3].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "はたらく女子の部")
+        elsif @confirmid == params[:favorite_post3].to_i  
+          @voter.voterposts.update(voterpost_params3)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
+
     elsif params[:format] == "ママ・子どもの部"
       if params[:favorite_post4] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "ママ・子どもの部")
-      else
-        @voter.voterposts.update(voterpost_params4)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post4].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "ママ・子どもの部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post4].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post4].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "ママ・子どもの部")
+        elsif @confirmid == params[:favorite_post4].to_i  
+          @voter.voterposts.update(voterpost_params4)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
+
     elsif params[:format] == "名もなき家事の部"
       if params[:favorite_post5] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "名もなき家事の部")
-      else      
-        @voter.voterposts.update(voterpost_params5)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post5].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "名もなき家事の部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post5].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post5].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "名もなき家事の部")
+        elsif @confirmid == params[:favorite_post5].to_i  
+          @voter.voterposts.update(voterpost_params5)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     elsif params[:format] == "本当にありがとう❣️感謝の部"
       if params[:favorite_post6] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "本当にありがとう❣️感謝の部")
-      else
-        @voter.voterposts.update(voterpost_params6)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post6].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "本当にありがとう❣️感謝の部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post6].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post6].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "本当にありがとう❣️感謝の部")
+        elsif @confirmid == params[:favorite_post6].to_i  
+          @voter.voterposts.update(voterpost_params6)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     elsif params[:format] == "あるある❣️の部"
       if params[:favorite_post7] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "あるある❣️の部")
-      else
-        @voter.voterposts.update(voterpost_params7)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post7].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "あるある❣️の部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post7].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post7].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "あるある❣️の部")
+        elsif @confirmid == params[:favorite_post7].to_i  
+          @voter.voterposts.update(voterpost_params7)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     elsif params[:format] == "涙がポロ❣️の部"
       if params[:favorite_post8] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "涙がポロ❣️の部")
-      else
-        @voter.voterposts.update(voterpost_params8)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post8].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "涙がポロ❣️の部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post8].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post8].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "涙がポロ❣️の部")
+        elsif @confirmid == params[:favorite_post8].to_i  
+          @voter.voterposts.update(voterpost_params8)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     elsif params[:format] == "輝け❣️私のライフスタイルの部"
       if params[:favorite_post9] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "輝け❣️私のライフスタイルの部")
-      else
-        @voter.voterposts.update(voterpost_params9)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post9].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "輝け❣️私のライフスタイルの部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post9].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post9].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "輝け❣️私のライフスタイルの部")
+        elsif @confirmid == params[:favorite_post9].to_i  
+          @voter.voterposts.update(voterpost_params9)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     elsif params[:format] == "心がきゅん❣️私の癒しの部"
       if params[:favorite_post10] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "心がきゅん❣️私の癒しの部")
-      else
-        @voter.voterposts.update(voterpost_params10)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post10].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "心がきゅん❣️私の癒しの部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post10].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post10].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "心がきゅん❣️私の癒しの部")
+        elsif @confirmid == params[:favorite_post10].to_i  
+          @voter.voterposts.update(voterpost_params10)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     elsif params[:format] == "SDGsアクションの部"
       if params[:favorite_post11] == ""
         flash[:danger] = "No.1を入力してください。"
         redirect_to edit_voterpost_path(current_voter, format: "SDGsアクションの部")
-      else
-        @voter.voterposts.update(voterpost_params11)
-        flash[:success] = '投票ありがとうございました。'
-        redirect_to voterposts_path
+      elsif params[:favorite_post11].to_i 
+        @confirm_edit = current_voter.favorites.where(category: "SDGsアクションの部") 
+        @confirm_edit.each do |confirm|
+          if confirm.id == params[:favorite_post11].to_i
+            @confirmid = confirm.id
+          end
+        end
+        if @confirmid != params[:favorite_post11].to_i
+          flash[:danger] = "投票したものから選んでNo. を入力してください"
+          redirect_to edit_voterpost_path(current_voter, format: "SDGsアクションの部")
+        elsif @confirmid == params[:favorite_post11].to_i  
+          @voter.voterposts.update(voterpost_params11)
+          flash[:success] = '投票ありがとうございました。'
+          redirect_to voterposts_path
+        end
       end
     else
       flash[:danger] = "投票に失敗しました。" 

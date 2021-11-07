@@ -3,24 +3,21 @@
   
   <div class="row">
     <div class="col-mw-md col-mw-xl center-block">
-      <h1>入力フォーム</h1>
+      <h1>ジョカツ川柳 投稿フォーム</h1>
       <% @user.posts.each do |posts| %>
         <%= f.fields_for :posts, posts do |post| %> 
           <table border="1" bordercolor="#fff" class="users-table">
             <tr>
               <th class="senryu-th">部門</th>
-              <td class="senryu-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],
-                  ["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣️感謝の部","本当にありがとう❣️感謝の部"],["あるある❣️の部","あるある❣️の部"],["涙がポロ❣️の部","涙がポロ❣️の部"],
-                  ["輝け❣️私のライフスタイルの部","輝け❣️私のライフスタイルの部"],["心がきゅん❣️私の癒しの部","心がきゅん❣️私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''} %></td>
+              <td class="senryu-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣️感謝の部","本当にありがとう❣️感謝の部"],["あるある❣️の部","あるある❣️の部"],["涙がポロ❣️の部","涙がポロ❣️の部"],["輝け❣️私のライフスタイルの部","輝け❣️私のライフスタイルの部"],["心がきゅん❣️私の癒しの部","心がきゅん❣️私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''},class: "input-width" %></td>
             </tr> 
             <tr>
               <th class="senryu-th">作品</th>
-              <td class="senryu-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %>
-                <%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
+              <td class="senryu-td"><%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width" %><%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width" %><%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width" %></td>
             </tr>
             <tr>
               <th class="senryu-th"><span class="font-pn">ペンネーム</span></th>
-              <td class="senryu-td"><%= post.text_field :pen_name, placeholder: "ペンネーム" %></td>
+              <td class="senryu-td"><%= post.text_field :pen_name, placeholder: "ペンネーム",class: "input-width" %></td>
             </tr>
           </table>
         <% end %>
@@ -48,7 +45,14 @@
         <tr>
           <th class="users-th">ご職業<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :profession, [["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]],{ include_blank: ''}, class: "input-form", required: true %>
+            <%= f.select :profession, options_for_select([["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]]),{ include_blank: ''}, {class: "input-form", required: true, id:"myselectbox", onchange:"myfunc()"} %> 
+            
+            <div>
+            <p class="color-pink">
+              その他の選択されましたら、ご記入ください。
+            </p>
+            <%= f.text_field :other, id:"other_select", disabled:"disabled" %>
+            </div>
           </td>
         </tr>
         <tr>
@@ -62,7 +66,7 @@
           <td class="users-td">
             <p class="color-pink">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
             <%= f.email_field :email, class: "input-form", required: true %>
-            <p class="color-pink">Office.wip2030@gmail.comからのメールが受信できるように設定をお願いします。</p>
+            <p class="color-pink">jokatsu.senryu@gmail.comからのメールが受信できるように設定をお願いします。</p>
           </td>
         </tr>
         <tr>
@@ -76,9 +80,9 @@
             <%= f.radio_button :questionary, "公式ホームページ", required: true %>公式ホームページ<br>
             <%= f.radio_button :questionary, "公式Facebookページ" %>公式Facebookページ<br>
             <%= f.radio_button :questionary, "公式Instagram" %>公式Instagram<br>
-            <%= f.radio_button :questionary, "公式ライン" %>公式LINE<br>
+            <%= f.radio_button :questionary, "公式LINE" %>公式LINE<br>
             <%= f.radio_button :questionary, "川柳募集サイト" %>川柳募集サイト<br>
-            <%= f.radio_button :questionary, "メンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
+            <%= f.radio_button :questionary, "WIPメンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
             <%= f.radio_button :questionary, "WEBやSNS記事" %>WEBやSNS記事<br>
             <%= f.radio_button :questionary, "新聞や雑誌などのメディア" %>新聞や雑誌などのメディア<br>
             <%= f.radio_button :questionary, "検索サーチ" %>検索サーチ<br>
@@ -93,3 +97,14 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  function myfunc() {
+    var value = document.getElementById("myselectbox").value;
+       if(value === 'その他'){
+      document.getElementById("other_select").disabled = false;
+    } else {
+      document.getElementById("other_select").disabled = true;
+    }
+  }
+</script>

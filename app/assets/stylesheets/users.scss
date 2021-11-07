@@ -31,7 +31,8 @@
 
 .input-width{
   font-size: 12px;
-  width: 100px;
+  width: 190px;
+  height: 35px;
 }
 
 .color-red {
@@ -40,8 +41,9 @@
 }
 
 .color-pink {
-  font-size: 12px;
-  color: pink;
+  font-size: 16px;
+  // color: pink;
+  color: #ff8b5f;
 }
 
 .users-email {
@@ -90,10 +92,20 @@
     font-size: 12px; 
   }
 
+  .input-width{
+    margin-top: 5px;
+  }
+
   .color-red {
     margin-left: 5px;
   }
 
+  .color-pink {
+    font-size: 12px;
+    // color: pink;
+    color: #ff8b5f;
+  }
+  
   .users-td {
     padding-left: 10px;
   }

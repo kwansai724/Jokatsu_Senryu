@@ -8,8 +8,8 @@
 	      <table class="table">
           <% @check.each do |post| %>
             <tr>
-              <td>
-                &nbsp;<%= post.id %>.&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/ (<%= post.pen_name %>)
+              <td class="confirm-td">
+                No.&nbsp;<%= post.id %>&emsp;<%= post.first_phrase%>&emsp;<%= post.second_phrase %>&emsp;<%= post.third_phrase %>&nbsp;/(<%= post.pen_name %>)
               </td>
             </tr>
           <% end %>
@@ -21,27 +21,27 @@
               1作品だけを選んでください。<br>
               No.
               <% if params[:format] == "女性パワーで未来を変えるの部" %>
-                <%= f.text_field :favorite_post1 %>
+                <%= f.number_field :favorite_post1, min:1 %>
               <% elsif params[:format] == "ジェンダー・多様性の部" %>
-                <%= f.text_field :favorite_post2 %>
+                <%= f.number_field :favorite_post2, min:1 %>
               <% elsif params[:format] == "はたらく女子の部" %>
-                <%= f.text_field :favorite_post3 %>
+                <%= f.number_field :favorite_post3, min:1 %>
               <% elsif params[:format] == "ママ・子どもの部" %>
-                <%= f.text_field :favorite_post4 %>
+                <%= f.number_field :favorite_post4, min:1 %>
               <% elsif params[:format] == "名もなき家事の部" %>
-                <%= f.text_field :favorite_post5 %>
+                <%= f.number_field :favorite_post5, min:1 %>
               <% elsif params[:format] == "本当にありがとう❣️感謝の部" %>
-                <%= f.text_field :favorite_post6 %>
+                <%= f.number_field :favorite_post6, min:1 %>
               <% elsif params[:format] == "あるある❣️の部" %>
-                <%= f.text_field :favorite_post7 %>
+                <%= f.number_field :favorite_post7, min:1 %>
               <% elsif params[:format] == "涙がポロ❣️の部" %>
-                <%= f.text_field :favorite_post8 %>
+                <%= f.number_field :favorite_post8, min:1 %>
               <% elsif params[:format] == "輝け❣️私のライフスタイルの部" %>
-                <%= f.text_field :favorite_post9 %>
+                <%= f.number_field :favorite_post9, min:1 %>
               <% elsif params[:format] == "心がきゅん❣️私の癒しの部" %>
-                <%= f.text_field :favorite_post10 %>
+                <%= f.number_field :favorite_post10, min:1 %>
               <% elsif params[:format] == "SDGsアクションの部" %>
-                <%= f.text_field :favorite_post11 %>
+                <%= f.number_field :favorite_post11, min:1 %>
               <% end %>
             </td>
           </tr>
