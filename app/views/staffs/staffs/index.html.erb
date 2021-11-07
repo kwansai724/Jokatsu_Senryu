@@ -11,7 +11,7 @@
     </div>
     <div class="mb-3">
       <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
-    </div>
+    </div> 
     <div class="result-posts">
       <% @posts_index.each do |post| %>
         <% if post.first_phrase.present? && post.category == params[:category_name] %>
@@ -32,6 +32,6 @@
   <% end %>
   <div class="pagenate">
     <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
-  </div>
+  </div> 
   <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn-gradient confirm-btn mt-2" %>
 </div>

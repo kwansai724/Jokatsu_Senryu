@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :likes, dependent: :destroy
   
   validates :first_phrase, length: { maximum: 30 }
   validates :second_phrase, length: { maximum: 30 }

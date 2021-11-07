@@ -9,9 +9,11 @@ class Staffs::StaffsController < ApplicationController
 
   def index
     @posts_index = Post.eager_load(:user).where(category: params[:category_name]).paginate(page: params[:page],per_page: 100)
+    # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).includes(:likes).find(Like.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).order(:id).includes(:likes)
+    #                 .sort {|a,b| b.likes.size <=> a.likes.size}.paginate(page: params[:page],per_page: 100)
     @users = User.eager_load(:posts).all
     @posts = Post.all.where.not(first_phrase: "")
-    # debugger
     if params[:key] == "posts"
       respond_to do |format|
         format.html
