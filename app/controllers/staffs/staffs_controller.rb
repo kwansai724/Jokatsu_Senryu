@@ -8,8 +8,10 @@ class Staffs::StaffsController < ApplicationController
   end
 
   def index
+    @posts_index = Post.eager_load(:user).where(category: params[:category_name]).paginate(page: params[:page],per_page: 100)
     @users = User.eager_load(:posts).all
     @posts = Post.all.where.not(first_phrase: "")
+    # debugger
     if params[:key] == "posts"
       respond_to do |format|
         format.html
