@@ -3,7 +3,7 @@
   
   <div class="row">
     <div class="col-mw-md col-mw-xl center-block">
-      <h1>入力フォーム</h1>
+      <h1>ジョカツ川柳 投稿フォーム</h1>
       <% @user.posts.each do |posts| %>
         <%= f.fields_for :posts, posts do |post| %> 
           <table border="1" bordercolor="#fff" class="users-table">
@@ -66,7 +66,7 @@
           <td class="users-td">
             <p class="color-pink">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
             <%= f.email_field :email, class: "input-form", required: true %>
-            <p class="color-pink">Office.wip2030@gmail.comからのメールが受信できるように設定をお願いします。</p>
+            <p class="color-pink">jokatsu.senryu@gmail.comからのメールが受信できるように設定をお願いします。</p>
           </td>
         </tr>
         <tr>
@@ -80,9 +80,9 @@
             <%= f.radio_button :questionary, "公式ホームページ", required: true %>公式ホームページ<br>
             <%= f.radio_button :questionary, "公式Facebookページ" %>公式Facebookページ<br>
             <%= f.radio_button :questionary, "公式Instagram" %>公式Instagram<br>
-            <%= f.radio_button :questionary, "公式ライン" %>公式LINE<br>
+            <%= f.radio_button :questionary, "公式LINE" %>公式LINE<br>
             <%= f.radio_button :questionary, "川柳募集サイト" %>川柳募集サイト<br>
-            <%= f.radio_button :questionary, "メンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
+            <%= f.radio_button :questionary, "WIPメンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
             <%= f.radio_button :questionary, "WEBやSNS記事" %>WEBやSNS記事<br>
             <%= f.radio_button :questionary, "新聞や雑誌などのメディア" %>新聞や雑誌などのメディア<br>
             <%= f.radio_button :questionary, "検索サーチ" %>検索サーチ<br>
