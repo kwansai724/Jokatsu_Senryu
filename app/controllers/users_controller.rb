@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   # 確認画面
   def confirm
+    # byebug
     @user = User.new(user_params)
     if @user.invalid?
       flash[:danger] = @user.errors.full_messages.join("<br>")
@@ -30,6 +31,6 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :email, :gender, :address, :profession, :age, :note, :questionary, posts_attributes:[:first_phrase, :second_phrase, :third_phrase, :pen_name, :category, :id])
+      params.require(:user).permit(:name, :email, :gender, :address, :profession, :age, :note, :questionary, :other, posts_attributes:[:first_phrase, :second_phrase, :third_phrase, :pen_name, :category, :id])
     end
 end

@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   def voter_id    
     @voter = Voter.find(current_voter.id)
     if @voter.voterposts.present? == false
-      @voterpost = @voter.voterposts.create!(voter_id: current_voter.id)
+      @voterpost = @voter.voterposts.create!(voter_id: current_voter.id) 
     else 
       @voter.voterposts.each do |v|
         if current_voter.id != v.voter_id 
