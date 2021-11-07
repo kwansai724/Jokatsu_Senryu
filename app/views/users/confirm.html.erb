@@ -92,7 +92,7 @@
             <p class="header-name">職業</p>
           </div>
           <div class="confirm-post mt-1 col-9">
-            <%= @user.profession %>
+            <%= @user.profession %><%= "：　#{@user.other}" if @user.other.present? %>
           </div>
         </div>
         <div class="row">
@@ -144,13 +144,8 @@
             <% end %>
           <% end %>
         </table>
-<<<<<<< HEAD
-          
-        <table class="table">
-=======
           <h4 class="info">ご本人ついて</h4>
           <table class="table">
->>>>>>> develop
           <tr><th class="confirm-th">お名前</th><td class="confirm-td"><%= @user.name %></td></tr>
           <tr><th class="confirm-th">性別</th><td class="confirm-td"><%= @user.gender %></td></tr>
           <tr><th class="confirm-th">お住まい</th><td class="confirm-td"><%= @user.address %></td></tr>
