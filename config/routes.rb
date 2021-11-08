@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     get 'staffs/users_show', to: 'staffs#users_show'
     get 'staffs/voterposts_index', to: 'staffs#voterposts_index'
     get 'staffs/voterposts_show', to: 'staffs#voterposts_show'
+    post 'staffs/voterposts_index/import', to: 'staffs#import'
   end
 
 end

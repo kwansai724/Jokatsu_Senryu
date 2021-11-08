@@ -99,6 +99,18 @@ class Staffs::StaffsController < ApplicationController
     @voterpost = Voterpost.find_by(voter_id: @voter.id)
   end
 
+  def import
+    if params[:file].blank?
+      flash[:danger] = "csvファイルが選択されていません。"
+      redirect_to staffs_staffs_voterposts_index_url
+    else
+      #fileはtmpに自動で一時保存される
+      Staff.import(params[:file])
+      flash[:success] = "CSVファイルをインポートしました。"
+      redirect_to staffs_staffs_voterposts_index_url
+    end
+  end
+
 
   private
 
