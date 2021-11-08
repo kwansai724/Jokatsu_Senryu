@@ -8,12 +8,25 @@ class Staffs::StaffsController < ApplicationController
   end
 
   def index
+    @posts_index = Post.eager_load(:user).where(category: params[:category_name]).paginate(page: params[:page],per_page: 100)
+    # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).includes(:likes).find(Like.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).order(:id).includes(:likes)
+    #                 .sort {|a,b| b.likes.size <=> a.likes.size}.paginate(page: params[:page],per_page: 100)
     @users = User.eager_load(:posts).all
     @posts = Post.all.where.not(first_phrase: "")
-    respond_to do |format|
-      format.html
-      format.csv do |csv|
-        send_posts_csv(@posts)
+    if params[:key] == "posts"
+      respond_to do |format|
+        format.html
+        format.csv do |csv|
+          send_posts_csv(@posts)
+        end
+      end
+    elsif params[:key] == "users" 
+      respond_to do |format|
+        format.html
+        format.csv do |csv|
+          send_users_csv(@users)
+        end
       end
     end
   end
@@ -49,9 +62,23 @@ class Staffs::StaffsController < ApplicationController
     send_data(csv_data, filename: "jokatsu_senryu.csv")
   end
 
+  def send_users_csv(users)
+    csv_data = CSV.generate do |csv|
+      header = %w(No 氏名 Email 性別 お住まい 職業 （職業：その他） 年代 メッセージ アンケート)
+      csv << header
+
+      users.each do |user|
+        values = [user.id, user.name, user.email, user.gender, user.address, user.profession, user.other, user.age, user.note, user.questionary]
+        csv << values
+      end
+    end
+    send_data(csv_data, filename: "jokatsu_senryu_users.csv")
+  end
+  
+
   def users_index
     @search_params = user_search_params
-    @users = User.search(@search_params).paginate(page: params[:page])
+    @users = User.search(@search_params).paginate(page: params[:page],per_page: 50)
   end
 
   def users_show

@@ -11,25 +11,26 @@
       <% end %>
     </div>
   </form>
-
+  <div class="row mt-3">
+    <div class="col-4 col-lg-4 mb-1">
+      名前
+    </div>
+    <div class="col-6 col-lg-6 mb-1">
+      Eメール
+    </div>
+    <div class="col-2">
+    </div>
+  </div>
   <% @users.each_with_index do |user| %>
     <div class="row">
       <div class="d-flex align-items-center border-top users-index col-4 col-lg-4">
-        名前:
-      </div>
-      <div class="d-flex align-items-center border-top users-index col-6 col-lg-6">
         <%= user.name %>
       </div>
-      <div class="d-flex align-items-center border-top users-index col-2">
-        <%= link_to "詳細", staffs_staffs_users_show_path(id: user.id), class: "btn btn-dark mt-3 btn-sm" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="users-index mb-3 col-4">
-        Eメール:
-      </div>
-      <div class="users-index mb-3 col-8">
+      <div class="d-flex align-items-center border-top users-index col-6 col-lg-6">
         <%= user.email %>
+      </div>
+      <div class="d-flex align-items-center border-top users-index col-2">
+        <%= link_to "詳細", staffs_staffs_users_show_path(id: user.id), class: "btn btn-dark mb-2 btn-sm" %>
       </div>
     </div>
   <% end %>
@@ -39,9 +40,9 @@
     </div>  
   </div>
   <% if params[:search].present? %>
-    <%= link_to "一覧へ戻る", staffs_staffs_users_index_path, class: "btn btn-secondary mt-2" %>
+    <%= link_to "一覧へ戻る", staffs_staffs_users_index_path, class: "btn-gradient confirm-btn mt-2" %>
   <% else %>
-    <%= link_to "戻る", staffs_staffs_toppage_path, class: "btn btn-secondary mt-2" %>
+    <%= link_to "戻る", staffs_staffs_toppage_path, class: "btn-gradient confirm-btn mt-2" %>
   <% end %>  
 </div>
 

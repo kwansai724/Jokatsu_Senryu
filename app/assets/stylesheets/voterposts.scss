@@ -52,9 +52,9 @@ h1 {
   margin: 0 auto;
 }
 
-th {
+.voterposts th {
   // background: yellow;
-  background: #ffa500;
+  background: #fcb126;
 }
 
 .index-th {
@@ -62,9 +62,13 @@ th {
   text-align: center;
 }
 
-.voterpost-index-td {
-  font-size: 14px;
+.notice {
+  font-weight: 600;
 }
+
+// .voterpost-index-td {
+//   font-size: 14px;
+// }
 
 .btn {
   margin-top: 10px;
@@ -88,12 +92,26 @@ th {
   display: inline-block;
 }
 
+.font-size {
+  font-size: 20px;
+  text-align: center;
+}
+
+.voterposts-confirm th {
+  background: #fcb126;
+}
+
+
 // スマホ用↲
 @media screen and (max-width:480px) {
   // index
   .voterpost-index-td {
-    font-size: 15px;
+    font-size: 14px;
   }
+
+  .voterposts_index {
+    margin-left: -20px;
+  }  
 
   // edit
   .category-show {
@@ -107,6 +125,10 @@ th {
 
   .actions {
     margin: 0 auto;
+  }
+
+  .voterposts {
+    width: 95%;
   }
 
 }

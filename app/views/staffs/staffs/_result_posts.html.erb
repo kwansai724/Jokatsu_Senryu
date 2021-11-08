@@ -1,21 +1,25 @@
 
 <div class="result-posts">
-  <% @users.each do |user| %>
-    <% user.posts.each do |post| %>
-      <% if post.first_phrase.present? && post.category == params[:category_name] %>
-        <div class="main-index d-flex border-bottom mb-2">
-          【得票数：<%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count %> 】
-          <%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %> /(<%= post.pen_name %>)
-          /<%= user.gender %>/<%= user.address %>/<%= user.profession %>/<%= user.age %>
-          <% if params[:admin] == "true" %>
-            【名前：<%= user.name %> / Eメール：<%= user.email %>】
-          <% end %>  
-          <br>
-        </div>  
-      <% end %>
+  <% if params[:admin] == "true" %>
+    <%= link_to "前画面へ戻る", :back, class: "btn-gradient confirm-btn mb-3" %>
+  <% end %>
+  <div class="mb-2">
+    <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+  </div> 
+  <% @posts_index.each do |post| %>
+    <% if post.first_phrase.present? && post.category == params[:category_name] %>
+      <div class="main-index d-flex border-bottom mb-2">
+        【得票数：<%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count %> 】
+        <%= post.id %>.　<%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %> /(<%= post.pen_name %>)
+        /<%= post.user.gender %>/<%= post.user.address %>/<%= post.user.profession %>/<%= post.user.age %>
+        <% if params[:admin] == "true" %>
+          【名前：<%= post.user.name %> / Eメール：<%= post.user.email %>】
+        <% end %>  
+        <br>
+      </div>  
     <% end %>
   <% end %>
   <% if params[:admin] == "true" %>
-    <%= link_to "前画面へ戻る", :back, class: "btn btn-secondary mt-3" %>
-  <% end %>  
+    <%= link_to "前画面へ戻る", :back, class: "btn-gradient confirm-btn mt-3" %>
+  <% end %>   
 </div>

@@ -49,7 +49,7 @@
       職業:
     </div>
     <div class="users-index mt-3 mb-3 col-8">
-      <%= @user.profession %>
+      <%= @user.profession %><%= "：　#{@user.other}" if @user.other.present? %>
     </div>
   </div>
   <div class="row">
@@ -76,6 +76,6 @@
       <p class="mb-3"><%= @user.questionary %><p>
     </div>
   </div>
-  <%= link_to "戻る", :back, class: "btn btn-secondary" %>
+  <%= link_to "戻る", :back, class: "btn-gradient confirm-btn" %>
 </div>
 

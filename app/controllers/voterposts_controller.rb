@@ -13,47 +13,47 @@ class VoterpostsController < ApplicationController
   # 一覧
   def show
     if params[:name] == "女性パワーで未来を変えるの部"
-      @posts = Post.eager_load(:user).where(category: "女性パワーで未来を変えるの部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "女性パワーで未来を変えるの部").paginate(page: params[:page],per_page: 100)
       @category = "女性パワーで未来を変えるの部"
       @category_count = current_voter.favorites.where(category: "女性パワーで未来を変えるの部").count
     elsif params[:name] == "ジェンダー・多様性の部"
-      @posts =Post.eager_load(:user).where(category: "ジェンダー・多様性の部").paginate(page: params[:page],per_page: 120)
+      @posts =Post.eager_load(:user).where(category: "ジェンダー・多様性の部").paginate(page: params[:page],per_page: 100)
       @category = "ジェンダー・多様性の部"
       @category_count = current_voter.favorites.where(category: "ジェンダー・多様性の部").count
     elsif params[:name] == "はたらく女子の部"
-      @posts = Post.eager_load(:user).where(category: "はたらく女子の部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "はたらく女子の部").paginate(page: params[:page],per_page: 100)
       @category = "はたらく女子の部"
       @category_count = current_voter.favorites.where(category: "はたらく女子の部").count
     elsif params[:name] == "ママ・子どもの部"
-      @posts = Post.eager_load(:user).where(category: "ママ・子どもの部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "ママ・子どもの部").paginate(page: params[:page],per_page: 100)
       @category = "ママ・子どもの部"
       @category_count = current_voter.favorites.where(category: "ママ・子どもの部").count
     elsif params[:name] == "名もなき家事の部"
-      @posts = Post.eager_load(:user).where(category: "名もなき家事の部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "名もなき家事の部").paginate(page: params[:page],per_page: 100)
       @category = "名もなき家事の部"
       @category_count = current_voter.favorites.where(category: "名もなき家事の部").count
     elsif params[:name] == "本当にありがとう❣️感謝の部"
-      @posts = Post.eager_load(:user).where(category: "本当にありがとう❣️感謝の部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "本当にありがとう❣️感謝の部").paginate(page: params[:page],per_page: 100)
       @category = "本当にありがとう❣️感謝の部"
       @category_count = current_voter.favorites.where(category: "本当にありがとう❣️感謝の部").count
     elsif params[:name] == "あるある❣️の部"
-      @posts = Post.eager_load(:user).where(category: "あるある❣️の部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "あるある❣️の部").paginate(page: params[:page],per_page: 100)
       @category = "あるある❣️の部"
       @category_count = current_voter.favorites.where(category: "あるある❣️の部").count
     elsif params[:name] == "涙がポロ❣️の部"
-      @posts = Post.eager_load(:user).where(category: "涙がポロ❣️の部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "涙がポロ❣️の部").paginate(page: params[:page],per_page: 100)
       @category = "涙がポロ❣️の部"
       @category_count = current_voter.favorites.where(category: "涙がポロ❣️の部").count
     elsif params[:name] == "輝け❣️私のライフスタイルの部"
-      @posts = Post.eager_load(:user).where(category: "輝け❣️私のライフスタイルの部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "輝け❣️私のライフスタイルの部").paginate(page: params[:page],per_page: 100)
       @category = "輝け❣️私のライフスタイルの部"
       @category_count = current_voter.favorites.where(category: "輝け❣️私のライフスタイルの部").count
     elsif params[:name] == "心がきゅん❣️私の癒しの部"
-      @posts = Post.eager_load(:user).where(category: "心がきゅん❣️私の癒しの部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "心がきゅん❣️私の癒しの部").paginate(page: params[:page],per_page: 100)
       @category = "心がきゅん❣️私の癒しの部"
       @category_count = current_voter.favorites.where(category: "心がきゅん❣️私の癒しの部").count
     elsif params[:name] == "SDGsアクションの部"
-      @posts = Post.eager_load(:user).where(category: "SDGsアクションの部").paginate(page: params[:page],per_page: 120)
+      @posts = Post.eager_load(:user).where(category: "SDGsアクションの部").paginate(page: params[:page],per_page: 100)
       @category = "SDGsアクションの部"
       @category_count = current_voter.favorites.where(category: "SDGsアクションの部").count
     end
