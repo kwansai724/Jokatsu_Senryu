@@ -36,14 +36,15 @@ class Staffs::StaffsController < ApplicationController
   def send_posts_csv(posts)
     if current_staff.admin == true
       csv_data = CSV.generate do |csv|
-        header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数)
+        header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数（WIP） 得票数（全体）)
         csv << header
 
         posts.each do |post|
           user = User.find_by(id: post.user_id)
           values = [post.id, post.first_phrase, post.second_phrase, post.third_phrase, post.pen_name, post.category,
                     user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary,
-                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count]
+                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count,
+                    Like.where(post_id: post.id).count]
           csv << values
         end
       end
