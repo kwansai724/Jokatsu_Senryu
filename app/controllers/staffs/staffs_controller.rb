@@ -9,6 +9,8 @@ class Staffs::StaffsController < ApplicationController
 
   def index
     @posts_index = Post.eager_load(:user).where(category: params[:category_name]).paginate(page: params[:page],per_page: 100)
+    @staffs = Staff.where(admin: false)
+    @staff = Staff.find_by(group_name: params[:group_name])
     # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).includes(:likes).find(Like.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).order(:id).includes(:likes)
     #                 .sort {|a,b| b.likes.size <=> a.likes.size}.paginate(page: params[:page],per_page: 100)
