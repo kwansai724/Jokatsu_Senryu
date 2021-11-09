@@ -92,6 +92,7 @@ class Staffs::StaffsController < ApplicationController
   def voterposts_index
     @voters_admin = Voter.all.order(:group)
     @voters = Voter.where(group: current_staff.group_name)
+    @staffs = Staff.all
   end
 
   def voterposts_show
