@@ -40,16 +40,6 @@ Staff.create!(
 )
 puts "管理者（株式会社C)アカウント作成"
 
-# # 管理者（株式会社D)
-# Staff.create!(
-#   login_id: "1234567d",
-#   admin: false,
-#   group_name: "株式会社D",
-#   password: "password",
-#   password_confirmation: "password"
-# )
-# puts "管理者（株式会社D)アカウント作成"
-
 
 # 投票者(WIP)
 5.times do |n|
