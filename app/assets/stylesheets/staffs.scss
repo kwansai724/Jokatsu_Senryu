@@ -44,6 +44,19 @@
   font-weight: 600;
 }
 
+.staff_import {
+  display: flex;
+}
+
+.group_index .btn-gradient-radius {
+  margin-top: 7px;
+}
+
+.modal-header h4 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 // 検索フォーム
 .search-form {
   margin-left: auto;
@@ -87,6 +100,15 @@
   // 顧客一覧　ボタン
   .users-index .btn {
     font-size: small;
+  }
+
+  .staff_import {
+    display: block;
+  }
+
+  .group_index .btn-gradient-radius {
+    margin-top: -10px;
+    margin-left: -28px;
   }
 
   // 検索フォーム

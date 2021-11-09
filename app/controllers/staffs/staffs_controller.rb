@@ -92,7 +92,6 @@ class Staffs::StaffsController < ApplicationController
   def voterposts_index
     @voters_admin = Voter.all.order(:group)
     @voters = Voter.where(group: current_staff.group_name)
-    @staffs = Staff.all
   end
 
   def voterposts_show
@@ -110,6 +109,11 @@ class Staffs::StaffsController < ApplicationController
       flash[:success] = "CSVファイルをインポートしました。"
       redirect_to staffs_staffs_voterposts_index_url
     end
+  end
+
+  def group_index
+    @staffs = Staff.all
+    @group_members = Voter.all
   end
 
 
