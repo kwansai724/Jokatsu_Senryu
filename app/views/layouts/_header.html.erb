@@ -15,10 +15,9 @@
             <li class="nav-item active nav-link">
               グループ：<%= current_voter.group %>
             </li>
-            <%# スマホでアカウント編集画面を表示した際にエラーになるため一旦非表示 %>
-            <%#<li class="nav-item active nav-link">
+            <li class="nav-item active nav-link">
               <%= link_to 'アカウント編集', edit_voter_registration_path %>
-          　<%#</li>%>
+          　</li>
             <li class="nav-item active nav-link">
               <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete %>
             </li>
