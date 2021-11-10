@@ -33,6 +33,7 @@ gem 'bootstrap-will_paginate'
 #サンプル追加
 gem 'faker'
 
+gem 'sqlite3'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -50,9 +51,9 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-group :production do
-  gem 'pg'
-end
+# group :production do
+#   gem 'pg'
+# end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
