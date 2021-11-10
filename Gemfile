@@ -36,7 +36,7 @@ gem 'faker'
 # csvインポート
 gem 'roo'
 
-gem 'sqlite3'
+# gem 'sqlite3'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
