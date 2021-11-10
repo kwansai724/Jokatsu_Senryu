@@ -44,6 +44,23 @@
   font-weight: 600;
 }
 
+.staff_import {
+  display: flex;
+}
+
+.group_index .btn-gradient-radius {
+  margin-top: 7px;
+}
+
+.modal-header h4 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.voterposts_show_mobile {
+  font-weight: 600;
+}
+
 // 検索フォーム
 .search-form {
   margin-left: auto;
@@ -89,6 +106,19 @@
     font-size: small;
   }
 
+  .staff_import {
+    display: block;
+  }
+
+  .group_index .btn-gradient-radius {
+    margin-top: -10px;
+    margin-left: -28px;
+  }
+
+  .voterposts_show_mobile {
+    font-size: 15px;
+  }
+
   // 検索フォーム
   .search-form {
     margin-right: auto;
@@ -98,6 +128,16 @@
     font-size: 30px;
   }
 
+  .staff-table {
+    width: 100%;
+  }
   
+  .staff-table th {
+    font-size: 13px;
+  }
+
+  .staff-table td {
+    font-size: 13px;
+  }
 
 }

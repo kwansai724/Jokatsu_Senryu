@@ -3,12 +3,15 @@ require 'csv'
 class Staffs::StaffsController < ApplicationController
   before_action :staff_only
   before_action :correct_staff
+  before_action :detect_device, only: [:voterposts_show]
 
   def toppage
   end
 
   def index
     @posts_index = Post.eager_load(:user).where(category: params[:category_name]).paginate(page: params[:page],per_page: 100)
+    @staffs = Staff.where(admin: false)
+    @staff = Staff.find_by(group_name: params[:group_name])
     # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).includes(:likes).find(Like.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     # @posts_index = Post.eager_load(:user).where(category: params[:category_name]).order(:id).includes(:likes)
     #                 .sort {|a,b| b.likes.size <=> a.likes.size}.paginate(page: params[:page],per_page: 100)
@@ -34,14 +37,15 @@ class Staffs::StaffsController < ApplicationController
   def send_posts_csv(posts)
     if current_staff.admin == true
       csv_data = CSV.generate do |csv|
-        header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数)
+        header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数（WIP） 得票数（全体）)
         csv << header
 
         posts.each do |post|
           user = User.find_by(id: post.user_id)
           values = [post.id, post.first_phrase, post.second_phrase, post.third_phrase, post.pen_name, post.category,
                     user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary,
-                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count]
+                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count,
+                    Like.where(post_id: post.id).count]
           csv << values
         end
       end
@@ -96,11 +100,38 @@ class Staffs::StaffsController < ApplicationController
     @voterpost = Voterpost.find_by(voter_id: @voter.id)
   end
 
+  def import
+    if params[:file].blank?
+      flash[:danger] = "csvファイルが選択されていません。"
+      redirect_to staffs_staffs_voterposts_index_url
+    else
+      #fileはtmpに自動で一時保存される
+      Staff.import(params[:file])
+      flash[:success] = "CSVファイルをインポートしました。"
+      redirect_to staffs_staffs_voterposts_index_url
+    end
+  end
+
+  def group_index
+    @staffs = Staff.all
+    @group_members = Voter.all
+  end
+
 
   private
 
     def user_search_params
       params.fetch(:search, {}).permit(:name)
     end
+
+    def detect_device
+      case request.user_agent
+        when /iPhone/
+            request.variant = :mobile
+        when /Android/
+            request.variant = :mobile
+      end
+    end
+
 
 end
