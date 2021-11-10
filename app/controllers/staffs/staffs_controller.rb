@@ -3,6 +3,7 @@ require 'csv'
 class Staffs::StaffsController < ApplicationController
   before_action :staff_only
   before_action :correct_staff
+  before_action :detect_device, only: [:voterposts_show]
 
   def toppage
   end
@@ -122,5 +123,15 @@ class Staffs::StaffsController < ApplicationController
     def user_search_params
       params.fetch(:search, {}).permit(:name)
     end
+
+    def detect_device
+      case request.user_agent
+        when /iPhone/
+            request.variant = :mobile
+        when /Android/
+            request.variant = :mobile
+      end
+    end
+
 
 end

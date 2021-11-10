@@ -57,6 +57,10 @@
   margin-right: auto;
 }
 
+.voterposts_show_mobile {
+  font-weight: 600;
+}
+
 // 検索フォーム
 .search-form {
   margin-left: auto;
@@ -109,6 +113,10 @@
   .group_index .btn-gradient-radius {
     margin-top: -10px;
     margin-left: -28px;
+  }
+
+  .voterposts_show_mobile {
+    font-size: 15px;
   }
 
   // 検索フォーム
