@@ -17,7 +17,6 @@
         <%# <%debugger %>
         <% if post.first_phrase.present? && post.category == params[:category_name] %>
           <div class="main-index d-flex border-bottom mb-2">
-             <%# <% debugger %>
              <%# <% user = User.find(post.user_id) %>
             【得票数：
               <%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count  %>

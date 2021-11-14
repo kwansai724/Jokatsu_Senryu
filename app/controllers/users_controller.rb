@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # byebug
     if @user.invalid?(:category_valid)
-      flash[:danger] = @user.errors.full_messages.join("<br>")
+      flash.now[:danger] = @user.errors.full_messages.join("<br>")
       render :index
       # redirect_to users_path
     end    
