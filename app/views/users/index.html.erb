@@ -57,8 +57,7 @@
         <tr>
           <th class="users-th">ご職業<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :profession, options_for_select([["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],
-            ["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]]),{ include_blank: ''}, { class: "input-form", required: true, id:"myselectbox", onchange:"myfunc()" } %>
+            <%= f.select :profession, [["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]],{ include_blank: ''}, { class: "input-form", required: true, id:"myselectbox", onchange:"myfunc()" } %>
               <p class="color-pink mt-1">
                 その他 を選択されましたらご記入ください。
               </p>
@@ -89,17 +88,12 @@
           <th class="users-th">アンケート<span class="color-red">必須</span></th>
           <td class="users-td">
             <p class="color-pink mt-2">この企画を何でお知りになりましたか？</p>
-            <%= f.radio_button :questionary, "公式ホームページ", required: true %>公式ホームページ<br>
-            <%= f.radio_button :questionary, "公式Facebookページ" %>公式Facebookページ<br>
-            <%= f.radio_button :questionary, "公式Instagram" %>公式Instagram<br>
-            <%= f.radio_button :questionary, "公式LINE" %>公式LINE<br>
-            <%= f.radio_button :questionary, "川柳募集サイト" %>川柳募集サイト<br>
-            <%= f.radio_button :questionary, "WIPメンバーのブログや投稿、シェアなど" %>WIPメンバーのブログや投稿、シェアなど<br>
-            <%= f.radio_button :questionary, "WEBやSNS記事" %>WEBやSNS記事<br>
-            <%= f.radio_button :questionary, "新聞や雑誌などのメディア" %>新聞や雑誌などのメディア<br>
-            <%= f.radio_button :questionary, "検索サーチ" %>検索サーチ<br>
-            <%= f.radio_button :questionary, "知人からの紹介" %>知人からの紹介<br>
-            <%= f.radio_button :questionary, "その他" %>その他<br>  
+            <% @questionary = ["公式Facebookページ", "公式Instagram", "公式LINE", "川柳募集サイト", "WIPメンバーのブログや投稿、シェアなど", "WEBやSNS記事", "新聞や雑誌などのメディア", "検索サーチ", "知人からの紹介", "その他"] %>
+            <% @questionary.each do |questionary| %>
+            <%= f.check_box :questionary,  {multiple: true}, questionary, nil %>
+              <%= questionary %><br>
+            <% end %>
+
           </td>
         </tr>   
       </table>
