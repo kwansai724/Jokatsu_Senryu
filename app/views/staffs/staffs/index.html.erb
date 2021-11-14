@@ -11,25 +11,7 @@
     </div>
     <div class="mb-3">
       <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
-    </div>
-    <div class="result-posts">
-      <% @posts_index_test.each do |post| %>
-        <%# <%debugger %>
-        <% if post.first_phrase.present? && post.category == params[:category_name] %>
-          <div class="main-index d-flex border-bottom mb-2">
-             <%# <% debugger %>
-             <%# <% user = User.find(post.user_id) %>
-            【得票数：
-              <%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count  %>
-            <%# (トータル:<%= post.likes.count ) %>
-            】
-            <%= post.id %>.　<%= post.first_phrase %>　<%= post.second_phrase%>　<%= post.third_phrase %> /(<%= post.pen_name %>) 
-            /<%= post.user.gender %>/<%= post.user.address %>/<%= post.user.profession %>/<%= post.user.age %>【名前：<%= post.user.name %> / Eメール：<%= post.user.email %>】<br>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <hr> 
+    </div> 
     <div class="result-posts">
       <% @posts_index.each do |post| %>
         <% if post.first_phrase.present? && post.category == params[:category_name] %>
