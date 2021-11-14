@@ -11,7 +11,7 @@
     </div>
     <div class="mb-3">
       <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
-    </div> 
+    </div>
     <div class="result-posts">
       <% @posts_index.each do |post| %>
         <% if post.first_phrase.present? && post.category == params[:category_name] %>
