@@ -15,7 +15,7 @@ class Staffs::StaffsController < ApplicationController
     #                 .sort {|a,b| b.likes.count <=> a.likes.count}.paginate(page: params[:page],per_page: 100)
     # @posts_index = Post.eager_load(:likes).where(category: params[:category_name], likes: {voter_id: Voter.where(group: params[:group_name]).ids})
     #                 .order('count(voter_id) desc').group('posts.id').paginate(page: params[:page],per_page: 100)
-    @posts_index = Post.eager_load(:likes).where(category: params[:category_name], likes: {voter_id: Voter.where(group: params[:group_name]).ids})
+    @posts_index = Post.eager_load(:likes).where(category: params[:category_name], likes: {voter_id: Voter.where(group: params[:group_name]).ids}).having("count(likes.id) > 0")
                       .order('count(likes.id) desc').group(:id).paginate(page: params[:page],per_page: 100)
     # @posts_index = Post.eager_load(:likes).where(category: params[:category_name]).order('count(voter_id) desc').group(:id).paginate(page: params[:page],per_page: 100)
     @staffs = Staff.where(admin: false)
