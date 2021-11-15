@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :questionary_string, only: [:confirm]
+  before_action :allow_iframe
   
   def index
     @user = User.new

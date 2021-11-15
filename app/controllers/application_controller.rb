@@ -61,4 +61,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys:[:name, :group, :password, :password_confirmation]) 
   end
 
+  def allow_iframe
+    response.headers['X-Frame-Options'] = 'ALLOWALL'
+  end
+
 end
