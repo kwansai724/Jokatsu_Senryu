@@ -26,13 +26,16 @@ class UsersController < ApplicationController
       render :index    
     elsif @user.save
       PostedMailer.send_mail(@user).deliver_now #メール送信
-      flash[:success] = '投稿ありがとうございました。'
-      redirect_to users_path 
+      # flash[:success] = '投稿ありがとうございました。'
+      redirect_to thanks_users_path 
     else
       flash[:danger] = "投稿に失敗しました。<br>" + @user.errors.full_messages.join("<br>")
       redirect_to users_path 
     end
     
+  end
+
+  def thanks
   end
 
   private
