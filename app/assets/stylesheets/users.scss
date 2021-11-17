@@ -241,6 +241,31 @@
   font-weight: 600;
 }
 
+.thanks-title h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.thanks-main {
+  text-align: center;
+}
+
+.thanks-main p {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+
+.thanks-main a {
+  font-weight: 600;
+}
+
+.thanks-red {
+  color: red;
+  font-size: 40px;
+}
+
 @media screen and (max-width: 576px) {
 
   .title h1 {
@@ -316,6 +341,11 @@
 
   .confirm-post {
     font-size: 14px;
-  }  
+  }
+
+  .thanks-title h1 {
+    font-size: 40px;
+  }
+  
 
 }

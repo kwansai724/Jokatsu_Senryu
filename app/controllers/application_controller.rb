@@ -64,8 +64,8 @@ class ApplicationController < ActionController::Base
   end
 
   def allow_iframe
-    # response.headers['X-Frame-Options'] = 'ALLOW-FROM https://www.sdgswip.com/pages/5514498/static'
-    response.headers['X-Frame-Options'] = 'ALLOWALL'
+    response.headers['X-Frame-Options'] = 'ALLOW-FROM https://www.sdgswip.com/pages/5514498/static'
+    # response.headers['X-Frame-Options'] = 'ALLOWALL'
   end
 
 end
