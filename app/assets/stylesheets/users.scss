@@ -138,6 +138,11 @@
 
 // 槇変更分----------------------------------------------------------------------------------------
 
+.title h1 {
+  font-weight: 600;
+  font-size: 35px;
+}
+
 .center-block{
   margin: 0 auto;
 }
@@ -169,7 +174,7 @@
 }
 
 .senryu-th {
-  width: 15%;
+  width: 30%;
 }
 
 .senryu-td {
@@ -202,6 +207,13 @@
 .color-pink {
   font-size: 16px;
   color: #ff8b5f;
+}
+
+.category-atention {
+  font-size: 16px;
+  font-weight: 600;
+  color: red;
+  margin: 10px 0 -10px 220px;
 }
 
 .other-field {
@@ -237,6 +249,35 @@
   font-weight: 600;
 }
 
+.thanks-form {
+  margin-top: 100px;
+}
+
+.thanks-title h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.thanks-main {
+  text-align: center;
+}
+
+.thanks-main p {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: -5px;
+}
+
+.thanks-main a {
+  font-weight: 600;
+}
+
+.thanks-red {
+  color: red;
+  font-size: 40px;
+}
+
 @media screen and (max-width: 576px) {
 
   .title h1 {
@@ -252,8 +293,12 @@
   }
 
   .senryu-th {
-    width: 25%;
-    padding-left: 10px;
+    width: 28.5%;
+    // padding-left: 10px;
+  }
+
+  .senryu-table {
+    margin-left: 0;
   }
 
   .senryu-td {
@@ -275,6 +320,11 @@
   .color-pink {
     font-size: 11px;
   }
+
+  .category-atention {
+    font-size: 11px;
+    margin: 10px 0 -10px 120px;
+  }  
 
   .users-td {
     padding-left: 10px;
@@ -312,6 +362,11 @@
 
   .confirm-post {
     font-size: 14px;
-  }  
+  }
+
+  .thanks-title h1 {
+    font-size: 40px;
+  }
+  
 
 }

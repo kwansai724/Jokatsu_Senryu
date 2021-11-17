@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :allow_iframe
+  protect_from_forgery with: :null_session
 
   # 投票者画面閲覧制限
   def voter_only
@@ -59,6 +61,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys:[:name, :group, :password, :password_confirmation]) 
     devise_parameter_sanitizer.permit(:sign_in, keys:[:name, :group, :password, :password_confirmation]) 
+  end
+
+  def allow_iframe
+    response.headers['X-Frame-Options'] = 'ALLOW-FROM https://www.sdgswip.com/pages/5514498/static'
+    # response.headers['X-Frame-Options'] = 'ALLOWALL'
   end
 
 end
