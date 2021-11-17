@@ -3,9 +3,12 @@
 
   <div class="title mb-3">
     <h1>ジョカツ川柳 投稿フォーム</h1>
-  </div>  
+  </div>
   <div class="row">
     <div class="col-mw-md col-mw-xl col-lg-10 center-block">
+      <p class="color-pink mt-1 ml-4">
+        部門は必ず選択してください
+      </p>
       <% @user.posts.each do |posts| %>
         <%= f.fields_for :posts, posts do |post| %> 
           <table border="0" class="senryu-table">
