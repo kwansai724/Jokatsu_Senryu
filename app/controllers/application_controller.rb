@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :allow_iframe
 
   # 投票者画面閲覧制限
   def voter_only
