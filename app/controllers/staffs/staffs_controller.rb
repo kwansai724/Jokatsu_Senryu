@@ -96,6 +96,9 @@ class Staffs::StaffsController < ApplicationController
     @voters = Voter.where(group: current_staff.group_name)
   end
 
+  def users_graph
+  end
+
   def voterposts_show
     @voter = Voter.find(params[:id])
     @voterpost = Voterpost.find_by(voter_id: @voter.id)
