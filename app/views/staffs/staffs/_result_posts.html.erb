@@ -20,7 +20,9 @@
     <% end %>
   <% end %>
   <hr>
-  <% @posts_index.each do |post| %>
+  <%
+=begin%>
+ <% @posts_index.each do |post| %>
     <% if post.first_phrase.present? && post.category == params[:category_name] %>
       <div class="main-index d-flex border-bottom mb-2">
         【得票数：<%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count %> 】
@@ -32,7 +34,9 @@
         <br>
       </div>  
     <% end %>
-  <% end %>
+  <% end %> 
+<%
+=end%>
   <% if params[:admin] == "true" %>
     <%= link_to "WIPの画面へ戻る", staffs_staffs_index_path(group_name: current_staff.group_name, category_name: params[:category_name]), class: "btn-gradient confirm-btn mt-3" %>
   <% end %>   

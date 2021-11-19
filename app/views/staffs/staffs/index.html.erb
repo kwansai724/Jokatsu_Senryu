@@ -24,7 +24,9 @@
       <% end %>
     </div>
     <hr>
-    <div class="result-posts">
+    <%
+=begin%>
+ <div class="result-posts">
       <% @posts_index.each do |post| %>
         <% if post.first_phrase.present? && post.category == params[:category_name] %>
           <div class="main-index d-flex border-bottom mb-2">
@@ -34,7 +36,9 @@
           </div>
         <% end %>
       <% end %>
-    </div>
+    </div> 
+<%
+=end%>
   <% elsif params[:group_name] == @staff.group_name %>
     <%= render "result_posts" %>
   <% end %>
