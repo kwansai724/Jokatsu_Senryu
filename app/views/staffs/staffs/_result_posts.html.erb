@@ -4,7 +4,7 @@
     <%= link_to "WIPの画面へ戻る", staffs_staffs_index_path(group_name: current_staff.group_name, category_name: params[:category_name]), class: "btn-gradient confirm-btn mb-3" %>
   <% end %>
   <div class="mb-2">
-    <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    <%= will_paginate(@post_rank, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
   </div> 
   <% @post_rank.each do |post| %>
     <% if post.first_phrase.present? && post.category == params[:category_name] %>
@@ -19,9 +19,9 @@
       </div>  
     <% end %>
   <% end %>
-  <hr>
   <%
 =begin%>
+  <hr>
  <% @posts_index.each do |post| %>
     <% if post.first_phrase.present? && post.category == params[:category_name] %>
       <div class="main-index d-flex border-bottom mb-2">
