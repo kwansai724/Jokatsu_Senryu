@@ -94,7 +94,7 @@
           <th class="users-th">アンケート<span class="color-red">必須</span></th>
           <td class="users-td">
             <p class="color-pink mt-2">この企画を何でお知りになりましたか？</p>
-            <% @questionary = ["公式Facebookページ", "公式Instagram", "公式LINE", "川柳募集サイト", "WIPメンバーのブログや投稿など", "WEBやSNS記事", "新聞や雑誌などのメディア", "検索サーチ", "知人からの紹介", "その他"] %>
+            <% @questionary = ["公式Facebookページ", "公式Instagram", "公式LINE", "川柳募集サイト", "WIPメンバーブログや投稿など", "WEBやSNS記事", "新聞や雑誌などのメディア", "検索サーチ", "知人からの紹介", "その他"] %>
             <% @questionary.each do |questionary| %>
             <%= f.check_box :questionary,  {multiple: true}, questionary, nil %>
               <%= questionary %><br>
