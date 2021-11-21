@@ -36,6 +36,9 @@ gem 'faker'
 # csvインポート
 gem 'roo'
 
+# グラフ
+gem 'chartkick'
+
 # gem 'sqlite3'
 group :development, :test do
   gem 'sqlite3'
