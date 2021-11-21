@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get 'staffs/toppage', to: 'staffs#toppage'
     get 'staffs/index', to: 'staffs#index'
     get 'staffs/users_index', to: 'staffs#users_index'
+    get 'staffs/users_graph', to: 'staffs#users_graph'
     get 'staffs/users_show', to: 'staffs#users_show'
     get 'staffs/voterposts_index', to: 'staffs#voterposts_index'
     get 'staffs/voterposts_show', to: 'staffs#voterposts_show'

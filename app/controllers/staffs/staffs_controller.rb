@@ -15,7 +15,7 @@ class Staffs::StaffsController < ApplicationController
     # @post_rank = @post_like.select{|post| post.category == params[:category_name] }
 
     # 投票者別ランキング
-    @post_like = Post.find(Like.where(voter_id: Voter.where(group: params[:group_name]).ids).group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id) )
+    @post_like = Post.find(Like.where(voter_id: Voter.where(group: params[:group_name]).ids).group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id)).paginate(page: params[:page],per_page: 100)
     # カテゴリー別に表示
     @post_rank = @post_like.select{|post| post.category == params[:category_name] }.paginate(page: params[:page],per_page: 100)
     
@@ -104,6 +104,9 @@ class Staffs::StaffsController < ApplicationController
   def voterposts_index
     @voters_admin = Voter.all.order(:group)
     @voters = Voter.where(group: current_staff.group_name)
+  end
+
+  def users_graph
   end
 
   def voterposts_show
