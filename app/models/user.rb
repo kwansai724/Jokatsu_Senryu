@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :posts, foreign_key: :user_id, dependent: :destroy
+  has_many :posts, dependent: :destroy
   accepts_nested_attributes_for :posts, allow_destroy: true
 
   before_save { self.email = email.downcase }
