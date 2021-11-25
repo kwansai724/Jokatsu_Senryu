@@ -3,59 +3,56 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   it "名前、メールアドレス、性別、住まい、職業、年齢、アンケートがあれば有効な状態であること" do
-    user = User.new(
-      name: "test-user",
-      email: "test-user@email.com",
-      gender: "男性",
-      address: "大阪",
-      profession: "会社員",
-      age: "32",
-      # note: "テストメッセージ",
-      questionary: "WIPメンバーのブログや投稿など"
-    )
+    user = FactoryBot.build(:user)
     expect(user).to be_valid
   end
 
   it "名前がなければ無効な状態であること" do
-    user = User.new(name: nil)
+    user = FactoryBot.build(:user, name: nil)
     user.valid?
     expect(user.errors[:name]).to include("を入力してください")
   end
 
   it "メールアドレスがなければ無効な状態であること" do
-    user = User.new(email: nil)
+    user = FactoryBot.build(:user, email: nil)
     user.valid?
     expect(user.errors[:email]).to include("を入力してください")
   end
 
   it "性別がなければ無効な状態であること" do
-    user = User.new(gender: nil)
+    user = FactoryBot.build(:user, gender: nil)
     user.valid?
     expect(user.errors[:gender]).to include("を入力してください")
   end
 
   it "住まいがなければ無効な状態であること" do
-    user = User.new(address: nil)
+    user = FactoryBot.build(:user, address: nil)
     user.valid?
     expect(user.errors[:address]).to include("を入力してください")
   end
 
   it "職業がなければ無効な状態であること" do
-    user = User.new(profession: nil)
+    user = FactoryBot.build(:user, profession: nil)
     user.valid?
     expect(user.errors[:profession]).to include("を入力してください")
   end
 
   it "年齢がなければ無効な状態であること" do
-    user = User.new(age: nil)
+    user = FactoryBot.build(:user, age: nil)
     user.valid?
     expect(user.errors[:age]).to include("を入力してください")
   end
 
   it "アンケートがなければ無効な状態であること" do
-    user = User.new(questionary: nil)
+    user = FactoryBot.build(:user, questionary: nil)
     user.valid?
     expect(user.errors[:questionary]).to include("を入力してください")
+  end
+
+  it "メッセージが1000文字以内でなければ無効な状態であること" do
+    user = FactoryBot.build(:user, note: "あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ")
+    user.valid?
+    expect(user.errors[:note]).to include("は1000文字以内で入力してください")
   end
 
   describe "投稿者一覧で名前を検索する" do
