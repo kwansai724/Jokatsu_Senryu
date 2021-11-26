@@ -38,13 +38,5 @@ FactoryBot.define do
       reason10 "あ" * 1001
       reason11 "あ" * 1001
     end
-
   end
-
-  # #推薦理由が文字数オーバー
-  # factory :over_number_of_characters, class: Voterpost do
-  #   sequence(:favorite_post1) { |n| n }
-  #   reason1 "あ" * 1001
-  #   association :voter
-  # end
 end
