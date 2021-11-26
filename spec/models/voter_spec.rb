@@ -14,7 +14,7 @@ RSpec.describe Voter, type: :model do
   end
 
   it "名前の文字数上限は５０文字であること" do
-    voter = build(:voter, name: "あああああああああああああああああああああああああああああああああああああああああああああああああああ")
+    voter = build(:voter, name: "あ" * 51)
     voter.valid?
     expect(voter.errors[:name]).to include("は50文字以内で入力してください")
   end
@@ -24,4 +24,10 @@ RSpec.describe Voter, type: :model do
     voter.valid?
     expect(voter.errors[:group]).to include("を入力してください")
   end
+
+  it "投票者は複数の投稿に投票ができること" do
+    voter = create(:voter, :with_likes_for_voter)
+    expect(voter.likes.length).to eq 5
+  end
+
 end

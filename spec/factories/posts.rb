@@ -8,4 +8,9 @@ FactoryBot.define do
     sequence(:user_id) { |n| n }
     association :user
   end
+
+  trait :with_likes_for_post do
+    after(:create) { |post| create_list(:like, 5, post: post) }
+  end
+
 end
