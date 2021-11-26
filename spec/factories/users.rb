@@ -8,4 +8,9 @@ FactoryBot.define do
     age "32"
     questionary "WIPメンバーのブログや投稿など"
   end
+
+  trait :with_posts do
+    after(:create) { |user| create_list(:post, 2, user: user) }
+  end
+
 end

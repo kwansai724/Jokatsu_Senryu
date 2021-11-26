@@ -79,4 +79,9 @@ RSpec.describe User, type: :model do
     end
   end
 
+  it "投稿者（User）は複数の投稿ができること" do
+    user = create(:user, :with_posts)
+    expect(user.posts.length).to eq 2
+  end
+
 end
