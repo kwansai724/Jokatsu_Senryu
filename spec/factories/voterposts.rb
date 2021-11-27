@@ -38,5 +38,31 @@ FactoryBot.define do
       reason10 "あ" * 1001
       reason11 "あ" * 1001
     end
+
+    #空のvoterpost
+    trait :empty_voterpost do
+      favorite_post1 ""
+      reason1 ""
+      favorite_post2 ""
+      reason2 ""
+      favorite_post3 ""
+      reason3 ""
+      favorite_post4 ""
+      reason4 ""
+      favorite_post5 ""
+      reason5 ""
+      favorite_post6 ""
+      reason6 ""
+      favorite_post7 ""
+      reason7 ""
+      favorite_post8 ""
+      reason8 ""
+      favorite_post9 ""
+      reason9 ""
+      favorite_post10 ""
+      reason10 ""
+      favorite_post11 ""
+      reason11 ""
+    end
   end
 end

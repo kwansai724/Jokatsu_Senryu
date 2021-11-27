@@ -11,7 +11,7 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :toppage
-        expect(response).to be_success
+        expect(response).to be_successful
       end
   
       it "200レスポンスを返すこと" do
@@ -43,7 +43,7 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :index
-        expect(response).to be_success
+        expect(response).to be_successful
       end
   
       it "200レスポンスを返すこと" do
@@ -75,7 +75,7 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :users_index
-        expect(response).to be_success
+        expect(response).to be_successful
       end
   
       it "200レスポンスを返すこと" do
@@ -127,7 +127,7 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :users_show, params: { id: @user.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -154,7 +154,7 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :voterposts_index
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -181,7 +181,7 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :voterposts_show, params: { id: @voter.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
