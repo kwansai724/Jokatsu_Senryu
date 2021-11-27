@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :staff do
-    sequence(:login_id) { |n| "1234567#{n}" }
+    # sequence(:login_id) { |n| "1234567#{n}" }
+    login_id "12345678"
     password "password"
     group_name "WIP"
     category_name "輝け❣️私のライフスタイルの部"
