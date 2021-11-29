@@ -2,13 +2,25 @@
   <div class="card-deck text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">ジョカツ川柳 投票フォーム</h4>
+        <h4 class="my-0 font-weight-normal">女性活躍川柳　審査員フォーム</h4>
       </div>
       <div class="card-body">
-        <h2 class="card-title pricing-card-title">ようこそ！</h2>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>概要</li>
-        </ul>
+        <h5 class="card-title pricing-card-title">
+          ようこそ！<br>
+          女性活躍川柳　審査員の皆様<br>
+          こちらより審査員の新規登録をお願いします。
+        </h5>
+        <P>初めての方はこちらの画面で新規登録をしてください。</p>
+        <div class="registrations-info">
+          <ul class="registrations-info-ul list-unstyled">
+            <li>
+              ①お名前（ログインIDになります)<br>
+              ②あなたの所属グループを選択します<br>
+              ③任意のパスワードを入力<br>
+              ④［新規登録］ボタンを押す
+            </li>
+          </ul>
+        </div>  
         <div class="user-signed">
           <div class="signed-up text-left">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

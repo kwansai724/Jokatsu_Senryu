@@ -1,5 +1,18 @@
-<div class="staff-toppage">  
+<div class="staff-toppage">
   <h1>部門選択画面</h1>
+  <div class="border-top border-bottom notice">
+      <div class="voterpost-info mt-3 ml-2">
+        <ul class="voterpost-info-ul list-unstyled">
+          <li>
+            審査員の投票期限は2月10日です。<br>
+            2月15日までにスポンサー賞を１句の選出してください。
+          </li><br>
+          <li>
+            審査の進捗状況は途中経過も閲覧可能です。
+          </li>
+        </ul>
+      </div>  
+  </div>
   <ul class="list-group-flush">
     <li class="staff_screen--list">
       <%= link_to "女性パワーで未来を変えるの部", staffs_staffs_index_path(group_name: current_staff.group_name, category_name: "女性パワーで未来を変えるの部"), class: "btn-gradient-radius" %>

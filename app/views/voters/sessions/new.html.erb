@@ -2,13 +2,23 @@
   <div class="card-deck text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">ジョカツ川柳 投票フォーム</h4>
+        <h4 class="my-0 font-weight-normal">女性活躍川柳　審査員フォーム</h4>
       </div>
       <div class="card-body">
-        <h2 class="card-title pricing-card-title">ようこそ！</h2>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>概要</li>
-        </ul>
+        <%
+=begin%>
+ <h5 class="card-title pricing-card-title">
+          女性活躍川柳<br>
+          【審査員ログイン画面】
+        </h5><br> 
+<%
+=end%>
+        <div class="voter-sessions-info mt-2">
+          <ul class="voter-sessions-info-ul list-unstyled">
+            <li>ログインをして投票をお願いします</li><br>
+            <li class="voter-login">審査投票締切　2月10日23:59まで</li>
+          </ul>
+        </div>  
         <div class="user-signed">
           <div class="signed-in text-left">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

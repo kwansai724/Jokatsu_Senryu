@@ -2,10 +2,22 @@
 
 <div class="row">
   <div class="col-mw-md col-mw-xl center-block">
-
-    <div class="d-flex border-top border-bottom notice">
-      <p class="center-block mt-2 mb-2">○月○日まで再投票可能です。</p>
-    </div>  
+    <div class="border-top border-bottom notice">
+        <div class="voterpost-info mt-3 ml-2">
+          <ul class="voterpost-info-ul list-unstyled">
+            <li>
+              ・あなたの心が動いた川柳に投票してください！<br>
+              ・各カテゴリごとにあなたの推薦したいお気に入りの川柳を一句選び推薦理由もご記入ください。
+            </li><br>
+            <li class="voterpost-limit">審査投票締切　2月10日23:59まで</li><br>
+            <li>
+              ・カテゴリごとに投票をしてください。<br>
+              ・投票の締切時間まで何度でも投票修正や再投票ができます。<br>
+              締切時間をもって投票はクローズし、その状態のまま自動的に集計されます。<br>
+            </li>
+          </ul>
+        </div>  
+    </div>
     <div class="voterposts_index">
       <ul class="list-group-flush">
         <% @voterposts.each do |v| %>
