@@ -1,6 +1,6 @@
 <h1>投稿者グラフ</h1>
 <div>  
-  <%= link_to "川柳投稿者一覧へ戻る", staffs_staffs_users_index_path, class: "btn-gradient-radius" %>
+  <%= link_to "川柳投稿者一覧へ戻る", staffs_staffs_users_index_path, class: "btn-gradient-radius mb-4" %>
 </div>
 <div>
   <p>【性別】</p>
@@ -21,8 +21,12 @@
   <p>【年代】</p>
   <%= pie_chart User.group(:age).count %>
   <hr>
-</div>
+<%
+=begin%>
+ </div>
   <p>【アンケート】</p>
   <%= pie_chart User.group(:questionary).count %>
   <hr>
-</div>
+</div> 
+<%
+=end%>

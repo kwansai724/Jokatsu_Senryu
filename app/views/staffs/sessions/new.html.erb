@@ -2,12 +2,16 @@
   <div class="card-deck text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">ジョカツ川柳 管理画面</h4>
+        <h4 class="my-0 font-weight-normal">審査員管理者専用ログイン画面</h4>
       </div>
       <div class="card-body">
-        <h2 class="card-title pricing-card-title">ようこそ！</h2>
+        <%
+=begin%>
+ <h5 class="card-title pricing-card-title">【審査員管理者専用ログイン画面】</h5> 
+<%
+=end%>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>概要</li>
+          <li>事前に付与した専用ログインIDでログインしてください。</li>
         </ul>
         <div class="user-signed">
           <div class="signed-in text-left">
@@ -24,7 +28,7 @@
             <% end %>
           </div>
           <div class="voter-staff mt-2">
-            <%= link_to '投票者の方はこちら', new_voter_session_path, class: "btn-resize"%>
+            <%= link_to '審査員の方はこちら', new_voter_session_path, class: "btn-resize"%>
           </div>
         </div>
       </div>

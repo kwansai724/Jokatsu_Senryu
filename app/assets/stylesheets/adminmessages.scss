@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .tyui {
   margin-top: 30px;
   font-size: 18px;
@@ -18,4 +19,16 @@
 
 .adminmessage-index-table-td {
   font-size: 20px;
+}
+
+.adminmessage-btn {
+  font-size: 20px;
+}
+
+@media screen and (max-width:480px) {
+
+  .adminmessage-index-table table {
+    width: 80%;
+  }
+  
 }

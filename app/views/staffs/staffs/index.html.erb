@@ -10,7 +10,7 @@
       <% end %>  
     </div>
     <div class="mb-3">
-      <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+      <%= will_paginate(@post_rank, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
     </div>
     <div class="result-posts">
       <% @post_rank.each do |post| %>
@@ -23,8 +23,10 @@
         <% end %>
       <% end %>
     </div>
+<%
+=begin%>
     <hr>
-    <div class="result-posts">
+ <div class="result-posts">
       <% @posts_index.each do |post| %>
         <% if post.first_phrase.present? && post.category == params[:category_name] %>
           <div class="main-index d-flex border-bottom mb-2">
@@ -34,12 +36,14 @@
           </div>
         <% end %>
       <% end %>
-    </div>
+    </div> 
+<%
+=end%>
   <% elsif params[:group_name] == @staff.group_name %>
     <%= render "result_posts" %>
   <% end %>
   <div class="pagenate">
-    <%= will_paginate(@posts_index, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    <%= will_paginate(@post_rank, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
   </div> 
   <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn-gradient confirm-btn mt-2" %>
 </div>

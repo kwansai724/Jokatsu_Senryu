@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def index
     @user = User.new
-    5.times {@user.posts.build} 
+    2.times {@user.posts.build} 
   end
 
   # 確認画面
