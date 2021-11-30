@@ -15,17 +15,16 @@ class UsersController < ApplicationController
     if @user.invalid?(:category_valid)
       flash.now[:danger] = @user.errors.full_messages.join("<br>")
       render :index
-      # redirect_to users_path
     end    
   end
 
   def create
     @user = User.new(user_params)
-    # byebug
+    @messages = Adminmessage.all
     if params[:back] 
       render :index    
     elsif @user.save
-      PostedMailer.send_mail(@user).deliver_now #メール送信
+      PostedMailer.send_mail(@user, @messages).deliver_now #メール送信
       # flash[:success] = '投稿ありがとうございました。'
       redirect_to thanks_users_path 
     else

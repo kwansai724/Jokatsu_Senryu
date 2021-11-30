@@ -46,4 +46,6 @@ Rails.application.routes.draw do
     get 'staffs/group_index', to: 'staffs#group_index'
   end
 
+  # adminmessageメール内容変更
+  resources :adminmessages
 end

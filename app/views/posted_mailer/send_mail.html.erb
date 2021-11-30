@@ -14,6 +14,9 @@
         <p>川柳：<%= posts.first_phrase%><%= posts.second_phrase %><%= posts.third_phrase%>/ペンネーム：<%= posts.pen_name %>/部門：<%= posts.category %></p>
       <% end %>
     <% end %>
+    <% @message.each do |msg| %>
+      <p><%= simple_format(msg.message) %></p>
+    <% end %>
   <hr />
   <p>○月○日に結果発表になります。お楽しみに！</p>
 </body>
