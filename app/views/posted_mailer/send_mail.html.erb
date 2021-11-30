@@ -3,7 +3,9 @@
   <head>
     <meta content="text/html; charset=UTF-8" />
   </head>
-  <body>
+  <%
+=begin%>
+ <body>
     <h2><%= @user.name %> 様</h2>
     <hr />
     <p>
@@ -55,5 +57,38 @@
       https://ws.formzu.net/dist/S35086197/<br>
       •*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬<br>
     </p>
-  </body>
+  </body> 
+<%
+=end%>
+<head>
+  <meta content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <h2><%= @user.name %> 様</h2>
+  <hr />  
+  <div>
+    <% @message.each do |msg| %>
+      <p><%= simple_format(msg.message) %></p>
+    <% end %>
+    <hr />
+    <P>下記の通り受け付けました。</p>
+    <% @user.posts.each do |posts| %>
+      <% if posts.first_phrase.present? && posts.second_phrase.present? && posts.third_phrase.present? && posts.pen_name.present? && posts.category.present? %>
+        <p>川柳：<%= posts.first_phrase%>　<%= posts.second_phrase %>　<%= posts.third_phrase%><br>
+        ペンネーム：<%= posts.pen_name %><br>
+        部門：<%= posts.category %></p>
+      <% end %>
+    <% end %>
+    <hr />
+    <p>
+      •*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬<br>
+      SDGs Women's Innovation Project<br>
+      Smile Festival2020ジョカツ川柳チーム<br><br>
+
+      WIPへのご連絡、お問い合わせ<br>
+      https://ws.formzu.net/dist/S35086197/<br>
+      •*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬<br>
+    </p>
+  </div>
+</body>
 </html>
