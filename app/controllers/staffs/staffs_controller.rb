@@ -43,7 +43,8 @@ class Staffs::StaffsController < ApplicationController
 
   def send_posts_csv(posts)
     if current_staff.admin == true
-      csv_data = CSV.generate do |csv|
+      bom = "\uFEFF"
+      csv_data = CSV.generate(bom) do |csv|
         header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数（WIP） 得票数（全体）)
         csv << header
 
@@ -57,7 +58,7 @@ class Staffs::StaffsController < ApplicationController
         end
       end
     else
-      csv_data = CSV.generate do |csv|
+      csv_data = CSV.generate(bom) do |csv|
         header = %w(No 上の句 中の句 下の句 ペンネーム 部門 性別 お住まい 職業 年代 メッセージ アンケート 得票数)
         csv << header
 
@@ -74,7 +75,8 @@ class Staffs::StaffsController < ApplicationController
   end
 
   def send_users_csv(users)
-    csv_data = CSV.generate do |csv|
+    bom = "\uFEFF"
+    csv_data = CSV.generate(bom) do |csv|
       header = %w(No 氏名 Email 性別 お住まい 職業 （職業：その他） 年代 メッセージ アンケート)
       csv << header
 
