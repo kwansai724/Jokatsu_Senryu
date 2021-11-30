@@ -5,19 +5,20 @@
 </head>
 <body>
   <h2><%= @user.name %> 様</h2>
-  <hr />
-  <p>
-    こんにちは！ <%= @user.name %>さん！</p>
+  <hr />  
+  <div>
+    <% @message.each do |msg| %>
+      <p><%= simple_format(msg.message) %></p>
+    <% end %>
+    <hr />
     <P>下記の通り受け付けました。</p>
     <% @user.posts.each do |posts| %>
       <% if posts.first_phrase.present? && posts.second_phrase.present? && posts.third_phrase.present? && posts.pen_name.present? && posts.category.present? %>
         <p>川柳：<%= posts.first_phrase%><%= posts.second_phrase %><%= posts.third_phrase%>/ペンネーム：<%= posts.pen_name %>/部門：<%= posts.category %></p>
       <% end %>
     <% end %>
-    <% @message.each do |msg| %>
-      <p><%= simple_format(msg.message) %></p>
-    <% end %>
-  <hr />
-  <p>○月○日に結果発表になります。お楽しみに！</p>
+    <hr />
+    <%# <p>○月○日に結果発表になります。お楽しみに！</p> %>
+  </div>
 </body>
 </html>
