@@ -7,11 +7,11 @@ class AdminmessagesController < ApplicationController
   def create
     @message = Adminmessage.new(message_params)
     if @message.save
-      flash[:success] = '新規作成に成功しました。'
+      flash[:success] = 'メール内容を新規作成しました。'
       redirect_to adminmessages_path(id: current_staff.id)
     else
       render :index
-      flash[:success] = '新規作成に失敗しました。'
+      flash[:success] = 'メール内容の作成に失敗しました。'
     end
   end
 
