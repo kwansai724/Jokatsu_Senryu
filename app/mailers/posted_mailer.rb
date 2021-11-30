@@ -5,8 +5,9 @@ class PostedMailer < ApplicationMailer
   elsif Rails.env.production?
     default from: ENV['MY_GMAIL'], subject: "ジョカツ川柳の投稿ありがとうございます。"
   end
-  def send_mail(user)
+  def send_mail(user, message)
     @user = user
+    @message = message
     mail to: user.email
   end
 end

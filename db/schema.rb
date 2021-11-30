@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_055801) do
+ActiveRecord::Schema.define(version: 2021_11_29_034608) do
+
+  create_table "adminmessages", force: :cascade do |t|
+    t.string "message"
+    t.integer "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["staff_id"], name: "index_adminmessages_on_staff_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "voter_id"
