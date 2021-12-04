@@ -15,6 +15,7 @@
 
 .adminmessage-index-table-th {
   font-size: 24px;
+
 }
 
 .adminmessage-index-table-td {
@@ -28,7 +29,20 @@
 @media screen and (max-width:480px) {
 
   .adminmessage-index-table table {
-    width: 80%;
+    // width: 80%;
+    margin-left: -5px;
+    overflow-x: hidden;
+  }
+  .adminmessage-index-table-th {
+    font-size: 20px;
+  }
+  
+  .adminmessage-index-table-td {
+    font-size: 14px;
+  }
+  
+  .adminmessage-btn {
+    font-size: 20px;
   }
   
 }
