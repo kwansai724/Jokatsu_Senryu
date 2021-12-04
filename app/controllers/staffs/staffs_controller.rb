@@ -120,6 +120,9 @@ class Staffs::StaffsController < ApplicationController
   def users_index
     @search_params = user_search_params
     @users = User.search(@search_params).paginate(page: params[:page],per_page: 50)
+    # @users_count = User.distinct.count(:name)
+    @users_count = User.count('DISTINCT name')
+
   end
 
   def users_show

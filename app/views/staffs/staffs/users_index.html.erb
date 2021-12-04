@@ -1,7 +1,7 @@
 <div class="container mt-2 col-md-10 col-lg-8 users-index">
   <form class="form-inline">
     <h1 class="mr-4">投稿者一覧</h1>
-    <p class="mt-2">投稿者数：<%= @users.count %>名  <%= link_to "グラフへ", staffs_staffs_users_graph_path, class: "btn-gradient-radius" %></p>
+    <p class="mt-2">投稿者数：<%= @users_count %>名  <%= link_to "グラフへ", staffs_staffs_users_graph_path, class: "btn-gradient-radius" %></p>
     <div class="search-form form-inline">
       <%= form_with(scope: :search, url: staffs_staffs_users_index_path, method: :get, local: true) do |f| %>
         <div class="form-group mx-sm-1 mb-2">
