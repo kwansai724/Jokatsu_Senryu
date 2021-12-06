@@ -3,7 +3,7 @@
   <h1>メール一斉送信<h1>
 
   <div class="col-mw-md col-mw-xl center-block">
-    <p class="tyui">※下記の内容を確認後一斉メール送信のボタンをクリックしてください。</p>
+    <p class="tyui">※下記の内容を確認後メール一斉送信のボタンをクリックしてください。</p>
       
     <div class="group-email-comment-index-table mw-md col-mw-xl center-block">
       <table class="table table-sm">
@@ -33,7 +33,7 @@
       </table>
     </div>
     <div class="group-email-comment-btn">
-      <%= link_to "一斉メール送信", group_email_group_email_comment_path(id: current_staff.id), class: "btn btn-primary  btn-form" %>
+      <%= link_to "メール一斉送信", group_email_group_email_comment_path(id: current_staff.id), data: { confirm: "応募者全員にメールを送信します。よろしいですか？" }, class: "btn btn-primary btn-form" %>
     </div>
     <div class="group-email-comment-btn">
       <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn-gradient confirm-btn" %>
