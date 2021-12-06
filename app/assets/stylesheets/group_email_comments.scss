@@ -1,0 +1,51 @@
+// Place all the styles related to the Group_email_comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.tyui {
+  margin-top: 30px;
+  font-size: 18px;
+  color: red;
+}
+
+.group-email-comment-index-table {
+  margin-top: 30px;
+}
+
+.group-email-comment-index-table-th {
+  font-size: 24px;
+}
+
+.group-email-comment-index-table-td {
+  font-size: 20px;
+}
+
+.group-email-comment-btn {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+@media screen and (max-width:480px) {
+
+  .group-email-comment-index-table table {
+    // width: 80%;
+    margin-left: -5px;
+    overflow-x: hidden;
+  }
+  .group-email-comment-index-table-th {
+    font-size: 20px;
+  }
+  
+  .group-email-comment-index-table-td {
+    font-size: 14px;
+  }
+  
+  .group-email-comment-btn {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+ .modal-title-group-email-edit{
+  font-size: 20px;
+ }
+  
+}
