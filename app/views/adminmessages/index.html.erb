@@ -11,29 +11,26 @@
     <% end %>
   </div>
   <p class="tyui">※複数登録できますが、メールに載りますので、必要のないメッセージは削除してください。</p>
-  <div class="adminmessage-index-table">
-    <table class="table">
+  <div class="adminmessage-index-table mw-md col-mw-xl center-block">
+    <table class="table table-sm">
       <tr>
         <th class="adminmessage-index-table-th">メール内容</th>
-        <th></th>
-        <th></th>
       </tr>  
-      
-        <% if @messages.present? %>
-          <% @messages.each do |message| %>
-            <tr>
-              <td class="adminmessage-index-table-td">
-                <%= simple_format(message.message) %>
-              </td>
-              <td class="adminmessage-index-table-td">
-                <%= link_to "編集", edit_adminmessage_path(id: message.id, staff_id: current_staff.id), remote: true, class: "btn btn-success" %> 
-              </td>
-              <td class="adminmessage-index-table-td">
-                <%= link_to "削除", message, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %><br>
-              </td>
+      <% if @messages.present? %>
+        <% @messages.each do |message| %>
+          <tr>
+            <td class="adminmessage-index-table-td">
+              <%= simple_format(message.message) %>
+            </td>
             </tr>
-          <% end %>
+            <tr>
+            <td class="adminmessage-index-table-td">
+              <%= link_to "編集", edit_adminmessage_path(id: message.id, staff_id: current_staff.id), remote: true, class: "btn btn-success" %> 
+              <%= link_to "削除", message, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %><br>
+            </td>
+          </tr>
         <% end %>
+      <% end %>
     </table>
   </div>
 
