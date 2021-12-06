@@ -5,6 +5,9 @@ class Staff < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :authentication_keys => [:login_id]
 
+  has_many :adminmessages, dependent: :destroy
+  has_many :group_email_comments, dependent: :destroy
+
   validates :login_id, presence: true, length: { is: 8 }
 
   #登録時にメールアドレスを不要とする
