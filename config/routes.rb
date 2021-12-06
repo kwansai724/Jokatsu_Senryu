@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'group_email_comments/index'
+  get 'group_email_comments/edit'
   devise_scope :voter do
     constraints -> request { request.session[:admin].present? || request.session[:voter_id].present? } do
       root 'voterposts#index', as: :public_root, constraints: LoggedInConstraint.new("voter") # 投票者としてログインしている場合
@@ -48,4 +50,11 @@ Rails.application.routes.draw do
 
   # adminmessageメール内容変更
   resources :adminmessages
+  # 一斉メール  
+  resources :group_email_comments do
+    member do
+      get 'group_email'
+    end
+  end   
+    
 end

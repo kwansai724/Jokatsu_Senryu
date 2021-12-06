@@ -16,7 +16,7 @@
           <%= form_with(model: @message, local: true, method: :patch) do |f| %>
             <%# <%= render 'shared/error_messages', object: @user  %>
             <%= f.hidden_field :staff_id, value: current_staff.id %>
-            <% f.label "メール内容" %>
+            <%= f.label "メール内容" %>
             <%= f.text_area :message, size: "25x15", class: "form-control form-size"%>
 
             <div class="center">
