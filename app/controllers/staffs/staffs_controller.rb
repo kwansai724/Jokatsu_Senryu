@@ -24,6 +24,8 @@ class Staffs::StaffsController < ApplicationController
     @staff = Staff.find_by(group_name: params[:group_name])
     @users = User.eager_load(:posts).all
     @posts = Post.all.where.not(first_phrase: "")
+    @voters = Voter.eager_load(:voterposts).all
+    @voterposts = Voterpost.all.order(voter_id: "ASC")
     if params[:key] == "posts"
       respond_to do |format|
         format.html
@@ -38,12 +40,20 @@ class Staffs::StaffsController < ApplicationController
           send_users_csv(@users)
         end
       end
+    elsif params[:key] == "voters"
+      respond_to do |format|
+        format.html
+        format.csv do |csv|
+          send_voters_csv(@voterposts)
+        end
+      end
     end
   end
 
   def send_posts_csv(posts)
     if current_staff.admin == true
-      csv_data = CSV.generate do |csv|
+      bom = "\uFEFF"
+      csv_data = CSV.generate(bom) do |csv|
         header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数（WIP） 得票数（全体）)
         csv << header
 
@@ -57,7 +67,7 @@ class Staffs::StaffsController < ApplicationController
         end
       end
     else
-      csv_data = CSV.generate do |csv|
+      csv_data = CSV.generate(bom) do |csv|
         header = %w(No 上の句 中の句 下の句 ペンネーム 部門 性別 お住まい 職業 年代 メッセージ アンケート 得票数)
         csv << header
 
@@ -74,7 +84,8 @@ class Staffs::StaffsController < ApplicationController
   end
 
   def send_users_csv(users)
-    csv_data = CSV.generate do |csv|
+    bom = "\uFEFF"
+    csv_data = CSV.generate(bom) do |csv|
       header = %w(No 氏名 Email 性別 お住まい 職業 （職業：その他） 年代 メッセージ アンケート)
       csv << header
 
@@ -85,11 +96,33 @@ class Staffs::StaffsController < ApplicationController
     end
     send_data(csv_data, filename: "jokatsu_senryu_users.csv")
   end
+
+  def send_voters_csv(voterposts)
+    bom = "\uFEFF"
+    csv_data = CSV.generate(bom) do |csv|
+      header = %w(氏名 グループ No1川柳（女性パワーで未来を変えるの部） 推薦理由（女性パワーで未来を変えるの部） No1川柳（ジェンダー・多様性の部） 推薦理由（ジェンダー・多様性の部） No1川柳（はたらく女子の部） 推薦理由（はたらく女子の部） No1川柳（ママ・子どもの部） 推薦理由（ママ・子どもの部）  
+                  No1川柳（名もなき家事の部） 推薦理由（名もなき家事の部） No1川柳（本当にありがとう❣️感謝の部） 推薦理由（本当にありがとう❣️感謝の部） No1川柳（あるある❣️の部） 推薦理由（あるある❣️の部） No1川柳（涙がポロ❣️の部） 推薦理由（涙がポロ❣️の部） 
+                  No1川柳（輝け❣️私のライフスタイルの部） 推薦理由（輝け❣️私のライフスタイルの部） No1川柳（心がきゅん❣️私の癒しの部） 推薦理由（心がきゅん❣️私の癒しの部） No1川柳（SDGsアクションの部） 推薦理由（SDGsアクションの部）)
+      csv << header
+
+      voterposts.each do |voterpost|
+        voter = Voter.find_by(id: voterpost.voter_id)
+        values = [voter.name, voter.group, voterpost.favorite_post1, voterpost.reason1, voterpost.favorite_post2, voterpost.reason2, voterpost.favorite_post3, voterpost.reason3, voterpost.favorite_post4, voterpost.reason4,
+                  voterpost.favorite_post5, voterpost.reason5, voterpost.favorite_post6, voterpost.reason6, voterpost.favorite_post7, voterpost.reason7, voterpost.favorite_post8, voterpost.reason8,
+                  voterpost.favorite_post9, voterpost.reason9, voterpost.favorite_post10, voterpost.reason10, voterpost.favorite_post11, voterpost.reason11]
+        csv << values
+      end
+    end
+    send_data(csv_data, filename: "jokatsu_senryu_voters.csv")
+  end
   
 
   def users_index
     @search_params = user_search_params
     @users = User.search(@search_params).paginate(page: params[:page],per_page: 50)
+    # @users_count = User.distinct.count(:name)
+    @users_count = User.count('DISTINCT name')
+
   end
 
   def users_show

@@ -1,41 +1,44 @@
-<h1>一斉メール<h1>
 
-<div class="col-mw-md col-mw-xl center-block">
-  <p class="tyui">※下記の内容を確認後一斉送信のボタンをクリックしてください。</p>
-    
-  <div class="group-email-comment-index-table mw-md col-mw-xl center-block">
-    <table class="table table-sm">
-      <tr>
-        <th class="group-email-comment-index-table-th">一斉メール内容</th>
-      </tr>  
-      <% if @group_email_comments.present? %>
-        <% @group_email_comments.each do |group| %>
-          <tr>
-            <td class="group-email-comment-index-table-td">
-              件名：<%= group.subject %>
-            </td>
-            </tr>
-          <tr>
-            <td class="group-email-comment-index-table-td">
-              <%= simple_format(group.comment) %>
-            </td>
-            </tr>
+<div class="group_email-body">
+  <h1>メール一斉送信<h1>
+
+  <div class="col-mw-md col-mw-xl center-block">
+    <p class="tyui">※下記の内容を確認後メール一斉送信のボタンをクリックしてください。</p>
+      
+    <div class="group-email-comment-index-table mw-md col-mw-xl center-block">
+      <table class="table table-sm">
+        <tr>
+          <th class="group-email-comment-index-table-th">一斉メール内容</th>
+        </tr>  
+        <% if @group_email_comments.present? %>
+          <% @group_email_comments.each do |group| %>
             <tr>
-            <td class="group-email-comment-index-table-td">
-              <%= link_to "編集", edit_group_email_comment_path(id: group.id, staff_id: current_staff.id), remote: true, class: "btn btn-success" %> 
-              <%# <%= link_to "削除", group, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" <br> %>
-            </td>
-          </tr>
+              <td class="group-email-comment-index-table-td">
+                件名：<%= group.subject %>
+              </td>
+              </tr>
+            <tr>
+              <td class="group-email-comment-index-table-td">
+                <%= simple_format(group.comment) %>
+              </td>
+              </tr>
+              <tr>
+              <td class="group-email-comment-index-table-td">
+                <%= link_to "編集", edit_group_email_comment_path(id: group.id, staff_id: current_staff.id), remote: true, class: "btn btn-success" %> 
+                <%# <%= link_to "削除", group, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" <br> %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </table>
+      </table>
+    </div>
+    <div class="group-email-comment-btn">
+      <%= link_to "メール一斉送信", group_email_group_email_comment_path(id: current_staff.id), data: { confirm: "応募者全員にメールを送信します。よろしいですか？" }, class: "btn btn-primary btn-form" %>
+    </div>
+    <div class="group-email-comment-btn">
+      <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn-gradient confirm-btn" %>
+    </div>
   </div>
-  <div class="group-email-comment-btn">
-    <%= link_to "一斉メール送信", group_email_group_email_comment_path(id: current_staff.id), class: "btn btn-primary  btn-form" %>
-  </div>
-  <div class="group-email-comment-btn">
-    <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn-gradient confirm-btn" %>
-  </div>
+  <!--モーダルウインドウ表示-->
+  <div id="edit-group-email-comment" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 </div>
-<!--モーダルウインドウ表示-->
-<div id="edit-group-email-comment" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

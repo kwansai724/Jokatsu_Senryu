@@ -32,7 +32,7 @@ class GroupEmailCommentsController < ApplicationController
     @group_email_comment = GroupEmailComment.find_by(staff_id: params[:id])
     @group_email_comments = GroupEmailComment.all
     GroupMailer.send_announcement_mail(@group_email_comment.subject, @group_email_comment.comment, User.all.pluck(:email)).deliver_now
-    flash[:success] = '一斉メール送信しました。'
+    flash[:success] = 'メールを一斉送信しました。'
     redirect_to group_email_comments_path(id: current_staff.id)
   end
 

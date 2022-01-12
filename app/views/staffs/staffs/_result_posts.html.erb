@@ -11,7 +11,7 @@
       <div class="main-index d-flex border-bottom mb-2">
         【得票数：<%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count %> 】
         <%= post.id %>.　<%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %> /(<%= post.pen_name %>)
-        /<%= post.user.gender %>/<%= post.user.address %>/<%= post.user.profession %>/<%= post.user.age %>
+        /<%= post.user.gender %>/<%= post.user.address %>/<%= post.user.profession %>/<%= post.user.age %>/<%= post.user.note %>
         <% if params[:admin] == "true" %>
           【名前：<%= post.user.name %> / Eメール：<%= post.user.email %>】
         <% end %>  
