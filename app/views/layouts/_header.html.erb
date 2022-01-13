@@ -30,11 +30,11 @@
                 <%= link_to "川柳投稿者一覧", staffs_staffs_users_index_path %>
               </li>
               <li class="nav-item active nav-link">
-                <%= link_to "投票者・グループ一覧", staffs_staffs_voterposts_index_path %>
+                <%= link_to "審査員・グループ一覧", staffs_staffs_voterposts_index_path %>
               </li>
             <% else %>
             <li class="nav-item active nav-link">
-              <%= link_to "投票者一覧", staffs_staffs_voterposts_index_path %>
+              <%= link_to "審査員一覧", staffs_staffs_voterposts_index_path %>
             </li>
             <% end %>
             <% if current_staff.admin == true %>
