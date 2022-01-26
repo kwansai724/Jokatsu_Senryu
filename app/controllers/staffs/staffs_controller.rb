@@ -83,8 +83,22 @@ class Staffs::StaffsController < ApplicationController
     send_data(csv_data, filename: "jokatsu_senryu.csv")
   end
 
+  # def send_users_csv(users)
+  #   bom = "\uFEFF"
+  #   csv_data = CSV.generate(bom) do |csv|
+  #     header = %w(No 氏名 Email 性別 お住まい 職業 （職業：その他） 年代 メッセージ アンケート)
+  #     csv << header
+
+  #     users.each do |user|
+  #       values = [user.id, user.name, user.email, user.gender, user.address, user.profession, user.other, user.age, user.note, user.questionary]
+  #       csv << values
+  #     end
+  #   end
+  #   send_data(csv_data, filename: "jokatsu_senryu_users.csv")
+  # end
+
   def send_users_csv(users)
-    bom = "\uFEFF"
+    bom = %w[EF BB BF].map { |e| e.hex.chr }.join
     csv_data = CSV.generate(bom) do |csv|
       header = %w(No 氏名 Email 性別 お住まい 職業 （職業：その他） 年代 メッセージ アンケート)
       csv << header
@@ -96,6 +110,7 @@ class Staffs::StaffsController < ApplicationController
     end
     send_data(csv_data, filename: "jokatsu_senryu_users.csv")
   end
+
 
   def send_voters_csv(voterposts)
     bom = "\uFEFF"
