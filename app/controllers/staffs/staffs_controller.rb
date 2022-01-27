@@ -1,4 +1,5 @@
 require 'csv'
+require 'nkf'
 
 class Staffs::StaffsController < ApplicationController
   before_action :staff_only
@@ -90,7 +91,10 @@ class Staffs::StaffsController < ApplicationController
       csv << header
 
       users.each do |user|
-        values = [user.id, user.name, user.email, user.gender, user.address, user.profession, user.other, user.age, user.note, user.questionary]
+        name = user.name.gsub(/[[:space:]]/, '').strip.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')
+        name = NKF.nkf('-w -Z1', name)
+        values = [user.id, name, user.email, user.gender, user.address, user.profession, user.other, user.age, user.note, user.questionary]
+        # debugger
         csv << values
       end
     end
