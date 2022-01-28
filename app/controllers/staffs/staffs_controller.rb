@@ -68,6 +68,7 @@ class Staffs::StaffsController < ApplicationController
         end
       end
     else
+      bom = "\uFEFF"
       csv_data = CSV.generate(bom) do |csv|
         header = %w(No 上の句 中の句 下の句 ペンネーム 部門 性別 お住まい 職業 年代 メッセージ アンケート 得票数)
         csv << header
