@@ -95,7 +95,6 @@ class Staffs::StaffsController < ApplicationController
         name = user.name.gsub(/[[:space:]]/, '').strip.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')
         name = NKF.nkf('-w -Z1', name)
         values = [user.id, name, user.email, user.gender, user.address, user.profession, user.other, user.age, user.note, user.questionary]
-        # debugger
         csv << values
       end
     end
@@ -103,19 +102,40 @@ class Staffs::StaffsController < ApplicationController
   end
 
   def send_voters_csv(voterposts)
-    bom = "\uFEFF"
-    csv_data = CSV.generate(bom) do |csv|
-      header = %w(氏名 グループ No1川柳（女性パワーで未来を変えるの部） 推薦理由（女性パワーで未来を変えるの部） No1川柳（ジェンダー・多様性の部） 推薦理由（ジェンダー・多様性の部） No1川柳（はたらく女子の部） 推薦理由（はたらく女子の部） No1川柳（ママ・子どもの部） 推薦理由（ママ・子どもの部）  
-                  No1川柳（名もなき家事の部） 推薦理由（名もなき家事の部） No1川柳（本当にありがとう❣️感謝の部） 推薦理由（本当にありがとう❣️感謝の部） No1川柳（あるある❣️の部） 推薦理由（あるある❣️の部） No1川柳（涙がポロ❣️の部） 推薦理由（涙がポロ❣️の部） 
-                  No1川柳（輝け❣️私のライフスタイルの部） 推薦理由（輝け❣️私のライフスタイルの部） No1川柳（心がきゅん❣️私の癒しの部） 推薦理由（心がきゅん❣️私の癒しの部） No1川柳（SDGsアクションの部） 推薦理由（SDGsアクションの部）)
-      csv << header
+    if current_staff.admin == true
+      bom = "\uFEFF"
+      csv_data = CSV.generate(bom) do |csv|
+        header = %w(氏名 グループ No1川柳（女性パワーで未来を変えるの部） 推薦理由（女性パワーで未来を変えるの部） No1川柳（ジェンダー・多様性の部） 推薦理由（ジェンダー・多様性の部） No1川柳（はたらく女子の部） 推薦理由（はたらく女子の部） No1川柳（ママ・子どもの部） 推薦理由（ママ・子どもの部）  
+                    No1川柳（名もなき家事の部） 推薦理由（名もなき家事の部） No1川柳（本当にありがとう❣️感謝の部） 推薦理由（本当にありがとう❣️感謝の部） No1川柳（あるある❣️の部） 推薦理由（あるある❣️の部） No1川柳（涙がポロ❣️の部） 推薦理由（涙がポロ❣️の部） 
+                    No1川柳（輝け❣️私のライフスタイルの部） 推薦理由（輝け❣️私のライフスタイルの部） No1川柳（心がきゅん❣️私の癒しの部） 推薦理由（心がきゅん❣️私の癒しの部） No1川柳（SDGsアクションの部） 推薦理由（SDGsアクションの部）)
+        csv << header
 
-      voterposts.each do |voterpost|
-        voter = Voter.find_by(id: voterpost.voter_id)
-        values = [voter.name, voter.group, voterpost.favorite_post1, voterpost.reason1, voterpost.favorite_post2, voterpost.reason2, voterpost.favorite_post3, voterpost.reason3, voterpost.favorite_post4, voterpost.reason4,
-                  voterpost.favorite_post5, voterpost.reason5, voterpost.favorite_post6, voterpost.reason6, voterpost.favorite_post7, voterpost.reason7, voterpost.favorite_post8, voterpost.reason8,
-                  voterpost.favorite_post9, voterpost.reason9, voterpost.favorite_post10, voterpost.reason10, voterpost.favorite_post11, voterpost.reason11]
-        csv << values
+        voterposts.each do |voterpost|
+          voter = Voter.find_by(id: voterpost.voter_id)
+          values = [voter.name, voter.group, voterpost.favorite_post1, voterpost.reason1, voterpost.favorite_post2, voterpost.reason2, voterpost.favorite_post3, voterpost.reason3, voterpost.favorite_post4, voterpost.reason4,
+                    voterpost.favorite_post5, voterpost.reason5, voterpost.favorite_post6, voterpost.reason6, voterpost.favorite_post7, voterpost.reason7, voterpost.favorite_post8, voterpost.reason8,
+                    voterpost.favorite_post9, voterpost.reason9, voterpost.favorite_post10, voterpost.reason10, voterpost.favorite_post11, voterpost.reason11]
+          csv << values
+        end
+      end
+    else
+      bom = "\uFEFF"
+      csv_data = CSV.generate(bom) do |csv|
+        header = %w(氏名 グループ No1川柳（女性パワーで未来を変えるの部） 推薦理由（女性パワーで未来を変えるの部） No1川柳（ジェンダー・多様性の部） 推薦理由（ジェンダー・多様性の部） No1川柳（はたらく女子の部） 推薦理由（はたらく女子の部） No1川柳（ママ・子どもの部） 推薦理由（ママ・子どもの部）  
+                    No1川柳（名もなき家事の部） 推薦理由（名もなき家事の部） No1川柳（本当にありがとう❣️感謝の部） 推薦理由（本当にありがとう❣️感謝の部） No1川柳（あるある❣️の部） 推薦理由（あるある❣️の部） No1川柳（涙がポロ❣️の部） 推薦理由（涙がポロ❣️の部） 
+                    No1川柳（輝け❣️私のライフスタイルの部） 推薦理由（輝け❣️私のライフスタイルの部） No1川柳（心がきゅん❣️私の癒しの部） 推薦理由（心がきゅん❣️私の癒しの部） No1川柳（SDGsアクションの部） 推薦理由（SDGsアクションの部）)
+        csv << header
+        
+        voter_ids = Voter.where(id: voterposts.select(:voter_id)).where(group: params[:group_name]).ids
+        voter_ids.each do |voter_id|
+          voter = Voter.find_by(id: voter_id)
+          voterpost = voterposts.find_by(voter_id: voter_id)
+          debugger
+          values = [voter.name, voter.group, voterpost.favorite_post1, voterpost.reason1, voterpost.favorite_post2, voterpost.reason2, voterpost.favorite_post3, voterpost.reason3, voterpost.favorite_post4, voterpost.reason4,
+                    voterpost.favorite_post5, voterpost.reason5, voterpost.favorite_post6, voterpost.reason6, voterpost.favorite_post7, voterpost.reason7, voterpost.favorite_post8, voterpost.reason8,
+                    voterpost.favorite_post9, voterpost.reason9, voterpost.favorite_post10, voterpost.reason10, voterpost.favorite_post11, voterpost.reason11]
+          csv << values
+        end
       end
     end
     send_data(csv_data, filename: "jokatsu_senryu_voters.csv")
