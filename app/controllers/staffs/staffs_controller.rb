@@ -57,7 +57,7 @@ class Staffs::StaffsController < ApplicationController
       bom = "\uFEFF"
       csv_data = CSV.generate(bom) do |csv|
         # header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数（WIP） 得票数（全体）)
-        header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 性別 お住まい 職業 年代 メッセージ アンケート 得票数（WIP）)
+        header = %w(No 上の句 中の句 下の句 ペンネーム 部門 氏名 Email 得票数（WIP） 得票数（全体）)
         csv << header
 
         posts.each do |post|
@@ -67,8 +67,9 @@ class Staffs::StaffsController < ApplicationController
           #           Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count,
           #           Like.where(post_id: post.id).count]
           values = [post.id, post.first_phrase, post.second_phrase, post.third_phrase, post.pen_name, post.category,
-                    user.name, user.email, user.gender, user.address, user.profession, user.age, user.note, user.questionary,
-                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count]
+                    user.name, user.email,
+                    Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count,
+                    Like.where(post_id: post.id).count]
           csv << values
         end
       end
