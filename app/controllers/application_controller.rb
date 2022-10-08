@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
+
   # スタッフ画面閲覧制限
   def staff_only
     unless current_staff.present?
@@ -43,29 +43,28 @@ class ApplicationController < ActionController::Base
   end
 
   # voterpostのupdateで登録するためにvoter_idを最初に登録
-  def voter_id    
+  def voter_id
     @voter = Voter.find(current_voter.id)
     if @voter.voterposts.present? == false
-      @voterpost = @voter.voterposts.create!(voter_id: current_voter.id) 
-    else 
+      @voterpost = @voter.voterposts.create!(voter_id: current_voter.id)
+    else
       @voter.voterposts.each do |v|
-        if current_voter.id != v.voter_id 
+        if current_voter.id != v.voter_id
           @voterpost = @voter.voterposts.create!(voter_id: current_voter.id)
         end
-      end  
+      end
     end
   end
 
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys:[:name, :group, :password, :password_confirmation]) 
-    devise_parameter_sanitizer.permit(:sign_in, keys:[:name, :group, :password, :password_confirmation]) 
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :group, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :group, :password, :password_confirmation])
   end
 
   def allow_iframe
     response.headers['X-Frame-Options'] = 'ALLOW-FROM https://www.sdgswip.com/pages/5514498/static'
     # response.headers['X-Frame-Options'] = 'ALLOWALL'
   end
-
 end

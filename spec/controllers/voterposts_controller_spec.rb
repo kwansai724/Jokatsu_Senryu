@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe VoterpostsController, type: :controller do
-  
   describe "#index" do
     context "アカウント登録済みの場合" do
       before do
@@ -18,7 +17,7 @@ RSpec.describe VoterpostsController, type: :controller do
         sign_in @voter
         get :index
         expect(response).to have_http_status "200"
-      end  
+      end
     end
 
     context "アカウント未登録の場合" do
@@ -50,7 +49,7 @@ RSpec.describe VoterpostsController, type: :controller do
         sign_in @voter
         get :show, params: { id: "任意のid" }
         expect(response).to have_http_status "200"
-      end  
+      end
     end
 
     context "アカウント未登録の場合" do
@@ -82,7 +81,7 @@ RSpec.describe VoterpostsController, type: :controller do
         sign_in @voter
         get :edit, params: { id: "任意のid" }
         expect(response).to have_http_status "200"
-      end  
+      end
     end
 
     context "アカウント未登録の場合" do
@@ -132,9 +131,5 @@ RSpec.describe VoterpostsController, type: :controller do
         expect(response).to redirect_to "/"
       end
     end
-
   end
-
-
-
 end

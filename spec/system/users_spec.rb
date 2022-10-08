@@ -19,8 +19,8 @@ RSpec.describe "Users", type: :system do
       fill_in "user_note", with: "テストメッセージ"
       check "user_questionary_wipメンバーのブログや投稿など"
       # save_and_open_page
-      click_button "内容確認画面へ"
-      expect(page).to have_content "確認画面"
+      click_button '内容確認画面へ'
+      expect(page).to have_content '確認画面'
     }.to change {
       current_path
     }.from(users_path).to(confirm_users_path)

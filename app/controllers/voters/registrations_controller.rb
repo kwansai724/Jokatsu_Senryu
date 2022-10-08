@@ -20,9 +20,9 @@ class Voters::RegistrationsController < Devise::RegistrationsController
     resource.save
 
     if resource.persisted?
-    # 先程のresource.saveが成功していたら
+      # 先程のresource.saveが成功していたら
       if resource.active_for_authentication?
-      # confirmable/lockableどちらかのactive_for_authentication?がtrueだったら
+        # confirmable/lockableどちらかのactive_for_authentication?がtrueだったら
         # flashメッセージを設定
         set_flash_message! :notice, :signed_up
         # サインアップ操作
@@ -38,7 +38,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else
-    # 先程のresource.saveが失敗していたら
+      # 先程のresource.saveが失敗していたら
       # passwordとpassword_confirmationをnilにする
       clean_up_passwords resource
       # validatable有効時に、パスワードの最小値を設定する
@@ -73,7 +73,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-   # 更新（編集の反映）時にパスワード入力を省く
+  # 更新（編集の反映）時にパスワード入力を省く
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
@@ -86,7 +86,7 @@ class Voters::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :group]) 
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :group])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -3,7 +3,7 @@ class AdminmessagesController < ApplicationController
     @message = Adminmessage.new
     @messages = Adminmessage.all
   end
-  
+
   def create
     @message = Adminmessage.new(message_params)
     if @message.save
@@ -37,11 +37,11 @@ class AdminmessagesController < ApplicationController
   end
 
   private
-  
+
   def message_params
     params.permit(:message, :staff_id)
   end
-  
+
   def message_update_params
     params.require(:adminmessage).permit(:message, :staff_id)
   end

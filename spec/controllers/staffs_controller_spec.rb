@@ -1,24 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Staffs::StaffsController, type: :controller do
-
   describe "#toppage" do
     context "アカウント登録済みの場合" do
       before do
         @staff = create(:staff)
       end
-  
+
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :toppage
         expect(response).to be_successful
       end
-  
+
       it "200レスポンスを返すこと" do
         sign_in @staff
         get :toppage
         expect(response).to have_http_status "200"
-      end  
+      end
     end
 
     context "アカウント未登録の場合" do
@@ -39,18 +38,18 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       before do
         @staff = create(:staff)
       end
-  
+
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :index
         expect(response).to be_successful
       end
-  
+
       it "200レスポンスを返すこと" do
         sign_in @staff
         get :index
         expect(response).to have_http_status "200"
-      end  
+      end
     end
 
     context "アカウント未登録の場合" do
@@ -71,21 +70,21 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       before do
         @staff = create(:staff, admin: true)
       end
-  
+
       it "正常にレスポンスを返すこと" do
         sign_in @staff
         get :users_index
         expect(response).to be_successful
       end
-  
+
       it "200レスポンスを返すこと" do
         sign_in @staff
         get :users_index
         expect(response).to have_http_status "200"
-      end  
+      end
     end
 
-    #現状、直接パス入力で管理者権限がなくても閲覧できてしまう。
+    # 現状、直接パス入力で管理者権限がなくても閲覧できてしまう。
     # context "アカウント登録済みかつ管理者権限を持たない場合" do
     #   before do
     #     @staff = create(:staff, admin: false)
@@ -146,7 +145,6 @@ RSpec.describe Staffs::StaffsController, type: :controller do
 
   describe "#voterposts_index" do
     context "アカウント登録済みの場合" do
-
       before do
         @staff = create(:staff)
       end
@@ -197,6 +195,4 @@ RSpec.describe Staffs::StaffsController, type: :controller do
       end
     end
   end
-
-
 end

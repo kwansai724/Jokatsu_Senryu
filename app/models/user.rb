@@ -13,13 +13,12 @@ class User < ApplicationRecord
   validates :age, presence: true
   validates :note, length: { maximum: 1000 }
   validates :questionary, presence: true
-  
+
   # 投稿者一覧の検索機能
   scope :search, -> (search_params) do
     return if search_params.blank?
 
     name_like(search_params[:name])
   end
-  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
-  
+  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }  
 end

@@ -9,7 +9,7 @@ class Voter < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable,
          :authentication_keys => [:name]
 
-  validates :name, presence: true, uniqueness: true, length: {maximum: 50}
+  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :group, presence: true
 
   # # nameを利用してログイン
@@ -22,7 +22,7 @@ class Voter < ApplicationRecord
   #   end
   # end
 
-  #登録時にメールアドレスを不要とする
+  # 登録時にメールアドレスを不要とする
   def email_required?
     false
   end
@@ -34,5 +34,4 @@ class Voter < ApplicationRecord
   def will_save_change_to_email?
     false
   end
- 
 end

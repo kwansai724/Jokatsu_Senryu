@@ -105,5 +105,4 @@ RSpec.describe "Voterposts Api", type: :request do
       end
     end
   end
-
 end
