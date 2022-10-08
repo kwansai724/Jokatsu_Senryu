@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2021_12_05_125430) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "adminmessages", force: :cascade do |t|
     t.string "message"
-    t.integer "staff_id"
+    t.bigint "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["staff_id"], name: "index_adminmessages_on_staff_id"
@@ -23,15 +26,15 @@ ActiveRecord::Schema.define(version: 2021_12_05_125430) do
   create_table "group_email_comments", force: :cascade do |t|
     t.string "comment"
     t.string "subject"
-    t.integer "staff_id"
+    t.bigint "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["staff_id"], name: "index_group_email_comments_on_staff_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "voter_id"
-    t.integer "post_id"
+    t.bigint "voter_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_12_05_125430) do
     t.string "third_phrase"
     t.string "pen_name"
     t.string "category"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "like_post", default: false
@@ -105,7 +108,7 @@ ActiveRecord::Schema.define(version: 2021_12_05_125430) do
     t.string "reason10"
     t.integer "favorite_post11"
     t.string "reason11"
-    t.integer "voter_id"
+    t.bigint "voter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["voter_id"], name: "index_voterposts_on_voter_id"
@@ -128,4 +131,10 @@ ActiveRecord::Schema.define(version: 2021_12_05_125430) do
     t.index ["reset_password_token"], name: "index_voters_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "adminmessages", "staffs"
+  add_foreign_key "group_email_comments", "staffs"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "voters"
+  add_foreign_key "posts", "users"
+  add_foreign_key "voterposts", "voters"
 end

@@ -12,7 +12,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'listen', '>= 3.0.5', '< 3.2'
-gem 'byebug'
 
 # ログイン機能
 gem 'devise'
@@ -30,7 +29,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
-#サンプル追加
+# サンプル追加
 gem 'faker'
 
 # csvインポート
@@ -53,6 +52,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
   gem 'rubocop', require: false
+  gem 'pry-byebug'
 end
 
 group :test do
