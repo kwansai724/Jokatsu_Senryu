@@ -1,0 +1,32 @@
+name: Rubocop & Rspec
+
+on:
+  push:
+    branches:
+      - feature/*
+      - hotfix/*
+      - develop
+jobs:
+  build:
+    steps:
+      - name: Checkout repository
+        uses: actions/chekout@v2
+        with:
+          lfs: false
+      # Docker起動
+      - name: Build and up docker
+        run: |
+          docker-compose down
+          docker-compose build
+          docker-compose up -d
+
+      # Rubocop実行
+      - name: Run rubocop
+        run: docker-compose run --rm api bundle exec rubocop
+
+      # Rspec実行
+      - name: Run rspec
+        run: |
+          docker-compose run --rm api bundle exec rails db:create
+          docker-compose run --rm api bundle exec rails db:migrate:reset
+          docker-compose run --rm api bundle exec rspec
