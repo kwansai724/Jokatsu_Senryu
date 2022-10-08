@@ -1,11 +1,7 @@
 name: Rubocop & Rspec
 
-on:
-  push:
-    branches:
-      - feature/*
-      - hotfix/*
-      - develop
+on: [push]
+
 jobs:
   build:
     steps:
