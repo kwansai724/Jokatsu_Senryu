@@ -1,9 +1,10 @@
 name: Rubocop & Rspec
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
+    runs-on: [ self-hosted ]
     steps:
       - name: Checkout repository
         uses: actions/chekout@v2
