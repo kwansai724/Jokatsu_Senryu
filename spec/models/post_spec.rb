@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  
   it "上の句の文字数上限は３０文字であること" do
     post = build(:post, first_phrase: "あ" * 31)
     post.valid?
@@ -41,5 +40,4 @@ RSpec.describe Post, type: :model do
     post = create(:post, :with_likes_for_post)
     expect(post.likes.length).to eq 5
   end
-
 end

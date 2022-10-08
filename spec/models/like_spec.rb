@@ -16,5 +16,4 @@ RSpec.describe Like, type: :model do
     like.voter_id = nil
     expect(like).to be_invalid
   end
-
 end

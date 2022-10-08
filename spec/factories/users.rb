@@ -12,5 +12,4 @@ FactoryBot.define do
   trait :with_posts do
     after(:create) { |user| create_list(:post, 2, user: user) }
   end
-
 end

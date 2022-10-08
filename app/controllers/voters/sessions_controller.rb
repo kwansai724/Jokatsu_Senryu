@@ -26,18 +26,17 @@ class Voters::SessionsController < Devise::SessionsController
   # end
 
   def create
-    #元の認証ロジック
-    #self.resource = warden.authenticate!(auth_options)
+    # 元の認証ロジック
+    # self.resource = warden.authenticate!(auth_options)
 
-    #nameだけでログインできるように変更
-    
+    # nameだけでログインできるように変更
     if params[:voter]['name'].present?
       self.resource = Voter.where(:name => params[:voter]['name']).first
       if self.resource.present?
         set_flash_message(:notice, :signed_in) if is_flashing_format?
         sign_in(resource_name, resource)
         yield resource if block_given?
-          session[:voter_id] = "voter"  
+          session[:voter_id] = "voter"
           respond_with resource, :location => after_sign_in_path_for(resource)
       else
         flash[:danger] = "登録された名前が違います"
@@ -45,7 +44,6 @@ class Voters::SessionsController < Devise::SessionsController
       end
     end
   end
-
 
   # ログイン後の画面遷移
   def after_sign_in_path_for(resource)
@@ -56,5 +54,4 @@ class Voters::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     new_voter_session_path
   end
-  
 end

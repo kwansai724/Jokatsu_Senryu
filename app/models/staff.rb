@@ -10,7 +10,7 @@ class Staff < ApplicationRecord
 
   validates :login_id, presence: true, length: { is: 8 }
 
-  #登録時にメールアドレスを不要とする
+  # 登録時にメールアドレスを不要とする
   def email_required?
     false
   end
@@ -23,7 +23,7 @@ class Staff < ApplicationRecord
     false
   end
 
-  #importメソッド
+  # importメソッド
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
@@ -38,5 +38,4 @@ class Staff < ApplicationRecord
   def self.updatable_attributes
     ["login_id", "group_name", "password", "password_confirmation"]
   end
-
 end

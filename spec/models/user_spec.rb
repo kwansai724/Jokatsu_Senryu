@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   it "名前、メールアドレス、性別、住まい、職業、年齢、アンケートがあれば有効な状態であること" do
     user = build(:user)
     expect(user).to be_valid
@@ -56,12 +55,11 @@ RSpec.describe User, type: :model do
   end
 
   describe "投稿者一覧で名前を検索する" do
-
     before do
       @user1 = create(:user, name: "大中小")
       @user2 = create(:user, name: "大中")
       @user3 = create(:user, name: "中小")
-    end  
+    end
 
     context "一致する名前が見つかるとき" do
       it "投稿者一覧の検索で、入力した文字が完全一致していれば検索結果が表示されること" do
@@ -83,5 +81,4 @@ RSpec.describe User, type: :model do
     user = create(:user, :with_posts)
     expect(user.posts.length).to eq 2
   end
-
 end

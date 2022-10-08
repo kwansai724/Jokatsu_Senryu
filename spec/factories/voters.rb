@@ -9,5 +9,4 @@ FactoryBot.define do
   trait :with_likes_for_voter do
     after(:create) { |voter| create_list(:like, 5, voter: voter) }
   end
-
 end

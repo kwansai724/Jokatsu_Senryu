@@ -12,5 +12,4 @@ class Voterpost < ApplicationRecord
   validates :reason9, length: { maximum: 1000 }
   validates :reason10, length: { maximum: 1000 }
   validates :reason11, length: { maximum: 1000 }
-
 end

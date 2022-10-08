@@ -29,5 +29,4 @@ RSpec.describe Voter, type: :model do
     voter = create(:voter, :with_likes_for_voter)
     expect(voter.likes.length).to eq 5
   end
-
 end

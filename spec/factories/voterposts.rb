@@ -24,7 +24,7 @@ FactoryBot.define do
     reason11 "あ" * 1000
     association :voter
 
-    #推薦理由が文字数オーバー
+    # 推薦理由が文字数オーバー
     trait :over_number_of_characters do
       reason1 "あ" * 1001
       reason2 "あ" * 1001
@@ -39,7 +39,7 @@ FactoryBot.define do
       reason11 "あ" * 1001
     end
 
-    #空のvoterpost
+    # 空のvoterpost
     trait :empty_voterpost do
       favorite_post1 ""
       reason1 ""

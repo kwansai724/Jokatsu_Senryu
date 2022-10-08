@@ -7,7 +7,6 @@ class GroupMailer < ApplicationMailer
   end
 
   # default from: 'ahimihimi53@gmail.com'
-  
   def send_announcement_mail(subject, comment, emails)
     @comment = comment
     xsmtp_api_params = { to: emails }
