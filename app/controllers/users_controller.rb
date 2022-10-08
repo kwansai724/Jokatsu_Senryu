@@ -9,9 +9,7 @@ class UsersController < ApplicationController
 
   # 確認画面
   def confirm
-    # byebug
     @user = User.new(user_params)
-    # byebug
     if @user.invalid?(:category_valid)
       flash.now[:danger] = @user.errors.full_messages.join("<br>")
       render :index

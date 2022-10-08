@@ -4,7 +4,6 @@ class LikesController < ApplicationController
       @user = User.find(@post.user_id)
       like = current_voter.likes.new(post_id: clicked_post.id)
       like.save
-      # byebug
       if @post.category == "女性パワーで未来を変えるの部"
         @category_count = current_voter.favorites.where(category: "女性パワーで未来を変えるの部").count
         @category = "女性パワーで未来を変えるの部"

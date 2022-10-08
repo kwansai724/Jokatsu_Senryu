@@ -101,8 +101,6 @@ class VoterpostsController < ApplicationController
     @voter = Voter.find(params[:id])
     @voterpost = @voter.voterposts.find_by(voter_id: params[:id])
     
-    
-    # byebug
     if params[:back]
       if params[:format] == "女性パワーで未来を変えるの部"
         redirect_to voterpost_path(name: "女性パワーで未来を変えるの部")
