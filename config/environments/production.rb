@@ -92,24 +92,21 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-# 追加
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = false
-config.action_mailer.default :charset => "utf-8"
-# config.action_mailer.default_url_options = { :Host => 'https://jokatsu-senryu.herokuapp.com/users' }
-# 槇さん個人テスト用↓
-config.action_mailer.default_url_options = { :Host => 'https://jokatsu-senryu-test.herokuapp.com/users' }
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  user_name: ENV['SENDGRID_USERNAME'],
-  password: ENV['SENDGRID_APIKEY'],
-  domain: "herokuapp.com",
-  address: 'smtp.sendgrid.net',
-  port: 587,
-  authentication: :plain,
-  enable_starttls_auto: true
-    
-}
+  # 追加
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default_url_options = { :Host => 'https://jokatsu-senryu.herokuapp.com/users' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_APIKEY'],
+    domain: "herokuapp.com",
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
 end
