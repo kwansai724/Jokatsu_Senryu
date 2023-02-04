@@ -1,0 +1,42 @@
+
+<div class="adminmessage-body col-mw-md col-mw-xl center-block">
+  <h1>投句完了メール<h1>
+
+  <div>
+    <%= form_with(model: @adminmessage, local: true) do |f| %>
+      <%= f.hidden_field :staff_id, value: params[:id] %>
+      <% f.label "メール内容" %>
+      <%= f.text_area :message, size: "25x8", class: "form-control form-size"%>
+      <%= f.submit "新規メール内容登録", class: "btn btn-primary  btn-form" %>
+    <% end %>
+  </div>
+  <p class="tyui">※複数登録できますが、メールに載りますので、必要のないメッセージは削除してください。</p>
+  <div class="adminmessage-index-table mw-md col-mw-xl center-block">
+    <table class="table table-sm">
+      <tr>
+        <th class="adminmessage-index-table-th">メール内容</th>
+      </tr>  
+      <% if @messages.present? %>
+        <% @messages.each do |message| %>
+          <tr>
+            <td class="adminmessage-index-table-td">
+              <%= simple_format(message.message) %>
+            </td>
+            </tr>
+            <tr>
+            <td class="adminmessage-index-table-td">
+              <%= link_to "編集", edit_adminmessage_path(id: message.id, staff_id: current_staff.id), remote: true, class: "btn btn-success" %> 
+              <%= link_to "削除", message, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %><br>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="adminmessage-btn">
+    <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn-gradient confirm-btn" %>
+  </div>
+</div>
+<!--モーダルウインドウ表示-->
+<div id="edit-adminmessage" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

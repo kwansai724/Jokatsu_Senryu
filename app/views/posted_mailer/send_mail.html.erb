@@ -1,0 +1,94 @@
+<!Doctype html>
+<html lang="ja">
+  <head>
+    <meta content="text/html; charset=UTF-8" />
+  </head>
+  <%
+=begin%>
+ <body>
+    <h2><%= @user.name %> 様</h2>
+    <hr />
+    <p>
+      この度はSDGs WIP主催「第二回女性活躍川柳」にご応募くださりありがとうございます。<br><br>
+
+      入選作品、グランプリ作品は、2022年3月6日（日）にオンラインで開催する<br>
+      【スマイルフェスティバル2022〜ワタシらしく輝くSDGsアクション〜】<br>
+      にて発表いたします！<br><br>
+
+      当日は、参加された皆さんがオンライン投票によって決める特別賞もありますので、<br>
+      ぜひお誘い合わせの上、ご参加下さい。<br><br><br>
+
+
+      Festivalへの参加受付は、2022年1月より開始する予定です。<br>
+      参加受付を開始いたしましたら、改めてお知らせいたします。<br>
+      下記の特設ページに受付フォームが表示されますので、お申込みをお願いします。<br>
+      当日のご参加に必要なZoomのURLをお送りします。<br><br><br>
+
+
+
+      【第二回女性活躍川柳特設ページ】<br>
+      https://www.sdgswip.com/pages/5514498/static<br><br>
+
+
+      ⚫️ブロンズスポンサー<br>
+      https://www.sdgswip.com/posts/categories/5546821<br>
+      　・マイヤーワールド合同会社<br><br>
+
+
+      ⚫️後援　三井住友海上火災保険株式会社<br>
+      　https://www.ms-ins.com/<br>
+    </p>
+    <hr />
+      <P>下記の通り受け付けました。</p>
+      <% @user.posts.each do |posts| %>
+        <% if posts.first_phrase.present? && posts.second_phrase.present? && posts.third_phrase.present? && posts.pen_name.present? && posts.category.present? %>
+          <p>川柳：<%= posts.first_phrase%>　<%= posts.second_phrase %>　<%= posts.third_phrase%><br>
+          ペンネーム：<%= posts.pen_name %><br>
+          部門：<%= posts.category %></p>
+        <% end %>
+      <% end %>
+    <hr />
+    <p>
+      •*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬<br>
+      SDGs Women's Innovation Project<br>
+      Smile Festival2020ジョカツ川柳チーム<br><br>
+
+      WIPへのご連絡、お問い合わせ<br>
+      https://ws.formzu.net/dist/S35086197/<br>
+      •*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬<br>
+    </p>
+  </body> 
+<%
+=end%>
+<head>
+  <meta content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <h2><%= @user.name %> 様</h2>
+  <hr />  
+  <div>
+    <% @message.each do |msg| %>
+      <p><%= simple_format(msg.message) %></p>
+    <% end %>
+    <hr />
+    <P>下記の通り受け付けました。</p>
+    <% @user.posts.each do |posts| %>
+      <% if posts.first_phrase.present? && posts.second_phrase.present? && posts.third_phrase.present? && posts.pen_name.present? && posts.category.present? %>
+        <p>川柳：<%= posts.first_phrase%>　<%= posts.second_phrase %>　<%= posts.third_phrase%><br>
+        ペンネーム：<%= posts.pen_name %><br>
+        部門：<%= posts.category %></p>
+      <% end %>
+    <% end %>
+    <hr />
+    <p>
+      •*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬<br>
+      SDGs Women's Innovation Project<br>
+      Smile Festival2020ジョカツ川柳チーム<br><br>
+
+      WIPへのご連絡、お問い合わせ<br>
+      https://ws.formzu.net/dist/S35086197/<br>
+      •*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬•*¨*•.¸¸♬<br>
+    </p>
+  </div>
+</body>
+</html>

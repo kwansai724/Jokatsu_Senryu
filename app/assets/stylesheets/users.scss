@@ -1,0 +1,372 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .center-block{
+//   margin: 0 auto;
+// }
+
+// .info {
+//   margin-left: 15px;
+// }
+
+// .users-table {
+//   width: 90%;
+//   margin: 10px;
+// }
+
+// .senryu-td {
+//   padding-left: 30px;
+// }
+
+// .users-th {
+//   width: 30%;
+//   background: yellow;
+//   padding-left: 5px;
+// }
+
+// .users-td {
+//   padding-left: 30px;
+// }
+
+// .input-width{
+//   font-size: 12px;
+//   width: 190px;
+//   height: 35px;
+// }
+
+// .color-red {
+//   margin-left: 10px;
+//   color: red;
+// }
+
+// .color-pink {
+//   font-size: 16px;
+//   // color: pink;
+//   color: #ff8b5f;
+// }
+
+// .users-email {
+//   font-size: 14px;
+// }
+
+// .btn {
+//   margin-top: 10px;
+// }
+
+// .user-index-btn{
+//   text-align: center;
+// }
+
+// // confirm
+// .confirm-th {
+//   background: none;
+// }
+
+// .actions {
+//   text-align: center;
+// }
+
+// .confirm-btn {
+//   margin-left: 10px;
+// }
+
+// @media screen and (max-width: 576px) {
+//   .users-table {
+//     margin: 10px auto;
+//   }
+
+//   .senryu-th {
+//     width: 25%;
+//     padding-left: 10px;
+//   }
+
+//   .senryu-td {
+//     font-size: 12px;
+//     padding-left: 10px;
+//   }
+
+//   .users-th {
+//     width: 200px;
+//     padding-left: 10px;
+//     font-size: 12px; 
+//   }
+
+//   .input-width{
+//     margin-top: 5px;
+//   }
+
+//   .color-red {
+//     margin-left: 5px;
+//   }
+
+//   .color-pink {
+//     font-size: 12px;
+//     // color: pink;
+//     color: #ff8b5f;
+//   }
+  
+//   .users-td {
+//     padding-left: 10px;
+//   }
+
+//   .font-pn{
+//     font-size: 10px;
+//   } 
+//   .users-email {
+//     font-size: 10px;
+//   }
+
+//   // confilrm
+//   .confirm-th {
+//     background: none;
+//     font-size: 9px;
+//   }
+
+//   .confirm-td {
+//     font-size: 12px;
+//   }
+
+//   .actions {
+//     margin-top: 10px;
+//   }
+
+//   .confirm-btn {
+//     margin-left: 10px;
+//   }
+// }
+
+// 槇変更分----------------------------------------------------------------------------------------
+
+.title h1 {
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.center-block{
+  margin: 0 auto;
+}
+
+.info {
+  margin-left: 15px;
+}
+
+.input-width {
+  height: 32px;
+}
+
+.input-form {
+  height: 32px;
+}
+
+.input-form-note {
+  width: 100%;
+}
+
+.senryu-table {
+  margin: 10px;
+  border-collapse: separate;
+}
+
+.senryu-table th {
+  background: rgb(250, 183, 95);
+  padding-left: 5px;
+}
+
+.senryu-th {
+  width: 175px;
+}
+
+.senryu-td {
+  padding-left: 30px;
+}
+
+.users-table {
+  margin: 10px;
+  border-collapse: separate;
+}
+
+.users-table th {
+  background: rgb(255, 255, 94);
+  padding-left: 5px;
+}
+
+.users-th {
+  width: 30%;
+}
+
+.users-td {
+  padding-left: 30px;
+}
+
+.color-red {
+  margin-left: 10px;
+  color: red;
+}
+
+.color-pink {
+  font-size: 16px;
+  color: #ff8b5f;
+}
+
+.category-atention {
+  font-size: 16px;
+  font-weight: 600;
+  color: red;
+  margin: 10px 0 -10px 220px;
+}
+
+.other-field {
+  margin-top: -16px;
+}
+
+.users-email {
+  font-size: 14px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+.user-index-btn{
+  text-align: center;
+}
+
+// confirm
+.confirm-th {
+  background: none;
+}
+
+.actions {
+  text-align: center;
+}
+
+.confirm-btn {
+  margin-left: 10px;
+}
+
+.confirm-post {
+  font-weight: 600;
+}
+
+.thanks-form {
+  margin-top: 100px;
+}
+
+.thanks-title h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.thanks-main {
+  text-align: center;
+}
+
+.thanks-main p {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: -5px;
+}
+
+.thanks-main a {
+  font-weight: 600;
+}
+
+.thanks-red {
+  color: red;
+  font-size: 40px;
+}
+
+@media screen and (max-width: 576px) {
+
+  .title h1 {
+    font-size: 25px;
+  }
+
+  .input-width{
+    margin-bottom: 5px;
+  }
+
+  .users-table {
+    margin: 10px auto;
+  }
+
+  .senryu-th {
+    width: 103px;
+    // padding-left: 10px;
+  }
+
+  .senryu-table {
+    margin-left: 0;
+  }
+
+  .senryu-td {
+    font-size: 12px;
+    padding-left: 10px;
+    display: inline-block;
+  }
+
+  .users-th {
+    // width: 200px;
+    padding-left: 10px;
+    font-size: 12px; 
+  }
+
+  .color-red {
+    margin-left: 5px;
+  }
+
+  .color-pink {
+    font-size: 11px;
+  }
+
+  .category-atention {
+    font-size: 11px;
+    margin: 10px 0 -10px 120px;
+  }  
+
+  .users-td {
+    padding-left: 10px;
+  }
+
+  .font-pn{
+    font-size: 12px;
+  } 
+
+  .font-category-phrase {
+    font-size: 14px;
+  }
+
+  // confilrm
+  .confirm-th {
+    background: none;
+    font-size: 12px;
+  }
+
+  .confirm-td {
+    font-size: 14px;
+  }
+
+  .actions {
+    margin-top: 10px;
+  }
+
+  .confirm-btn {
+    margin-left: 10px;
+  }
+
+  .header-name {
+    font-size: 12px;
+  }
+
+  .confirm-post {
+    font-size: 14px;
+  }
+
+  .thanks-title h1 {
+    font-size: 40px;
+  }
+  
+
+}

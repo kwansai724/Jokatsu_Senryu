@@ -1,0 +1,33 @@
+<%# <h1>editページ</h1> %>
+<% provide(:class_text, 'edit-message') %>
+<% provide(:button_text, '更新') %>
+
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+    <h2 class="modal-title">編集</h2>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-4">
+          <%= form_with(model: @message, local: true, method: :patch) do |f| %>
+            <%# <%= render 'shared/error_messages', object: @user  %>
+            <%= f.hidden_field :staff_id, value: current_staff.id %>
+            <%= f.label "メール内容" %>
+            <%= f.text_area :message, size: "25x15", class: "form-control form-size"%>
+
+            <div class="center">
+              <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:class_text)}" %>
+              <button type="button" class="btn btn-default btn-<%= yield(:class_text) %>" data-dismiss="modal">
+                キャンセル
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

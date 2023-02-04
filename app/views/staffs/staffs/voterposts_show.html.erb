@@ -1,0 +1,69 @@
+<div class="container mt-3 col-md-8 col-lg-6 users-show">
+  <h1 class="mb-5"><%= @voter.name %>さんの詳細</h1>
+</div>  
+
+<table class="table table-bordered staff-table">
+  <tr>
+    <th class="col-3">部 門</th>
+    <th class="col-2">ナンバー１川柳</th>
+    <th class="col-7">推薦理由</th>
+  </tr>
+  <tr>
+    <td>女性パワーで未来を変えるの部</td>
+    <td><%= @voterpost.favorite_post1 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason1 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>ジェンダー・多様性の部</td>
+    <td><%= @voterpost.favorite_post2 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason2 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>はたらく女子の部</td>
+    <td><%= @voterpost.favorite_post3 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason3 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>ママ・子どもの部</td>
+    <td><%= @voterpost.favorite_post4 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason4 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>名もなき家事の部</td>
+    <td><%= @voterpost.favorite_post5 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason5 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>本当にありがとう❣️感謝の部</td>
+    <td><%= @voterpost.favorite_post6 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason6 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>あるある❣️の部</td>
+    <td><%= @voterpost.favorite_post7 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason7 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>涙がポロ❣️の部</td>
+    <td><%= @voterpost.favorite_post8 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason8 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>輝け❣️私のライフスタイルの部</td>
+    <td><%= @voterpost.favorite_post9 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason9 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>心がきゅん❣️私の癒しの部</td>
+    <td><%= @voterpost.favorite_post10 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason10 if @voterpost.present? %></td>
+  </tr>
+  <tr>
+    <td>SDGsアクションの部</td>
+    <td><%= @voterpost.favorite_post11 if @voterpost.present? %></td>
+    <td><%= @voterpost.reason11 if @voterpost.present? %></td>
+  </tr>
+</table>
+<%= link_to "戻る", staffs_staffs_voterposts_index_path, class: "btn-gradient confirm-btn" %>
+
+

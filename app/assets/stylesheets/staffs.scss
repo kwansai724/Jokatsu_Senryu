@@ -1,0 +1,151 @@
+// Place all the styles related to the Staffs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list-group-flush {
+  padding-top: 5px;
+}
+
+.staff_screen--list {
+  list-style: none;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+// toppageボタン
+.btn-gradient-radius {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  // color: #FFF;
+  color: #000;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+}
+
+.btn-gradient-radius:hover {
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  text-decoration: none
+}
+
+.staff-table th {
+  background: rgb(250, 201, 138);
+}
+
+
+// 顧客一覧、詳細画面
+.pagenate {
+  padding-top: 20px;
+}
+
+.users-index {
+  font-weight: 600;
+}
+
+.staff_import {
+  display: flex;
+}
+
+.group_index .btn-gradient-radius {
+  margin-top: 7px;
+}
+
+.modal-header h4 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.voterposts_show_mobile {
+  font-weight: 600;
+}
+
+// 検索フォーム
+.search-form {
+  margin-left: auto;
+}
+
+
+//スマホ用↲
+@media screen and (max-width:480px) {
+
+  .staff_screen--list {
+    list-style: none;
+    display: flex;
+  }
+
+  .staff_screen--list .btn {
+    margin-bottom: 5px;
+  }
+
+  .staff-toppage h1 {
+    font-size: 30px;
+  }
+
+  .staff-index h1 {
+    font-size: 30px;
+  }
+
+  .staff-index h3 {
+    font-size: 18px;
+  }
+
+  .result-posts {
+    font-size: 15px;
+  }
+
+  .users-index h1 {
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .users-count p {
+    font-size: 15px;
+  }
+
+  .users-index .btn-gradient-radius {
+    font-size: small;
+  }
+
+  // 顧客一覧　ボタン
+  .users-index .btn {
+    font-size: small;
+  }
+
+  .staff_import {
+    display: block;
+  }
+
+  .group_index .btn-gradient-radius {
+    margin-top: -10px;
+    margin-left: -28px;
+  }
+
+  .voterposts_show_mobile {
+    font-size: 15px;
+  }
+
+  // 検索フォーム
+  .search-form {
+    margin-right: auto;
+  }
+  
+  .users-show h1 {
+    font-size: 30px;
+  }
+
+  .staff-table {
+    width: 100%;
+  }
+  
+  .staff-table th {
+    font-size: 13px;
+  }
+
+  .staff-table td {
+    font-size: 13px;
+  }
+
+}

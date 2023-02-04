@@ -1,0 +1,38 @@
+<% provide(:title, "voterposts_show") %>
+<div class="row">
+  <div class="col-mw-md col-mw-xl center-block voterposts">
+    <h3 class="category-show mb-3">【<%= @category %>】</h4>
+    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    <table border=1>
+      <tr>
+        <th>応募作品</th>
+      </tr>
+      <tr>
+        <td>
+          <span class="voterpost-index-td">
+            <div id="count">
+              <%= render partial: 'voterposts/count', locals: { category_count: @category_count, category: @category} %> 
+              
+            </div>
+            <%# <p>１５件まで投票できます。（設定まだ。）</p> %>
+            <% @posts.each do |post| %>
+              <% if post.first_phrase.present? %>
+                <!-- すでに「いいね！」されている時の表示 -->
+                <div id="likes_buttons_<%= post.id %>">  
+                  <%= render partial: 'likes/like', locals: { post: post, user: post.user} %> 
+                </div>
+              <% end %>
+            <% end %>
+          </span>
+        </td>
+      </tr>
+    </table>
+      <div class="pagenate">
+        <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+      </div>
+    <div class="voterpost-index-btn">
+      <%= link_to '前ページに戻る', voterposts_path(current_voter), class: "mr-2 btn-gradient confirm-btn" %>
+      <%= link_to "内容確認画面へ", edit_voterpost_path(current_voter, @category), class: "btn-gradient-radius" %>
+    </div>
+  </div>
+</div>

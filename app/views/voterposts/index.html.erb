@@ -1,0 +1,177 @@
+<% provide(:title, "voterposts_index") %>
+
+<div class="row">
+  <div class="col-mw-md col-mw-xl center-block">
+    <div class="border-top border-bottom notice">
+        <div class="voterpost-info mt-3 ml-2">
+          <ul class="voterpost-info-ul list-unstyled">
+            <li>
+              ・あなたの心が動いた川柳に投票してください！<br>
+              ・各カテゴリごとにあなたの推薦したいお気に入りの川柳を一句選び推薦理由もご記入ください。
+            </li><br>
+            <li class="voterpost-limit">審査投票締切　2月10日23:59まで</li><br>
+            <li>
+              ・カテゴリごとに投票をしてください。<br>
+              ・投票の締切時間まで何度でも投票修正や再投票ができます。<br>
+              締切時間をもって投票はクローズし、その状態のまま自動的に集計されます。<br>
+            </li>
+          </ul>
+        </div>  
+    </div>
+    <div class="voterposts_index">
+      <ul class="list-group-flush">
+        <% @voterposts.each do |v| %>
+          <li class="staff_screen--list">
+            <% if v.favorite_post1.present? %>
+              <%= link_to "女性パワーで未来を変えるの部【投票済み】", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient voterpost-index-td" %>
+            <% else %>
+              <%= link_to "女性パワーで未来を変えるの部", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post2.present? %>
+              <%= link_to "ジェンダー・多様性の部【投票済み】", voterpost_path(@posts, name: 'ジェンダー・多様性の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "ジェンダー・多様性の部", voterpost_path(@posts, name: 'ジェンダー・多様性の部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post3.present? %>
+              <%= link_to "はたらく女子の部【投票済み】", voterpost_path(@posts, name: 'はたらく女子の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "はたらく女子の部", voterpost_path(@posts, name: 'はたらく女子の部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post4.present? %>
+              <%= link_to "ママ・子どもの部【投票済み】", voterpost_path(@posts, name: 'ママ・子どもの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "ママ・子どもの部", voterpost_path(@posts, name: 'ママ・子どもの部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post5.present? %>
+              <%= link_to "名もなき家事の部【投票済み】", voterpost_path(@posts, name: '名もなき家事の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "名もなき家事の部", voterpost_path(@posts, name: '名もなき家事の部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post6.present? %>
+              <%= link_to "本当にありがとう❣️感謝の部【投票済み】", voterpost_path(@posts, name: '本当にありがとう❣️感謝の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "本当にありがとう❣️感謝の部", voterpost_path(@posts, name: '本当にありがとう❣️感謝の部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post7.present? %>
+              <%= link_to "あるある❣️の部【投票済み】", voterpost_path(@posts, name: 'あるある❣️の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "あるある❣️の部", voterpost_path(@posts, name: 'あるある❣️の部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post8.present? %>
+              <%= link_to "涙がポロ❣️の部【投票済み】", voterpost_path(@posts, name: '涙がポロ❣️の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "涙がポロ❣️の部", voterpost_path(@posts, name: '涙がポロ❣️の部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post9.present? %>
+              <%= link_to "輝け❣️私のライフスタイルの部【投票済み】", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient voterpost-index-td" %>
+            <% else %>
+              <%= link_to "輝け❣️私のライフスタイルの部", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post10.present? %>
+              <%= link_to "心がきゅん❣️私の癒しの部【投票済み】", voterpost_path(@posts, name: '心がきゅん❣️私の癒しの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "心がきゅん❣️私の癒しの部", voterpost_path(@posts, name: '心がきゅん❣️私の癒しの部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+          <li class="staff_screen--list">
+            <% if v.favorite_post11.present? %>
+              <%= link_to "SDGsアクションの部【投票済み】", voterpost_path(@posts, name: 'SDGsアクションの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "SDGsアクションの部", voterpost_path(@posts, name: 'SDGsアクションの部'), class: "btn-gradient-radius" %>
+            <% end %>
+          </li>
+        <% end %>  
+      </ul>
+    </div>  
+
+    <%
+=begin%>
+ <%# <%= link_to "一覧投票ページへ", voterpost_path(@posts), class: "btn btn-secondary" <br> %>
+    <table class="table">
+      <tr>
+        <th class="index-th">○月○日まで再投票可能です。</th>
+      </tr>
+       <tr>
+        <td>
+          <% @voterposts.each do |v| %>
+            <% if v.favorite_post1.present? %>
+              <%= link_to "女性パワーで未来を変えるの部【投票済】", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient voterpost-index-td" %>
+            <% else %>
+              <%= link_to "女性パワーで未来を変えるの部", voterpost_path(@posts, name: '女性パワーで未来を変えるの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post2.present? %>
+              <%= link_to "ジェンダー・多様性の部【投票済】", voterpost_path(@posts, name: 'ジェンダー・多様性の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "ジェンダー・多様性の部", voterpost_path(@posts, name: 'ジェンダー・多様性の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post3.present? %>
+              <%= link_to "はたらく女子の部【投票済】", voterpost_path(@posts, name: 'はたらく女子の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "はたらく女子の部", voterpost_path(@posts, name: 'はたらく女子の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post4.present? %>
+              <%= link_to "ママ・子どもの部【投票済】", voterpost_path(@posts, name: 'ママ・子どもの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "ママ・子どもの部", voterpost_path(@posts, name: 'ママ・子どもの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post5.present? %>
+              <%= link_to "名もなき家事の部【投票済】", voterpost_path(@posts, name: '名もなき家事の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "名もなき家事の部", voterpost_path(@posts, name: '名もなき家事の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post6.present? %>
+              <%= link_to "本当にありがとう❣️感謝の部【投票済】", voterpost_path(@posts, name: '本当にありがとう❣️感謝の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "本当にありがとう❣️感謝の部", voterpost_path(@posts, name: '本当にありがとう❣️感謝の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post7.present? %>
+              <%= link_to "あるある❣️の部【投票済】", voterpost_path(@posts, name: 'あるある❣️の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "あるある❣️の部", voterpost_path(@posts, name: 'あるある❣️の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post8.present? %>
+              <%= link_to "涙がポロ❣️の部【投票済】", voterpost_path(@posts, name: '涙がポロ❣️の部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "涙がポロ❣️の部", voterpost_path(@posts, name: '涙がポロ❣️の部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post9.present? %>
+              <%= link_to "輝け❣️私のライフスタイルの部【投票済】", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient voterpost-index-td" %>
+            <% else %>
+              <%= link_to "輝け❣️私のライフスタイルの部", voterpost_path(@posts, name: '輝け❣️私のライフスタイルの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post10.present? %>
+              <%= link_to "心がきゅん❣️私の癒しの部【投票済】", voterpost_path(@posts, name: '心がきゅん❣️私の癒しの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "心がきゅん❣️私の癒しの部", voterpost_path(@posts, name: '心がきゅん❣️私の癒しの部'), class: "btn-gradient-radius" %>
+            <% end %>
+            <% if v.favorite_post11.present? %>
+              <%= link_to "SDGsアクションの部【投票済】", voterpost_path(@posts, name: 'SDGsアクションの部'), class: "btn-gradient" %>
+            <% else %>
+              <%= link_to "SDGsアクションの部", voterpost_path(@posts, name: 'SDGsアクションの部'), class: "btn-gradient-radius" %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </table>  
+<%
+=end%>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+// Place all the styles related to the voters/voters controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.registrations-info {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.registrations-info-ul {
+  text-align: left;
+  display: inline-block;
+}
+
+.voter-sessions-info {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.voter-sessions-info-ul {
+  text-align: left;
+  display: inline-block;
+}
+
+.voter-login {
+  font-weight:600;
+  margin-top: -22px;
+}

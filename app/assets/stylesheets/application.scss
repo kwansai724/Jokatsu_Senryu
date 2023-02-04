@@ -1,0 +1,86 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+//  *= require_tree .
+//  *= require_self
+ */
+
+ @import "bootstrap";
+
+ body {
+  background-image: url("image_6483441.JPG");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+ // max-width
+.mw-md {
+  max-width: 576px;
+}
+
+.mw-xl {
+  max-width: 1200px;
+}
+
+// 「ログインしました」などのフラッシュ用スタイル
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+.navbar {
+  background-color: rgb(253, 186, 142);
+}
+
+a.navbar-brand {
+  font-family: serif;
+  font-weight: 800;
+}
+
+.nav-link a {
+  color: black;
+  text-decoration: underline;
+}
+
+.nav-link a:hover {
+  color: blue;
+}
+
+@media screen and (max-width:480px) {
+
+  .card-header h4 {
+    font-size: large;
+  }
+
+  body {
+    background-size: 200% 100%;
+  }
+  
+
+}
+
+/* debug */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}

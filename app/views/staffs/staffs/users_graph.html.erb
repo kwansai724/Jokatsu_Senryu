@@ -1,0 +1,32 @@
+<h1>投稿者グラフ</h1>
+<div>  
+  <%= link_to "川柳投稿者一覧へ戻る", staffs_staffs_users_index_path, class: "btn-gradient-radius mb-4" %>
+</div>
+<div>
+  <p>【性別】</p>
+  <%= pie_chart User.group(:gender).count('DISTINCT name') %>
+  <hr>
+</div>
+<div>
+  <p>【お住まい】</p>
+  <%= pie_chart User.group(:address).count('DISTINCT name') %>
+  <hr>
+</div>
+<div>
+  <p>【ご職業】</p>
+  <%= pie_chart User.group(:profession).count('DISTINCT name') %>
+  <hr>
+</div>
+<div>
+  <p>【年代】</p>
+  <%= pie_chart User.group(:age).count('DISTINCT name') %>
+  <hr>
+<%
+=begin%>
+ </div>
+  <p>【アンケート】</p>
+  <%= pie_chart User.group(:questionary).count('DISTINCT name') %>
+  <hr>
+</div> 
+<%
+=end%>

@@ -1,0 +1,164 @@
+// Place all the styles related to the Voterposts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// index
+// 投票ボタン
+.btn-gradient-radius {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  // color: #FFF;
+  color: #000;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+}
+
+.btn-gradient-radius:hover {
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  text-decoration: none
+}
+
+// 投票済ボタン
+.btn-gradient {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  // color: #000;
+  background-image: linear-gradient(45deg, #a9a9a9 0%, #a9a9a9 100%);
+  transition: .4s;
+}
+
+.btn-gradient:hover {
+  // background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  text-decoration: none
+}
+
+.color-red {
+  margin-left: 10px;
+  color: red;
+}
+
+h1 {
+  text-align: center;
+}
+
+.center-block {
+  margin: 0 auto;
+}
+
+.voterposts th {
+  // background: yellow;
+  background: #fcb126;
+}
+
+.index-th {
+  background: none;
+  text-align: center;
+}
+
+.notice {
+  font-weight: 600;
+}
+
+// .voterpost-index-td {
+//   font-size: 14px;
+// }
+
+.btn {
+  margin-top: 10px;
+}
+
+.voterpost-index-textarea {
+  text-align: center;
+}
+
+.voterpost-index-btn {
+  text-align: center;
+}
+
+// show
+.category-show {
+  text-align: center;
+}
+
+// 投票ボタン
+.narabi {
+  display: inline-block;
+  margin-top: -20px;
+  margin-bottom: -10px;
+}
+
+.font-size {
+  font-size: 20px;
+  text-align: center;
+}
+
+.voterposts-confirm th {
+  background: #fcb126;
+}
+
+.voterpost-info {
+  text-align: center;
+}
+
+.voterpost-info-ul {
+  text-align: left;
+  display: inline-block;
+}
+
+.voterpost-limit {
+  font-size: large;
+}
+
+// スマホ用↲
+@media screen and (max-width:480px) {
+  // index
+  .voterpost-index-td {
+    font-size: 14px;
+  }
+
+  .voterposts_index {
+    margin-left: -20px;
+  }  
+
+  // show
+  // 投票ボタン
+  .narabi {
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .narabi .btn-gradient-radius {
+    margin-top: -10px;
+  }
+
+  .narabi .btn-gradient {
+    margin-top: -10px;
+  }
+
+  // edit
+  .category-show {
+    font-size: 20px;
+  }
+
+  .font-size {
+    font-size: 20px;
+    text-align: center;
+  }   
+
+  .actions {
+    margin: 0 auto;
+  }
+
+  .voterposts {
+    width: 95%;
+  }
+
+}

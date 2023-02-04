@@ -1,0 +1,168 @@
+<%= form_with(model: @user, url: users_path, local: true) do |f| %>
+  <div class="row">
+    <div class="container mt-3 col-md-8 col-lg-6 users-show">
+      <div class="title mb-2">
+        <h1>確認画面</h1>
+      </div>  
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :gender %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :profession %>
+      <%= f.hidden_field :other %>
+      <%= f.hidden_field :age %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :note %>
+      <%= f.hidden_field :questionary %>
+      <% @user.posts.each do |posts| %>
+        <%= f.fields_for :posts, posts do |post| %> 
+          <%= post.hidden_field :first_phrase %>
+          <%= post.hidden_field :second_phrase %>
+          <%= post.hidden_field :third_phrase %>
+          <%= post.hidden_field :pen_name %>
+          <%= post.hidden_field :category %>
+        <% end %>
+      <% end %>
+      <div class="table-responsive">
+  
+        <% @user.posts.each do |posts| %>
+          <% if posts.first_phrase.present? %>
+            <div class="row">
+              <div class="d-flex align-items-center border-top users-index mt-2 mb-1 col-3">
+                <p class="mt-3 header-name">部門</p>
+              </div>
+              <div class="d-flex align-items-center border-top confirm-post mt-2 mb-1 col-9">
+                <p class="mt-3"><%= posts.category %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="users-index mt-3 mb-3 col-3">
+                <p class="header-name">川柳</p>
+              </div>
+              <div class ="confirm-post mt-3 mb-3 col-9">
+                <%= posts.first_phrase %>
+                <%= posts.second_phrase %>
+                <%= posts.third_phrase %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="users-index col-3">
+                <p class="header-name">ペンネーム</p>
+              </div>
+              <div class="confirm-post col-9">
+                <%= posts.pen_name %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <div class="row">
+          <div class="d-flex align-items-center border-top users-index mt-2 col-3">
+            <p class="header-name mt-3">名前</p>
+          </div>
+          <div class="d-flex align-items-center border-top confirm-post mt-2 col-9">
+            <p class="mt-3"><%= @user.name %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users-index mt-1 col-3">
+            <p class="header-name">Eメール</p>
+          </div>
+          <div class ="confirm-post mt-1 col-9">
+            <%= @user.email %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users-index mt-1 col-3">
+            <p class="header-name">性別</p>
+          </div>
+          <div class="confirm-post mt-1 col-9">
+            <%= @user.gender %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users-index mt-1 col-3">
+            <p class="header-name">お住まい</p>
+          </div>
+          <div class="confirm-post mt-1 col-9">
+            <%= @user.address %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users-index mt-1 col-3">
+            <p class="header-name">職業</p>
+          </div>
+          <div class="confirm-post mt-1 col-9">
+            <%= @user.profession %><%= "：　#{@user.other}" if @user.other.present? %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users-index mt-1 col-3">
+            <p class="header-name">年代</p>
+          </div>
+          <div class="confirm-post mt-1 col-9">
+            <%= @user.age %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users-index mt-1 col-3">
+            <p class="header-name">メッセージ</p>
+          </div>
+          <div class="confirm-post mt-1 col-9">
+            <%= @user.note %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-flex align-items-center border-bottom users-index mt-2 mb-3 col-3">
+            <p class="header-name mb-3">アンケート<p>
+          </div>
+          <div class="d-flex align-items-center border-bottom confirm-post mt-2 mb-3 col-9">
+            <p class="mb-3"><%= @user.questionary %><p>
+          </div>
+        </div>
+
+        <%
+=begin%>
+ <table class="table">
+          <% @user.posts.each do |posts| %>
+            <% if posts.first_phrase.present? %>
+              <tr>
+                <th class="confirm-th">川柳</th>
+                <td class="confirm-td">
+                  <%= posts.first_phrase %>
+                  <%= posts.second_phrase %>
+                  <%= posts.third_phrase %>
+                </td>
+              </tr>
+              <tr>
+                <th class="confirm-th">ペンネーム</th>
+                <td class="confirm-td"><%= posts.pen_name %></td>
+              </tr>
+              <tr>
+                <th class="confirm-th">部門</th>
+                <td class="confirm-td"><%= posts.category %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+          <h4 class="info">ご本人ついて</h4>
+          <table class="table">
+          <tr><th class="confirm-th">お名前</th><td class="confirm-td"><%= @user.name %></td></tr>
+          <tr><th class="confirm-th">性別</th><td class="confirm-td"><%= @user.gender %></td></tr>
+          <tr><th class="confirm-th">お住まい</th><td class="confirm-td"><%= @user.address %></td></tr>
+          <tr><th class="confirm-th">職業</th><td class="confirm-td"><%= @user.profession %><br><%= @user.other %></td></tr>
+          <tr><th class="confirm-th">年代</th><td class="confirm-td"><%= @user.age %></td></tr>
+          <tr><th class="confirm-th">メールアドレス</th><td class="confirm-td"><%= @user.email %></td></tr>
+          <tr><th class="confirm-th">メッセージ</th><td class="confirm-td"><%= @user.note %></td></tr>
+          <tr><th class="confirm-th">アンケート</th><td class="confirm-td"><%= @user.questionary %></td></tr>
+        </table> 
+<%
+=end%>
+
+      </div>
+      <div class="actions">
+        <%= f.submit '投稿画面に戻る', name: 'back', class: "btn btn-secondary confirm-btn" %>
+        <%= f.submit '投稿する', class: "btn btn-success confirm-btn" %>
+      </div>    
+    </div>
+  </div>
+<% end %>

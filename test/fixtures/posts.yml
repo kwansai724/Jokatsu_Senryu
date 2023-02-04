@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_phrase: MyString
+  second_phrase: MyString
+  third_phrase: MyString
+  pen_name: MyString
+  category: MyString
+  users: one
+
+two:
+  first_phrase: MyString
+  second_phrase: MyString
+  third_phrase: MyString
+  pen_name: MyString
+  category: MyString
+  users: two

@@ -1,0 +1,50 @@
+
+<div class="col-mw-md col-mw-xl center-block staff-index">
+  <h1><%= params[:group_name] %> の投票結果</h1>
+  <h3 class="mt-5">部門：<%= params[:category_name] %></h3>
+  <h3 class="mb-3">投稿数：<%= Post.where(category: params[:category_name]).count %>句</h3>
+  <% if params[:group_name] == "WIP" %>
+    <div class="group-btn mb-4">
+      <% @staffs.each do |staff| %>
+        <%= link_to "#{staff.group_name}", staffs_staffs_index_path(group_name: staff.group_name, category_name: params[:category_name], admin: current_staff.admin), class: "btn btn-primary" %>
+      <% end %>  
+    </div>
+    <div class="mb-3">
+      <%= will_paginate(@post_rank, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+    </div>
+    <div class="result-posts">
+      <% @post_rank.each do |post| %>
+        <% if post.first_phrase.present? && post.category == params[:category_name] %>
+          <div class="main-index d-flex border-bottom mb-2">
+            【得票数：<%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count %> 】
+            <%= post.id %>.　<%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %> /(<%= post.pen_name %>)
+            /<%= post.user.gender %>/<%= post.user.address %>/<%= post.user.profession %>/<%= post.user.age %>/<%= post.user.note %>
+            【名前：<%= post.user.name %> / Eメール：<%= post.user.email %>】<br>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+<%
+=begin%>
+    <hr>
+ <div class="result-posts">
+      <% @posts_index.each do |post| %>
+        <% if post.first_phrase.present? && post.category == params[:category_name] %>
+          <div class="main-index d-flex border-bottom mb-2">
+            【得票数：<%= Like.where(post_id: post.id).where(voter_id: Voter.where(group: params[:group_name]).ids).count %> 】
+            <%= post.id %>.　<%= post.first_phrase %>　<%= post.second_phrase %>　<%= post.third_phrase %> /(<%= post.pen_name %>)
+            /<%= post.user.gender %>/<%= post.user.address %>/<%= post.user.profession %>/<%= post.user.age %>【名前：<%= post.user.name %> / Eメール：<%= post.user.email %>】<br>
+          </div>
+        <% end %>
+      <% end %>
+    </div> 
+<%
+=end%>
+  <% elsif params[:group_name] == @staff.group_name %>
+    <%= render "result_posts" %>
+  <% end %>
+  <div class="pagenate">
+    <%= will_paginate(@post_rank, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+  </div> 
+  <%= link_to "部門選択画面へ戻る", staffs_staffs_toppage_path(format: current_staff.id), class: "btn-gradient confirm-btn mt-2" %>
+</div>

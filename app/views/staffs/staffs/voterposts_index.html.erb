@@ -1,0 +1,58 @@
+<div class="container mt-2 col-md-10 col-lg-8 users-index">
+  <h1 class="mb-4">投票者・グループ一覧</h1>
+  <% if current_staff.admin? %>
+    <div class="staff_import">
+      <%= form_with url: staffs_staffs_voterposts_index_import_path, multipart: true, local: true do |f| %>
+        <%= f.file_field :file, class: "file_field" %>
+        <%= f.submit "CSVをインポート", class: "btn btn-primary btn-sm mb-3" %>
+      <% end %>
+      <div class="group_index ml-4">
+        <%= link_to "グループ一覧", staffs_staffs_group_index_path, remote: true, class: "btn-gradient-radius" %>
+      </div>  
+    </div>
+    <div class="row mt-3">
+      <div class="col-4 col-lg-4 mb-1">
+        名前
+      </div>
+      <div class="col-6 col-lg-6 mb-1">
+        グループ
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+    <% @voters_admin.each do |voter| %>
+      <div class="row">
+        <div class="d-flex align-items-center border-top users-index col-4 col-lg-4">
+          <%= voter.name %>
+        </div>
+        <div class="d-flex align-items-center border-top users-index col-6 col-lg-6">
+          <%= voter.group %>
+        </div>
+        <div class="d-flex align-items-center border-top users-index col-2">
+          <%= link_to "詳細", staffs_staffs_voterposts_show_path(id: voter.id), class: "btn btn-dark mb-2 btn-sm" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <% @voters.each do |voter| %>
+      <div class="row">
+        <div class="d-flex align-items-center border-top users-index col-4 col-lg-4">
+          名前:
+        </div>
+        <div class="d-flex align-items-center border-top users-index col-6 col-lg-6">
+          <%= voter.name %>
+        </div>
+        <div class="d-flex align-items-center border-top users-index col-2">
+          <%= link_to "詳細", staffs_staffs_voterposts_show_path(id: voter.id), class: "btn btn-dark mb-2 btn-sm" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="row">
+    <div class="d-flex border-top col-12">
+      <%= link_to "戻る", staffs_staffs_toppage_path, class: "btn-gradient confirm-btn" %>
+    </div>
+  </div>  
+</div>
+
+<div id="group-index" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
