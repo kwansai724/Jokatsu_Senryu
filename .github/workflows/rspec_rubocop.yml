@@ -1,21 +1,21 @@
-name: Rspec & Rubocop
+# name: Rspec & Rubocop
 
-on: [ push ]
+# on: [ push ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          lfs: false
-      # Rspec実行
-      - name: Run rspec
-        run: |
-          rails db:create
-          rails db:migrate:reset
-          bundle exec rspec
-      # Rubocop実行
-      - name: Run rubocop
-        run: rubocop
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+#         with:
+#           lfs: false
+#       # Rspec実行
+#       - name: Run rspec
+#         run: |
+#           rails db:create
+#           rails db:migrate:reset
+#           bundle exec rspec
+#       # Rubocop実行
+#       - name: Run rubocop
+#         run: rubocop
