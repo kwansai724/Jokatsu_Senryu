@@ -13,9 +13,9 @@ jobs:
       # Rspec実行
       - name: Run rspec
         run: |
-          bundle exec rails db:create
-          bundle exec rails db:migrate:reset
+          rails db:create
+          rails db:migrate:reset
           bundle exec rspec
       # Rubocop実行
       - name: Run rubocop
-        run: bundle exec rubocop
+        run: rubocop
