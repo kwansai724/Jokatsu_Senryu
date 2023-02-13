@@ -10,10 +10,10 @@ class UsersController < ApplicationController
   # 確認画面
   def confirm
     @user = User.new(user_params)
-    if @user.invalid?(:category_valid)
-      flash.now[:danger] = @user.errors.full_messages.join("<br>")
-      render :index
-    end
+    return unless @user.invalid?(:category_valid)
+
+    flash.now[:danger] = @user.errors.full_messages.join("<br>")
+    render :index
   end
 
   def create
@@ -23,10 +23,9 @@ class UsersController < ApplicationController
       render :index
     elsif @user.save
       PostedMailer.send_mail(@user, @messages).deliver_now # メール送信
-      # flash[:success] = '投稿ありがとうございました。'
       redirect_to thanks_users_path
     else
-      flash[:danger] = "投稿に失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+      flash[:danger] = "投稿に失敗しました。<br> #{@user.errors.full_messages.join('<br>')}"
       redirect_to users_path
     end
   end
@@ -37,12 +36,17 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :gender, :address, :profession, :age, :note, :other, :questionary, posts_attributes: [:first_phrase, :second_phrase, :third_phrase, :pen_name, :category, :id])
+    # # ２つ目の川柳が空の場合、パラメータから削除して保存しないようにする
+    # if params["user"]["posts_attributes"]["1"].present? && params["user"]["posts_attributes"]["1"]["category"].blank?
+    #   params["user"]["posts_attributes"].delete("1")
+    # end
+    params.require(:user).permit(
+      :name, :email, :gender, :address, :profession, :age, :note, :other, :questionary,
+      posts_attributes: [:first_phrase, :second_phrase, :third_phrase, :pen_name, :category, :id]
+    )
   end
 
   def questionary_string
-    if params[:user][:questionary] != nil
-      params[:user][:questionary] = params[:user][:questionary].join("/")
-    end
+    params[:user][:questionary] = params[:user][:questionary].join("/") if params[:user][:questionary].present?
   end
 end

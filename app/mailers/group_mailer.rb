@@ -3,7 +3,7 @@ class GroupMailer < ApplicationMailer
   if Rails.env.development?
     default from: Rails.application.credentials[:MY_GMAIL]
   elsif Rails.env.production?
-    default from: ENV['MY_GMAIL']
+    default from: ENV.fetch('MY_GMAIL')
   end
 
   def send_announcement_mail(subject, comment, emails)

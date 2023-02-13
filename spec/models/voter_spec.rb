@@ -8,7 +8,7 @@ RSpec.describe Voter, type: :model do
   end
   it "重複した名前は無効であること" do
     @voter1 = create(:voter)
-    @voter2 = build(:voter, name: "#{@voter1.name}")
+    @voter2 = build(:voter, name: @voter1.name.to_s)
     @voter2.valid?
     expect(@voter2.errors[:name]).to include("はすでに存在します")
   end
