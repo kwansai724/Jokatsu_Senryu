@@ -4,7 +4,7 @@ RSpec.describe Staffs::StaffsController, type: :controller do
   describe "#toppage" do
     context "アカウント登録済みの場合" do
       before do
-        @staff = create(:staff)
+        @staff = create(:staff, admin: true)
       end
 
       it "正常にレスポンスを返すこと" do

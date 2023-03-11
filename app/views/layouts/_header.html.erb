@@ -41,13 +41,9 @@
               <li class="nav-item active nav-link">
                 <%= link_to "投句完了メール", adminmessages_path(id: current_staff.id) %>
               </li>
-              <%
-=begin%>
- <li class="nav-item active nav-link">
+              <!--<li class="nav-item active nav-link">
                 <%= link_to "メール一斉送信", group_email_comments_path(id: current_staff.id) %>
-              </li> 
-<%
-=end%>
+              </li>-->
               <li class="nav-item active nav-link">
                 <%= link_to "csv出力（投稿者）", staffs_staffs_index_path(format: :csv, key: :users, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
               </li>
@@ -55,13 +51,9 @@
                 <%= link_to "csv出力（一押し川柳）", staffs_staffs_index_path(format: :csv, key: :voters, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
               </li>
             <% end %>
-            <%
-=begin%>
- <li class="nav-item active nav-link">
+            <!--<li class="nav-item active nav-link">
               <%= link_to "csv出力（一押し川柳）", staffs_staffs_index_path(format: :csv, key: :voters, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
-            </li> 
-<%
-=end%>
+            </li>-->
             <li class="nav-item active nav-link">
               <%= link_to "csv出力（川柳）", staffs_staffs_index_path(format: :csv, key: :posts, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
             </li>

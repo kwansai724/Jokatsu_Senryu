@@ -3,7 +3,7 @@ class Staff < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :authentication_keys => [:login_id]
+         authentication_keys: [:login_id]
 
   has_many :adminmessages, dependent: :destroy
   has_many :group_email_comments, dependent: :destroy
@@ -36,6 +36,6 @@ class Staff < ApplicationRecord
 
   # 更新を許可するカラムを定義
   def self.updatable_attributes
-    ["login_id", "group_name", "password", "password_confirmation"]
+    %w[login_id group_name password password_confirmation]
   end
 end

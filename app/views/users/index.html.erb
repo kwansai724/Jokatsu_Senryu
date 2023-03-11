@@ -14,9 +14,7 @@
           <table border="0" class="senryu-table">
             <tr>
               <th class="senryu-th"><span class="font-category-phrase">部 門</th>
-              <td class="senryu-td"><%= post.select :category, [["女性パワーで未来を変えるの部","女性パワーで未来を変えるの部"],["ジェンダー・多様性の部","ジェンダー・多様性の部"],["はたらく女子の部","はたらく女子の部"],
-                  ["ママ・子どもの部","ママ・子どもの部"],["名もなき家事の部","名もなき家事の部"],["本当にありがとう❣️感謝の部","本当にありがとう❣️感謝の部"],["あるある❣️の部","あるある❣️の部"],["涙がポロ❣️の部","涙がポロ❣️の部"],
-                  ["輝け❣️私のライフスタイルの部","輝け❣️私のライフスタイルの部"],["心がきゅん❣️私の癒しの部","心がきゅん❣️私の癒しの部"],["SDGsアクションの部","SDGsアクションの部"]],{ include_blank: ''}, class: "input-width form-control" %></td>
+              <td class="senryu-td"><%= post.select :category, Post::CATEGORIES, { include_blank: ''}, class: "input-width form-control" %></td>
             </tr> 
             <tr>
               <th class="senryu-th"><span class="font-category-phrase">作 品</th>
@@ -33,11 +31,6 @@
           </table>
         <% end %>
       <% end %><br>
-      <%
-=begin%>
- <h4 class="info mt-3">ご本人ついて</h4> 
-<%
-=end%>
       <table border="0" class="users-table">
         <tr>
           <th class="users-th">お名前<span class="color-red">必須</span></th>
@@ -54,20 +47,14 @@
         <tr>
           <th class="users-th">お住まい<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :address, [["北海道","北海道"],["青森県","青森県"],["岩手県","岩手県"],["宮城県","宮城県"],["秋田県","秋田県"],["山形県","山形県"],["福島県","福島県"],
-                                    ["茨城県","茨城県"],["栃木県","栃木県"],["群馬県","群馬県"],["埼玉県","埼玉県"],["千葉県","千葉県"],["東京都","東京都"],["神奈川県","神奈川県"],
-                                    ["新潟県","新潟県"],["富山県","富山県"],["石川県","石川県"],["福井県","福井県"],["山梨県","山梨県"],["長野県","長野県"],["岐阜県","岐阜県"],["静岡県","静岡県"],
-                                    ["愛知県","愛知県"],["三重県","三重県"],["滋賀県","滋賀県"],["京都府","京都府"],["大阪府","大阪府"],["兵庫県","兵庫県"],["奈良県","奈良県"],["和歌山県","和歌山県"],
-                                    ["鳥取県","鳥取県"],["島根県","島根県"],["岡山県","岡山県"],["広島県","広島県"],["山口県","山口県"],["徳島県","徳島県"],["香川県","香川県"],["愛媛県","愛媛県"],["高知県","高知県"],
-                                    ["福岡県","福岡県"],["佐賀県","佐賀県"],["長崎県","長崎県"],["熊本県","熊本県"],["大分県","大分県"],["宮崎県","宮崎県"],["鹿児島県","鹿児島県"],["沖縄県","沖縄県"]],{ include_blank: ''}, class: "input-form form-control col-md-4", required: true %>
+            <%= f.select :address, User::ADDRESSES, { include_blank: ''}, class: "input-form form-control col-md-4", required: true %>
           </td>
         </tr>
         <tr>
           <th class="users-th">ご職業<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :profession, [["専業主婦","専業主婦"],["会社員","会社員"],["公務員","公務員"],["自営業","自営業"],["フリーランス・自由業","フリーランス・自由業"],["会社経営者・役員","会社経営者・役員"],["団体職員","団体職員"],["派遣社員","派遣社員"],
-                                        ["パート・アルバイト","パート・アルバイト"],["小・中学生","小・中学生"],["高校生・受験生","高校生・受験生"],["専門学校・大学生","専門学校・大学生"],["大学院・研究生","大学院・研究生"],["家事手伝い","家事手伝い"],["無職","無職"],["その他","その他"]],
-                                        { include_blank: ''}, { class: "input-form form-control col-md-7", required: true, id:"myselectbox", onchange:"myfunc()" } %>
+            <%= f.select :profession, User::PROFESSION, { include_blank: ''},
+                                                        { class: "input-form form-control col-md-7", required: true, id:"myselectbox", onchange:"myfunc()" } %>
               <p class="color-pink mt-1">
                 その他 を選択されましたらご記入ください。
               </p>
@@ -79,7 +66,7 @@
         <tr>
           <th class="users-th">年代<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :age, [["小学生","小学生"],["中学生","中学生"],["高校生","高校生"],["大学生","大学生"],["20代","20代"],["30代","30代"],["40代","40代"],["50代","50代"],["60代","60代"],["70代","70代"],["80代以上","80代以上"]],{ include_blank: ''}, class: "input-form form-control col-md-4", required: true %>
+            <%= f.select :age, User::AGE, { include_blank: ''}, class: "input-form form-control col-md-4", required: true %>
           </td>
         </tr>
         <tr>
@@ -98,9 +85,8 @@
           <th class="users-th">アンケート<span class="color-red">必須</span></th>
           <td class="users-td">
             <p class="color-pink mt-2">この企画を何でお知りになりましたか？</p>
-            <% @questionary = ["公式Facebookページ", "公式Instagram", "公式LINE", "川柳募集サイト", "WIPメンバーのブログや投稿など", "WEBやSNS記事", "新聞や雑誌などのメディア", "検索サーチ", "知人からの紹介", "その他"] %>
-            <% @questionary.each do |questionary| %>
-            <%= f.check_box :questionary,  {multiple: true}, questionary, nil %>
+            <% Post::QUESTIONARIES.each do |questionary| %>
+              <%= f.check_box :questionary,  {multiple: true}, questionary, nil %>
               <%= questionary %><br>
             <% end %>
 
@@ -117,7 +103,7 @@
 <script>
   function myfunc() {
     var value = document.getElementById("myselectbox").value;
-       if(value === 'その他'){
+    if(value === 'その他'){
       document.getElementById("other_select").disabled = false;
     } else {
       document.getElementById("other_select").disabled = true;

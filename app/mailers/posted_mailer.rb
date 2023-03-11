@@ -3,7 +3,7 @@ class PostedMailer < ApplicationMailer
   if Rails.env.development?
     default from: Rails.application.credentials[:MY_GMAIL], subject: "ジョカツ川柳の投稿ありがとうございます。"
   elsif Rails.env.production?
-    default from: ENV['MY_GMAIL'], subject: "ジョカツ川柳の投稿ありがとうございます。"
+    default from: ENV.fetch('MY_GMAIL'), subject: "ジョカツ川柳の投稿ありがとうございます。"
   end
   def send_mail(user, message)
     @user = user
