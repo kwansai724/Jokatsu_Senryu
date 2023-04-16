@@ -7,7 +7,7 @@ class Voter < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable,
-         :authentication_keys => [:name]
+         authentication_keys: [:name]
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :group, presence: true

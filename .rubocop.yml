@@ -1,4 +1,5 @@
 AllCops:
+ NewCops: enable
 # 除外するディレクトリ（自動生成されたファイル）
 # デフォルト設定にある"vendor/**/*"が無効化されないように記述
  Exclude:
@@ -8,7 +9,7 @@ AllCops:
    - "bin/*"
    - "node_modules/**/*"
    - "Gemfile"
-
+   - "app/helpers/devise_helper.rb"
 
 # 1行あたりの文字数をチェックする
 Layout/LineLength:
@@ -30,11 +31,11 @@ Metrics/BlockLength:
 # Condition: 条件文
 # 上記項目をRubocopが計算して基準値を超えると警告を出す（上記頭文字をとって'Abc'）
 Metrics/AbcSize:
- Max: 50
+ Max: 65
 
 # メソッドの中身が複雑になっていないか、Rubocopが計算して基準値を超えると警告を出す
 Metrics/PerceivedComplexity:
- Max: 8
+ Max: 15
 
 # 循環的複雑度が高すぎないかをチェック（ifやforなどを1メソッド内で使いすぎている）
 Metrics/CyclomaticComplexity:

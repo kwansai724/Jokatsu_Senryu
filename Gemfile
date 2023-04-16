@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'listen', '>= 3.0.5', '< 3.2'
 gem 'byebug'
+gem 'dotenv-rails'
 
 # ログイン機能
 gem 'devise'
