@@ -13,7 +13,7 @@ class GroupEmailCommentsController < ApplicationController
 
   def update
     @group_email_comment = GroupEmailComment.find(params[:id])
-    if @group_email_comment.update_attributes(group_email_comment_params)
+    if @group_email_comment.update(group_email_comment_params)
       flash[:success] = "更新しました。"
       redirect_to group_email_comments_path(id: current_staff.id)
     else

@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   get 'group_email_comments/edit'
   devise_scope :voter do
     constraints -> request { request.session[:admin].present? || request.session[:voter_id].present? } do
-      root 'voterposts#index', as: :public_root, constraints: LoggedInConstraint.new("voter") # 投票者としてログインしている場合
-      root 'staffs/staffs#toppage', constraints: LoggedInConstraint.new("true") # WIPとしてログインしている場合
-      root 'staffs/staffs#toppage', constraints: LoggedInConstraint.new("false") # スポンサー企業としてログインしている場合
+      root 'voterposts#index', as: :voter_root, constraints: LoggedInConstraint.new("voter") # 投票者としてログインしている場合
+      root 'staffs/staffs#toppage', as: :wip_root, constraints: LoggedInConstraint.new("true") # WIPとしてログインしている場合
+      root 'staffs/staffs#toppage', as: :other_root, constraints: LoggedInConstraint.new("false") # スポンサー企業としてログインしている場合
     end
-    root "voters/registrations#new"
+    root "voters/registrations#new", as: :public_root
   end
 
   devise_for :voters, :controllers => {

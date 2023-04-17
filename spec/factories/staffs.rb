@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :staff do
     # sequence(:login_id) { |n| "1234567#{n}" }
-    login_id "12345678"
-    password "password"
-    group_name "WIP"
-    category_name "輝け❣️私のライフスタイルの部"
-    admin "true"
+    login_id { "12345678" }
+    password { "password" }
+    group_name { "WIP" }
+    category_name { "輝け❣️私のライフスタイルの部" }
+    admin { "true" }
 
     # login_idの文字数が７文字
     trait :under_of_login_id do

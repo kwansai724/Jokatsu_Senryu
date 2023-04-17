@@ -38,7 +38,7 @@ class Voters::SessionsController < Devise::SessionsController
       respond_with resource, location: after_sign_in_path_for(resource)
     else
       flash[:danger] = "登録された名前が違います"
-      redirect_to root_path
+      redirect_to new_voter_session_path
     end
   end
 

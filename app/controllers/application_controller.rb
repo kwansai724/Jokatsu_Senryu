@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     return if current_voter.present?
 
     flash[:danger] = "投票者しか閲覧出来ません。"
-    redirect_back(fallback_location: root_url)
+    redirect_back(fallback_location: public_root_url)
   end
 
   # 各投票者の画面閲覧制限
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     return if current_staff.present?
 
     flash[:danger] = "管理者・スタッフしか閲覧出来ません。"
-    redirect_back(fallback_location: root_url)
+    redirect_back(fallback_location: public_root_url)
   end
 
   # 各企業の画面閲覧制限
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
       end
     elsif current_staff.nil?
       flash[:danger] = "閲覧出来ません。"
-      redirect_back(fallback_location: root_url)
+      redirect_back(fallback_location: public_root_url)
     end
   end
 
