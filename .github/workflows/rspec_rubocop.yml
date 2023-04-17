@@ -1,21 +1,22 @@
-# name: Rspec & Rubocop
+name: Rubocop and RSpec 
+on: [push]
+jobs:
+  run_spec:
+    name: Run Rubocop and RSpec 
 
-# on: [ push ]
+    runs-on: ubuntu-latest
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
-#         with:
-#           lfs: false
-#       # Rspec実行
-#       - name: Run rspec
-#         run: |
-#           rails db:create
-#           rails db:migrate:reset
-#           bundle exec rspec
-#       # Rubocop実行
-#       - name: Run rubocop
-#         run: rubocop
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+
+    - name: Run rubocop
+      run: bundle exec rubocop
+
+    - name: Run Rspec
+      run: |
+        bundle exec rails db:migrate:reset db:seed
+        bundle exec rspec
