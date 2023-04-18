@@ -12,7 +12,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'listen', '>= 3.0.5', '< 3.2'
-gem 'byebug'
 gem 'dotenv-rails'
 
 # ログイン機能
@@ -40,7 +39,6 @@ gem 'roo'
 # グラフ
 gem 'chartkick'
 
-# gem 'sqlite3'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -60,7 +58,6 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
-  # gem 'chromedriver-helper'
   gem 'webdrivers'
 end
 
