@@ -1,8 +1,8 @@
-name: Rubocop and RSpec 
+name: rubocop and RSpec 
 on: [push]
 jobs:
   run_spec:
-    name: Run Rubocop and RSpec 
+    name: Run rubocop and RSpec 
 
     runs-on: ubuntu-latest
 
