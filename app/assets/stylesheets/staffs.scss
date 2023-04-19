@@ -61,11 +61,21 @@
   font-weight: 600;
 }
 
+.inline {
+  display: flex;
+  // gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 // 検索フォーム
 .search-form {
   margin-left: auto;
 }
 
+.sign-form {
+  margin-bottom: 1rem;
+}
 
 //スマホ用↲
 @media screen and (max-width:480px) {

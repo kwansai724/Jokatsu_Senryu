@@ -6,8 +6,7 @@
   <div class="modal-content">
     <div class="modal-header">
     <h2 class="modal-title">編集</h2>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
+      <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">
       </button>
     </div>
     <div class="modal-body">
@@ -16,7 +15,7 @@
           <%= form_with(model: @message, local: true, method: :patch) do |f| %>
             <%# <%= render 'shared/error_messages', object: @user  %>
             <%= f.hidden_field :staff_id, value: current_staff.id %>
-            <%= f.label "メール内容" %>
+            <%= f.label "メール内容", class: 'form-label' %>
             <%= f.text_area :message, size: "25x15", class: "form-control form-size"%>
 
             <div class="center">

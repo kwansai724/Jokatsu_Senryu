@@ -1,67 +1,69 @@
 <% if voter_signed_in? || staff_signed_in? %>
   <header>
-    <nav class="navbar navbar-expand-xs navbar-light">
-      <a class="navbar-brand nav-title" href="#">ジョカツ川柳</a>
-      <button class="navbar-toggler hamburger-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <% if voter_signed_in? %>
-            <li class="nav-item active nav-link">
-              氏名：<%= current_voter.name %>
-            </li>  
-            <li class="nav-item active nav-link">
-              グループ：<%= current_voter.group %>
-            </li>
-            <li class="nav-item active nav-link">
-              <%= link_to 'アカウント編集', edit_voter_registration_path %>
-          </li>
-            <li class="nav-item active nav-link">
-              <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete %>
-            </li>
-          <% elsif staff_signed_in? %>
-            <li class="nav-item active nav-link">
-              グループ：<%= current_staff.group_name %>
-            </li>
-            <% if current_staff.admin == true %>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <span class="navbar-brand nav-title mb-0 h1">ジョカツ川柳</span>
+        <button class="navbar-toggler hamburger-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerJokatsu" aria-controls="navbarTogglerJokatsu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerJokatsu">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <% if voter_signed_in? %>
               <li class="nav-item active nav-link">
-                <%= link_to "川柳投稿者一覧", staffs_staffs_users_index_path %>
+                氏名：<%= current_voter.name %>
+              </li>  
+              <li class="nav-item active nav-link">
+                グループ：<%= current_voter.group %>
               </li>
               <li class="nav-item active nav-link">
-                <%= link_to "審査員・グループ一覧", staffs_staffs_voterposts_index_path %>
-              </li>
-            <% else %>
-            <li class="nav-item active nav-link">
-              <%= link_to "審査員一覧", staffs_staffs_voterposts_index_path %>
+                <%= link_to 'アカウント編集', edit_voter_registration_path %>
             </li>
-            <% end %>
-            <% if current_staff.admin == true %>
               <li class="nav-item active nav-link">
-                <%= link_to "投句完了メール", adminmessages_path(id: current_staff.id) %>
+                <%= link_to 'ログアウト', destroy_voter_session_path, method: :delete %>
               </li>
+            <% elsif staff_signed_in? %>
+              <li class="nav-item active nav-link">
+                グループ：<%= current_staff.group_name %>
+              </li>
+              <% if current_staff.admin == true %>
+                <li class="nav-item active nav-link">
+                  <%= link_to "川柳投稿者一覧", staffs_staffs_users_index_path %>
+                </li>
+                <li class="nav-item active nav-link">
+                  <%= link_to "審査員・グループ一覧", staffs_staffs_voterposts_index_path %>
+                </li>
+              <% else %>
+              <li class="nav-item active nav-link">
+                <%= link_to "審査員一覧", staffs_staffs_voterposts_index_path %>
+              </li>
+              <% end %>
+              <% if current_staff.admin == true %>
+                <li class="nav-item active nav-link">
+                  <%= link_to "投句完了メール", adminmessages_path(id: current_staff.id) %>
+                </li>
+                <!--<li class="nav-item active nav-link">
+                  <%= link_to "メール一斉送信", group_email_comments_path(id: current_staff.id) %>
+                </li>-->
+                <li class="nav-item active nav-link">
+                  <%= link_to "csv出力（投稿者）", staffs_staffs_index_path(format: :csv, key: :users, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
+                </li>
+                <li class="nav-item active nav-link">
+                  <%= link_to "csv出力（一押し川柳）", staffs_staffs_index_path(format: :csv, key: :voters, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
+                </li>
+              <% end %>
               <!--<li class="nav-item active nav-link">
-                <%= link_to "メール一斉送信", group_email_comments_path(id: current_staff.id) %>
+                <%= link_to "csv出力（一押し川柳）", staffs_staffs_index_path(format: :csv, key: :voters, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
               </li>-->
               <li class="nav-item active nav-link">
-                <%= link_to "csv出力（投稿者）", staffs_staffs_index_path(format: :csv, key: :users, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
+                <%= link_to "csv出力（川柳）", staffs_staffs_index_path(format: :csv, key: :posts, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
               </li>
               <li class="nav-item active nav-link">
-                <%= link_to "csv出力（一押し川柳）", staffs_staffs_index_path(format: :csv, key: :voters, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
+                <%= link_to 'ログアウト', destroy_staff_session_path, method: :delete %>
               </li>
-            <% end %>
-            <!--<li class="nav-item active nav-link">
-              <%= link_to "csv出力（一押し川柳）", staffs_staffs_index_path(format: :csv, key: :voters, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
-            </li>-->
-            <li class="nav-item active nav-link">
-              <%= link_to "csv出力（川柳）", staffs_staffs_index_path(format: :csv, key: :posts, group_name: current_staff.group_name), data: { confirm: "CSVを出力します。よろしいですか？" } %>
-            </li>
-            <li class="nav-item active nav-link">
-              <%= link_to 'ログアウト', destroy_staff_session_path, method: :delete %>
-            </li>
-          <% end %> 
-        </ul>
+            <% end %> 
+          </ul>
+        </div>
       </div>
     </nav>
   </header> 
