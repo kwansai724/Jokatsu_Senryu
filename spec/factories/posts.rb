@@ -10,6 +10,6 @@ FactoryBot.define do
   end
 
   trait :with_likes_for_post do
-    after(:create) { |post| create_list(:like, 5, post: post) }
+    after(:create) { |post| create_list(:like, 5, post:) }
   end
 end
