@@ -5,14 +5,6 @@
         <h4 class="my-0 font-weight-normal">女性活躍川柳　審査員フォーム</h4>
       </div>
       <div class="card-body">
-        <%
-=begin%>
- <h5 class="card-title pricing-card-title">
-          女性活躍川柳<br>
-          【審査員ログイン画面】
-        </h5><br> 
-<%
-=end%>
         <div class="voter-sessions-info mt-2">
           <ul class="voter-sessions-info-ul list-unstyled">
             <li>ログインをして投票をお願いします</li><br>
@@ -20,21 +12,21 @@
           </ul>
         </div>  
         <div class="user-signed">
-          <div class="signed-in text-left">
+          <div class="signed-in text-start">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="form-group">
-                <%= f.label :name %>
+              <div class='sign-form'>
+                <%= f.label :name, class: 'form-label' %>
                 <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control', required: true %>
               </div>
 
-              <div class="form-group">
-                <%= f.submit  t('.sign_in'), class: 'btn btn-primary btn-block' %>
+              <div class="d-grid gap-2">
+                <%= f.submit  t('.sign_in'), class: 'btn btn-primary' %>
               </div>
               
             <% end %>
           </div>
-          <div class="signed-up">
-            <%= link_to "初めての方はこちら", new_voter_registration_path, class: 'btn btn-info btn-block' %>
+          <div class="signed-up d-grid gap-2">
+            <%= link_to "初めての方はこちら", new_voter_registration_path, class: 'btn btn-info' %>
           </div>
           <div class="voter-staff mt-2">
             <%= link_to '管理者・スタッフはこちら', new_staff_session_path , class: "btn-resize"%>

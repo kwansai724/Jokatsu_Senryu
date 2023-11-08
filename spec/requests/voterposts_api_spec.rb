@@ -82,7 +82,7 @@ RSpec.describe "Voterposts Api", type: :request do
       end
 
       it "推薦川柳、推薦理由を投稿できること" do
-        voterpost_params = @voterpost.update_attributes(favorite_post1: 1, reason1: "テスト推薦理由")
+        voterpost_params = @voterpost.update(favorite_post1: 1, reason1: "テスト推薦理由")
         sign_in @voter
         patch voterpost_path(@voter), params: { id: @voterpost.id, voter_id: @voter.id, voterpost: voterpost_params }
         expect(@voterpost.reload.favorite_post1).to eq 1
@@ -90,7 +90,7 @@ RSpec.describe "Voterposts Api", type: :request do
       end
 
       it "推薦川柳、推薦理由が未入力の場合、無効であること" do
-        voterpost_params = @voterpost.update_attributes(favorite_post1: "", reason1: "")
+        voterpost_params = @voterpost.update(favorite_post1: "", reason1: "")
         sign_in @voter
         patch voterpost_path(@voter), params: { id: @voterpost.id, voter_id: @voter.id, voterpost: voterpost_params }
         expect(flash[:danger]).to include("投票に失敗しました。")

@@ -1,9 +1,8 @@
-# README
+# ジョカツ川柳
 
-ジョカツ川柳
-
- Rails　   5.2.6
- Ruby　    2.7.4
- Gem　　   3.1.6
- Git  　  2.30.1
- SQLite3  3.32.3
+## 開発環境
+- Ruby：3.1.4
+- Rails：6.1.7.2
+- DB:
+  - 本番: PostgreSQL
+  - 開発: SQLite

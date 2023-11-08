@@ -10,6 +10,6 @@ class GroupMailer < ApplicationMailer
     @comment = comment
     xsmtp_api_params = { to: emails }
     headers['X-SMTPAPI'] = JSON.generate(xsmtp_api_params)
-    mail(to: emails, subject: subject)
+    mail(to: emails, subject:)
   end
 end

@@ -21,7 +21,7 @@ class AdminmessagesController < ApplicationController
 
   def update
     @message = Adminmessage.find(params[:id])
-    if @message.update_attributes(message_update_params)
+    if @message.update(message_update_params)
       flash[:success] = "メール内容を更新しました。"
       redirect_to adminmessages_path(id: current_staff.id)
     else

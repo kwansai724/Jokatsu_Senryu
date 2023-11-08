@@ -14,19 +14,19 @@
           <table border="0" class="senryu-table">
             <tr>
               <th class="senryu-th"><span class="font-category-phrase">部 門</th>
-              <td class="senryu-td"><%= post.select :category, Post::CATEGORIES, { include_blank: ''}, class: "input-width form-control" %></td>
-            </tr> 
+              <td class="senryu-td"><%= post.select :category, Post::CATEGORIES, { include_blank: '' }, class: "form-control" %></td>
+            </tr>
             <tr>
               <th class="senryu-th"><span class="font-category-phrase">作 品</th>
               <td class="senryu-td">
-                <%= post.text_field :first_phrase, placeholder: "上の句", class: "input-width form-control" %>
-                <%= post.text_field :second_phrase, placeholder: "中の句", class: "input-width form-control" %>
-                <%= post.text_field :third_phrase, placeholder: "下の句", class: "input-width form-control" %>
+                <%= post.text_field :first_phrase, placeholder: "上の句", class: "form-control" %>
+                <%= post.text_field :second_phrase, placeholder: "中の句", class: "form-control" %>
+                <%= post.text_field :third_phrase, placeholder: "下の句", class: "form-control" %>
               </td>
             </tr>
             <tr>
               <th class="senryu-th"><span class="font-pn">ペンネーム</span></th>
-              <td class="senryu-td"><%= post.text_field :pen_name, placeholder: "ペンネーム", class: "input-width form-control" %></td>
+              <td class="senryu-td"><%= post.text_field :pen_name, placeholder: "ペンネーム", class: "form-control" %></td>
             </tr>
           </table>
         <% end %>
@@ -34,7 +34,11 @@
       <table border="0" class="users-table">
         <tr>
           <th class="users-th">お名前<span class="color-red">必須</span></th>
-          <td class="users-td"><%= f.text_field :name, class: "input-form form-control col-md-7", required: true %></td>
+          <td class="users-td">
+            <div class="col-md-7">
+              <%= f.text_field :name, class: "form-control", required: true %>
+            </div>
+          </td>
         </tr>
         <tr>
           <th class="users-th">性別<span class="color-red">必須</span></th>
@@ -47,33 +51,43 @@
         <tr>
           <th class="users-th">お住まい<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :address, User::ADDRESSES, { include_blank: ''}, class: "input-form form-control col-md-4", required: true %>
+            <div class="col-md-4">
+              <%= f.select :address, User::ADDRESSES, { include_blank: '' }, class: "form-control", required: true %>
+            </div>  
           </td>
         </tr>
         <tr>
           <th class="users-th">ご職業<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :profession, User::PROFESSION, { include_blank: ''},
-                                                        { class: "input-form form-control col-md-7", required: true, id:"myselectbox", onchange:"myfunc()" } %>
-              <p class="color-pink mt-1">
-                その他 を選択されましたらご記入ください。
-              </p>
-              <div class="other-field mb-2">
-                <%= f.text_field :other, id:"other_select", disabled:"disabled", class: "form-control col-md-7" %>
-              </div>  
+            <div class="col-md-7">
+              <%= f.select :profession, User::PROFESSION, { include_blank: '' },
+                                                          { class: "form-control", required: true, id:"myselectbox", onchange:"myfunc()" } %>
+            </div>
+            <p class="color-pink mt-1">
+              その他 を選択されましたらご記入ください。
+            </p>
+            <div class="other-field mb-2">
+              <div class="col-md-7">
+                <%= f.text_field :other, id:"other_select", disabled:"disabled", class: "form-control" %>
+              </div>
+            </div>  
           </td>
         </tr>
         <tr>
           <th class="users-th">年代<span class="color-red">必須</span></th>
           <td class="users-td">
-            <%= f.select :age, User::AGE, { include_blank: ''}, class: "input-form form-control col-md-4", required: true %>
+            <div class="col-md-4">
+              <%= f.select :age, User::AGE, { include_blank: '' }, class: "form-control", required: true %>
+            </div>
           </td>
         </tr>
         <tr>
           <th class="users-th">Eメール</span><span class="color-red">必須</span></th>
           <td class="users-td">
             <p class="color-pink mt-2">入選されましたらこちらに入力されたメールアドレスにご連絡をいたします。<br>連絡のつくメールアドレスをご入力ください。</p>
-            <%= f.email_field :email, class: "input-form form-control col-md-10", required: true %>
+            <div class="col-md-10">
+              <%= f.email_field :email, class: "form-control", required: true %>
+            </div>
             <p class="color-pink">jokatsu.senryu@gmail.comからのメールが受信できるように設定をお願いします。</p>
           </td>
         </tr>
@@ -86,7 +100,7 @@
           <td class="users-td">
             <p class="color-pink mt-2">この企画を何でお知りになりましたか？</p>
             <% Post::QUESTIONARIES.each do |questionary| %>
-              <%= f.check_box :questionary,  {multiple: true}, questionary, nil %>
+              <%= f.check_box :questionary,  { multiple: true }, questionary, nil %>
               <%= questionary %><br>
             <% end %>
 
