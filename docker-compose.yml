@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  jokatsu_db:
+    image: mysql:8.0
+    # MySQL8.0以降の認証方式に元に戻す設定
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - '3306:3306'
+    # dbディレクトリをホスト側に作成してコンテナ側と同期
+    volumes: 
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+volumes:
+  db:
+    name: jokatsu_volume
