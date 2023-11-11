@@ -178,6 +178,9 @@ GEM
     public_suffix (5.0.1)
     puma (6.2.1)
       nio4r (~> 2.0)
+    puma-daemon (0.3.2)
+      puma (>= 5.0)
+      rack
     racc (1.6.2)
     rack (2.2.6.4)
     rack-test (2.1.0)
@@ -344,6 +347,7 @@ DEPENDENCIES
   listen
   mysql2
   puma
+  puma-daemon
   rails (= 6.1.7.2)
   rails-i18n
   roo

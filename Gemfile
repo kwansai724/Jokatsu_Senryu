@@ -5,6 +5,7 @@ ruby '3.1.4'
 
 gem 'rails', '6.1.7.2'
 gem 'puma'
+gem 'puma-daemon', require: false
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
