@@ -3,7 +3,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - mkdir ~/.ssh
       - echo "${KEY_PAIR}" > ~/.ssh/id_rsa
       - chmod 0700 ~/.ssh
       - chmod 0600 ~/.ssh/id_rsa
