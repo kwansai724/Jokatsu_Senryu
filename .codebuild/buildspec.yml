@@ -3,19 +3,22 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo ===============Railsデプロイ開始===============
+      - mkdir ~/.ssh
+      - echo "${KEY_PAIR}" > ~/.ssh/id_rsa
+      - chmod 0700 ~/.ssh
+      - chmod 0600 ~/.ssh/id_rsa
+      - echo ===============EC2接続===============
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@$PUBLIC_IP
   build:
     commands:
-      - private_key=$PRIVATE_KEY
-      - chmod 600 private_key
-      - ssh -o StrictHostKeyChecking=no -i private_key ec2-user@$PUBLIC_IP 
       - 'cd $APP_NAME'
       - 'git pull origin $BRANCH'
+      - echo ===============Railsデプロイ開始===============
       - '~/.rbenv/shims/bundle install'
       - '~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production'
       - '~/.rbenv/shims/bundle exec rails db:migrate RAILS_ENV=production'
       - 'if [[ -e tmp/pids/puma.pid ]];then sudo kill $(cat tmp/pids/puma.pid); echo kill puma process;fi'
       - '~/.rbenv/shims/rails s -e production'
-  post_build:
-    commands:
-      - echo ===============Railsデプロイ完了===============
+    finally:
+      commands:
+        - echo ===============Railsデプロイ完了===============
