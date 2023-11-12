@@ -5,8 +5,7 @@ phases:
     commands:
       - echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
       - echo ===============Railsデプロイ開始===============
-      - ssh -o StrictHostKeyChecking=no -i private_key ec2-user@$PUBLIC_IP -tt `cd ${APP_NAME} &&
-        ls`
+      - ssh -o StrictHostKeyChecking=no -i private_key ec2-user@$PUBLIC_IP -tt `ls`
         # git pull origin ${BRANCH} &&
         # ~/.rbenv/shims/bundle install &&
         # ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production &&
