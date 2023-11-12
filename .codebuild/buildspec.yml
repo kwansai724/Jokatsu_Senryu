@@ -3,9 +3,11 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+      - echo "$KEY_PAIR" > private_key && chmod 600 private_key
+      - echo ===============private_key===============
+      - echo private_key
       - echo ===============EC2接続===============
-      - ssh -o StrictHostKeyChecking=no -i private_key  ec2-user@$PUBLIC_IP
+      - ssh -o StrictHostKeyChecking=no -i private_key ec2-user@$PUBLIC_IP -tt
   build:
     commands:
       - 'cd $APP_NAME'
