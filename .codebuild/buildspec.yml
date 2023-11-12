@@ -1,6 +1,12 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - echo ===============gitインストール===============
+      - sudo yum update
+      - sudo yum install git
+      - git version
   build:
     commands:
       - echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
