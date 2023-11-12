@@ -5,7 +5,7 @@ phases:
     commands:
       - echo ===============gitインストール===============
       - sudo yum update
-      - sudo yum install git
+      - sudo yum install git -y
       - git version
   build:
     commands:
