@@ -1,18 +1,12 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - echo ===============gitインストール===============
-      - sudo yum update -y
-      - sudo yum install git -y
-      - git version
   build:
     commands:
       - echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
       - echo ===============Railsデプロイ開始===============
       - ssh -o StrictHostKeyChecking=no -i private_key ec2-user@$PUBLIC_IP -tt 'cd $APP_NAME &&
-        git pull origin $BRANCH'
+        pwd'
         # git pull origin $BRANCH &&
         # ~/.rbenv/shims/bundle install &&
         # ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production &&
