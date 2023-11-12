@@ -7,7 +7,7 @@ phases:
       - chmod 0700 ~/.ssh
       - chmod 0600 ~/.ssh/id_rsa
       - echo ===============EC2接続===============
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@$PUBLIC_IP
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@$PUBLIC_IP -t
   build:
     commands:
       - 'cd $APP_NAME'
