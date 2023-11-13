@@ -7,9 +7,9 @@ phases:
       - echo ===============Railsデプロイ開始===============
       - ssh -o StrictHostKeyChecking=no -i private_key ec2-user@$PUBLIC_IP -tt "cd $APP_NAME &&
         git pull origin $BRANCH &&
-        ~/.rbenv/shims/bundle install; echo bundle install!!;fi &&
-        ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production; echo assets:precompile!!;fi &&
-        ~/.rbenv/shims/bundle exec rails db:migrate RAILS_ENV=production; echo db:migrate!!;fi &&
+        ~/.rbenv/shims/bundle install echo bundle install!! &&
+        ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production echo assets:precompile!! &&
+        ~/.rbenv/shims/bundle exec rails db:migrate RAILS_ENV=production echo db:migrate!! &&
         if [[ -e tmp/pids/puma.pid ]];then sudo kill $(cat tmp/pids/puma.pid); echo kill puma process;fi &&
         ~/.rbenv/shims/rails s -e production"
     finally:
