@@ -10,8 +10,7 @@ phases:
         ~/.rbenv/shims/bundle install &&
         ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production &&
         ~/.rbenv/shims/bundle exec rails db:migrate RAILS_ENV=production &&
-        echo ========================`cat tmp/pids/puma.pid`======================== &&
-        if [[ -e tmp/pids/puma.pid ]];then sudo kill `cat tmp/pids/puma.pid`; echo kill puma process;fi &&
+        if [[ -e tmp/pids/puma.pid ]];then sudo kill \`cat tmp/pids/puma.pid\`; echo kill puma process;fi &&
         ~/.rbenv/shims/rails s -e production"
     finally:
       - echo ===============Railsデプロイ完了===============
