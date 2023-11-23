@@ -23,9 +23,9 @@ jobs:
       - name: Run rubocop
         run: docker compose run --rm api bundle exec rubocop
 
-      - name: sleep for waiting launch db
-        run: sleep 10
-        
+      - name: Sleep for waiting launch db
+        run: sleep 5
+
       # Rspec実行
       - name: Run rspec
         run: |
