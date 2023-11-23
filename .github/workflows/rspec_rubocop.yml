@@ -17,6 +17,11 @@ jobs:
       run: bundle exec rubocop
 
     - name: Run Rspec
+      env:
+          DB_DATABASE: ${{ env.DB_DATABASE }}
+          DB_HOST: ${{ env.DB_HOST }}
+          DB_PASSWORD: ${{ env.DB_PASSWORD }}
+          DB_USERNAME: ${{ env.DB_USERNAME }}
       run: |
-        bundle exec rails db:migrate:reset db:seed
+        bundle exec rails db:migrate:reset
         bundle exec rspec

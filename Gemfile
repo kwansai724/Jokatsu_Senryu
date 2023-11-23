@@ -5,6 +5,7 @@ ruby '3.1.4'
 
 gem 'rails', '6.1.7.2'
 gem 'puma'
+gem 'puma-daemon', require: false
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -62,7 +63,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'mysql2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
