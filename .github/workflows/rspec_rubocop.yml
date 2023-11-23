@@ -1,22 +1,32 @@
-name: rubocop and RSpec 
-on: [push]
-jobs:
-  run_spec:
-    name: Run rubocop and RSpec 
+name: Rspec & Rubocop
 
+on: [ push ]
+
+jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.1'
-        bundler-cache: true
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: false
 
-    - name: Run rubocop
-      run: bundle exec rubocop
+      # Docker起動
+      - name: Build and up docker
+        run: |
+          cp .env.example .env
+          docker compose build
+          docker compose up -d
 
-    - name: Run Rspec
-      run: |
-        bundle exec rails db:migrate:reset db:seed
-        bundle exec rspec
+      # Rubocop実行
+      - name: Run rubocop
+        run: docker compose run --rm api bundle exec rubocop
+
+      # Rspec実行
+      - name: Run rspec
+        run: |
+          docker compose run --rm api bundle exec rails db:create
+          docker compose run --rm api bundle exec rails db:environment:set RAILS_ENV=test
+          docker compose run --rm api bundle exec rspec
+          docker compose run --rm api bundle exec rails tmp:cache:clear

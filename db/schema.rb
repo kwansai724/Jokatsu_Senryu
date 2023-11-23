@@ -12,26 +12,26 @@
 
 ActiveRecord::Schema.define(version: 2023_04_18_123044) do
 
-  create_table "adminmessages", force: :cascade do |t|
+  create_table "adminmessages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "message"
-    t.integer "staff_id"
+    t.bigint "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["staff_id"], name: "index_adminmessages_on_staff_id"
   end
 
-  create_table "group_email_comments", force: :cascade do |t|
+  create_table "group_email_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "comment"
     t.string "subject"
-    t.integer "staff_id"
+    t.bigint "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["staff_id"], name: "index_group_email_comments_on_staff_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "voter_id"
-    t.integer "post_id"
+  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "voter_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -39,20 +39,20 @@ ActiveRecord::Schema.define(version: 2023_04_18_123044) do
     t.index ["voter_id"], name: "index_likes_on_voter_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_phrase"
     t.string "second_phrase"
     t.string "third_phrase"
     t.string "pen_name"
     t.string "category"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "like_post", default: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "staffs", force: :cascade do |t|
+  create_table "staffs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "login_id", default: "", null: false
     t.boolean "admin", default: false, null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_123044) do
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "gender"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_123044) do
     t.string "other"
   end
 
-  create_table "voterposts", force: :cascade do |t|
+  create_table "voterposts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "favorite_post1"
     t.string "reason1"
     t.integer "favorite_post2"
@@ -105,13 +105,13 @@ ActiveRecord::Schema.define(version: 2023_04_18_123044) do
     t.string "reason10"
     t.integer "favorite_post11"
     t.string "reason11"
-    t.integer "voter_id"
+    t.bigint "voter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["voter_id"], name: "index_voterposts_on_voter_id"
   end
 
-  create_table "voters", force: :cascade do |t|
+  create_table "voters", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

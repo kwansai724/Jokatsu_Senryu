@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.4'
+ruby '3.2.2'
 
 gem 'rails', '6.1.7.2'
 gem 'puma'
@@ -13,6 +13,7 @@ gem 'jbuilder'
 gem 'bootsnap', require: false
 gem 'listen'
 gem 'dotenv-rails'
+gem 'mysql2'
 
 # ログイン機能
 gem 'devise'
@@ -40,7 +41,6 @@ gem 'roo'
 gem 'chartkick'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem "factory_bot_rails"
@@ -59,10 +59,6 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-end
-
-group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
