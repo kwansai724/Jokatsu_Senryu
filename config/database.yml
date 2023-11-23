@@ -18,3 +18,4 @@ production:
   <<: *default
   database: <%= ENV.fetch("DB_USERNAME") %>
   password: <%= ENV.fetch("DB_PASSWORD") %>
+  host: <%= ENV.fetch("DB_HOST") %>
