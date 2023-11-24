@@ -6,17 +6,17 @@ phases:
       - echo ===============Logging in to Amazon ECR===============
       - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com
       - echo ===============Logging in to Docker Hub===============
-      - echo ${DOCKERHUB_PASS} | docker login -u ${DOCKERHUB_USER} --password-stdin
+      - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin
       - echo ===============Get Image Tag===============
       - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
   build:
     commands:
       - echo ===============Building the Docker image===============
       - docker compose -f docker-compose.prd.yml build
-      - docker tag jokatsu_senryu/api:latest ${ECR_API_URI}:$IMAGE_TAG
-      - docker tag jokatsu_senryu/nginx:latest ${ECR_NGINX_URI}:$IMAGE_TAG
+      - docker tag $API_REPOSITORY:latest $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
+      - docker tag $NGINX_REPOSITORY:latest $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG
   post_build:
     commands:
       - echo ===============Pushing the Docker images===============
-      - docker push ${ECR_API_URI}:$IMAGE_TAG
-      - docker push ${ECR_NGINX_URI}:$IMAGE_TAG
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG
