@@ -15,6 +15,7 @@ jobs:
       # Docker起動
       - name: Build and up docker
         run: |
+          cp .env.example .env
           docker compose build
           docker compose up -d
 
