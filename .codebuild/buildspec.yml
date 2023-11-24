@@ -8,7 +8,7 @@ phases:
   build:
     commands:
       - echo ==========Building the Docker image==========
-      - docker compose -f docker-compose.prd.yml build --build-arg WORKDIR=jokatsu_senryu
+      - docker compose -f docker-compose.prd.yml build
       - docker tag jokatsu_senryu-api:latest ${ECR_API_URI}:latest
       - docker tag jokatsu_senryu-nginx:latest ${ECR_NGINX_URI}:latest
   post_build:

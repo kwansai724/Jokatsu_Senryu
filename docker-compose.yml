@@ -14,11 +14,11 @@ services:
     build: 
       context: .
       args:
-        WORKDIR: $WORKDIR
+        WORKDIR: jokatsu_senryu
     volumes:
-      - .:/$WORKDIR
-      - public:/$WORKDIR/public
-      - tmp:/$WORKDIR/tmp
+      - .:/jokatsu_senryu
+      - public:/jokatsu_senryu/public
+      - tmp:/jokatsu_senryu/tmp
     depends_on:
       - db
     stdin_open: true
@@ -27,13 +27,13 @@ services:
     build:
       args:
         ENVIRONMENT: local
-        WORKDIR: $WORKDIR  
+        WORKDIR: jokatsu_senryu  
       context: .
       dockerfile: ./nginx/Dockerfile
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - public:/$WORKDIR/public
-      - tmp:/$WORKDIR/tmp
+      - public:/jokatsu_senryu/public
+      - tmp:/jokatsu_senryu/tmp
     ports:
       - "80:80"
     depends_on:
