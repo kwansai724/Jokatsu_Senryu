@@ -4,9 +4,10 @@ phases:
   pre_build:
     commands:
       - echo ===============Logging in to Amazon ECR===============
-      - aws ecr get-login-password --region ap-northeast-1
+      - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com
       - echo ===============Logging in to Docker Hub===============
-      - ${DOCKERHUB_PASS} | docker login -u ${DOCKERHUB_USER} --password-stdin
+      - echo ${DOCKERHUB_PASS} | docker login -u ${DOCKERHUB_USER} --password-stdin
+      - echo ===============Get Image Tag===============
       - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
   build:
     commands:
