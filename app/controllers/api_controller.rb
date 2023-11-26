@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
   def health_check
-    render json: { status: 200 }
+    render json: { message: 'health check ok' }
   end
 end
