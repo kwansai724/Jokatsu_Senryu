@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-rm -f /$cms_app/tmp/pids/server.pid
+rm -f /jokatsu_senryu/tmp/pids/server.pid
 
 exec "$@"
