@@ -123,13 +123,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.default_url_options = { :Host => 'https://jokatsu-senryu.herokuapp.com/users' }
+  config.action_mailer.default_url_options = { :Host => ENV.fetch("APP_HOST") }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_APIKEY'],
-    domain: "herokuapp.com",
-    address: 'smtp.sendgrid.net',
+    user_name: ENV.fetch('SENDGRID_USERNAME'),
+    password: ENV.fetch('SENDGRID_APIKEY'),
+    domain: ENV.fetch("APP_DOMAIN"),
+    address: ENV.fetch("ADDRESS"),
     port: 587,
     authentication: :plain,
     enable_starttls_auto: true
