@@ -4,7 +4,8 @@ phases:
   pre_build:
     commands:
       - echo ===============Logging in to Amazon ECR===============
-      - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com
+      - aws ecr get-login-password --region ap-northeast-1 | \
+        docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com
       - echo ===============Logging in to Docker Hub===============
       - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin
       - echo ===============Get Image Tag===============
@@ -13,6 +14,8 @@ phases:
     commands:
       - echo ===============Building the Docker image===============
       - docker compose -f docker-compose.prd.yml build
+      - echo ===============Rails db migrate===============
+      - docker-compose -f docker-compose.prd.yml run api sh -c "bundle exec rails db:migrate db:seed"
       - docker tag $API_REPOSITORY:latest $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
       - docker tag $NGINX_REPOSITORY:latest $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG
   post_build:
@@ -20,3 +23,10 @@ phases:
       - echo ===============Pushing the Docker images===============
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG
+      - echo ===============Writing image definitions file===============
+      - printf '[{"name":"$API_CONTAINER","imageUri":"%s"},{"name":"$NGINX_CONTAINER","imageUri":"%s"}]' \
+        $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG \
+        $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG > imagedefinitions.json
+  artifacts:
+    files:
+      - imagedefinitions.json
