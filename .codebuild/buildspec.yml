@@ -23,8 +23,8 @@ phases:
   post_build:
     commands:
       - echo ===============Rails db migrate===============
-      - chmod +x ./run_task.sh
-      - ./run_task.sh
+      - chmod +x .codebuild/run_ecs_task.sh
+      - .codebuild/run_ecs_task.sh
     finally:  
       - echo ===============Writing image definitions file===============
       - printf '[{"name":"$API_CONTAINER","imageUri":"%s"},{"name":"$NGINX_CONTAINER","imageUri":"%s"}]'
