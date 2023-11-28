@@ -27,6 +27,6 @@ phases:
       - printf '[{"name":"$API_CONTAINER","imageUri":"%s"},{"name":"$NGINX_CONTAINER","imageUri":"%s"}]' \
         $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG \
         $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG > imagedefinitions.json
-  artifacts:
-    files:
-      - imagedefinitions.json
+artifacts:
+  files:
+    - imagedefinitions.json
