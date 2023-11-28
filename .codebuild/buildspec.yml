@@ -14,15 +14,19 @@ phases:
     commands:
       - echo ===============Building the Docker image===============
       - docker compose -f docker-compose.prd.yml build
-      - echo ===============Rails db migrate===============
-      - docker-compose -f docker-compose.prd.yml run api sh -c "bundle exec rails db:migrate db:seed"
       - docker tag $API_REPOSITORY:latest $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
       - docker tag $NGINX_REPOSITORY:latest $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG
-  post_build:
-    commands:
+    finally:  
       - echo ===============Pushing the Docker images===============
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo ===============Rails db migrate===============
+      - aws ecs run-task --cluster $CLUSTER --task-definition $TASK_ARN --launch-type FARGATE
+        --network-configuration "awsvpcConfiguration={subnets=[$SUBNET_A_ID, $SUBNET_C_ID], securityGroups=[$SG_ID], assignPublicIp=ENABLED}"
+        --overrides '{"containerOverrides": [{"name":"$API_CONTAINER","command":["rails", "db:migrate", "db:seed"]}]}'
+    finally:  
       - echo ===============Writing image definitions file===============
       - printf '[{"name":"$API_CONTAINER","imageUri":"%s"},{"name":"$NGINX_CONTAINER","imageUri":"%s"}]'
         $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
