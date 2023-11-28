@@ -23,12 +23,12 @@ phases:
   post_build:
     commands:
       - echo ===============Rails db migrate===============
-      - chmod +x run_task.sh
-      - run_task.sh
+      - chmod +x ./run_task.sh
+      - ./run_task.sh
     finally:  
       - echo ===============Writing image definitions file===============
-      - printf '[{"name":"$API_CONTAINER","imageUri":"%s"},{"name":"$NGINX_CONTAINER","imageUri":"%s"}]' \
-        $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG \
+      - printf '[{"name":"$API_CONTAINER","imageUri":"%s"},{"name":"$NGINX_CONTAINER","imageUri":"%s"}]'
+        $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
         $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG > imagedefinitions.json
 artifacts:
   files:
