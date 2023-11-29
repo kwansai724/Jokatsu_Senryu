@@ -4,11 +4,7 @@ cmd=$(cat <<EOF
 {"containerOverrides": [
     {
       "name": "$API_CONTAINER",
-      "command": [
-        "sh",
-        "-c",
-        "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed"
-      ]
+      "command": ["bundle", "exec", "rails", "db:migrate"]
     } 
   ] 
 }
