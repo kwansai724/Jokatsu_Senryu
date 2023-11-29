@@ -7,7 +7,7 @@ cmd=$(cat <<EOF
       "command": [
         "sh",
         "-c",
-        "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed && rails s"
+        "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed"
       ]
     } 
   ] 
