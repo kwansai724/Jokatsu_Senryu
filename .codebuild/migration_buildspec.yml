@@ -4,5 +4,5 @@ phases:
   build:
     commands:
       - echo ===============Rails db migrate===============
-      - chmod +x .codebuild/run_ecs_task.sh
-      - .codebuild/run_ecs_task.sh
+      - chmod +x .codebuild/run_task.sh
+      - .codebuild/run_task.sh
