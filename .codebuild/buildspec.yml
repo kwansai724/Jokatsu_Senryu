@@ -24,9 +24,9 @@ phases:
     commands:
       - echo ===============Writing image definitions file===============
       - printf '[{"name":"%s","imageUri":"%s"},{"name":"%s","imageUri":"%s"}]'
-        $API_REPOSITORY
+        $API_CONTAINER
         $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$API_REPOSITORY:$IMAGE_TAG
-        $NGINX_REPOSITORY
+        $NGINX_CONTAINER
         $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/$NGINX_REPOSITORY:$IMAGE_TAG > imagedefinitions.json
 artifacts:
   files:
