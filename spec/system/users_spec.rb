@@ -15,7 +15,7 @@ RSpec.describe "Users", type: :system do
   #     select "大阪府", from: "user_address"
   #     select "会社員", from: "myselectbox"
   #     select "30代", from: "user_age"
-  #     fill_in "user_email", with: "test-user@email.com"
+  #     fill_in "user_email", with: "test-user@example.com"
   #     fill_in "user_note", with: "テストメッセージ"
   #     check "user_questionary_wipメンバーのブログや投稿など"
   #     # save_and_open_page

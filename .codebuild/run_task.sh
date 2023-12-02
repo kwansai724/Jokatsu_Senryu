@@ -7,7 +7,7 @@ cmd=$(cat <<EOF
       "command": [
         "sh",
         "-c",
-        "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed"
+        "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed RAILS_ENV=production"
       ]
     } 
   ] 
@@ -18,7 +18,7 @@ EOF
 # "command": [
 #   "sh",
 #   "-c",
-#   "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed"
+#   "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed RAILS_ENV=production"
 # ]
 
 aws ecs run-task --cluster $CLUSTER --task-definition $TASK_ARN --launch-type FARGATE \

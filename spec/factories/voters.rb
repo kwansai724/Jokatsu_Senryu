@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :voter do
     sequence(:name) { |n| "test-voter#{n}" }
-    sequence(:email) { |n| "test-voter#{n}@email.com" }
+    sequence(:email) { |n| "test-voter#{n}@example.com" }
     group { "WIP" }
     password { "password" }
   end
