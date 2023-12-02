@@ -1,0 +1,8 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo ===============Rails db migrate===============
+      - chmod +x .codebuild/run_task.sh
+      - .codebuild/run_task.sh

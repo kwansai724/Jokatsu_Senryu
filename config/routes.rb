@@ -57,4 +57,8 @@ Rails.application.routes.draw do
     end
   end   
     
+  # health_check
+  namespace :alb do
+    get 'health_check'
+  end
 end

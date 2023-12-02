@@ -1,0 +1,33 @@
+version: '3.9' 
+services:
+  api:
+    build: 
+      context: .
+      args:
+        WORKDIR: jokatsu_senryu
+    image: jokatsu_senryu/api
+    volumes:
+      - .:/jokatsu_senryu
+      - public:/jokatsu_senryu/public
+      - tmp:/jokatsu_senryu/tmp
+    stdin_open: true
+    tty: true
+  nginx:
+    build:
+      args:
+        ENVIRONMENT: prd
+        WORKDIR: jokatsu_senryu  
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    image: jokatsu_senryu/nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - public:/jokatsu_senryu/public
+      - tmp:/jokatsu_senryu/tmp
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+volumes:
+  tmp:
+  public:
