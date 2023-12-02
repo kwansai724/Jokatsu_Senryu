@@ -44,7 +44,7 @@ puts "管理者（株式会社C)アカウント作成"
 # 投票者(WIP)
 5.times do |n|
   name  = "wip#{n+1}"
-  email = "voter-#{n+1}@email.com"
+  email = "voter-#{n+1}@example.com"
   group = "WIP"
   favorite_post = Faker::Number.between(from: 1, to: 5000)
   reason = Faker::Lorem.sentence
@@ -67,7 +67,7 @@ puts "投票者(WIP)作成"
 # 投票者(株式会社A)
 5.times do |n|
   name  = "株式会社a#{n+1}"
-  email = "voter-#{n+6}@email.com"
+  email = "voter-#{n+6}@example.com"
   group = "株式会社A"
   favorite_post = Faker::Number.between(from: 1, to: 5000)
   reason = Faker::Lorem.sentence
@@ -90,7 +90,7 @@ puts "投票者(株式会社A)作成"
 # 投票者(株式会社B)
 5.times do |n|
   name  = "株式会社b#{n+1}"
-  email = "voter-#{n+11}@email.com"
+  email = "voter-#{n+11}@example.com"
   group = "株式会社B"
   favorite_post = Faker::Number.between(from: 1, to: 5000)
   reason = Faker::Lorem.sentence
@@ -113,7 +113,7 @@ puts "投票者(株式会社B)作成"
 # 投票者(株式会社C)
 5.times do |n|
   name  = "株式会社c#{n+1}"
-  email = "voter-#{n+16}@email.com"
+  email = "voter-#{n+16}@example.com"
   group = "株式会社C"
   favorite_post = Faker::Number.between(from: 1, to: 5000)
   reason = Faker::Lorem.sentence
@@ -136,7 +136,7 @@ puts "投票者(株式会社C)作成"
 # 投稿者
 4450.times do |n|
   name  = Faker::Name.name
-  email = "sample-#{n+1}@email.com"
+  email = "sample-#{n+1}@example.com"
   gender = Faker::Gender.binary_type
   address = Faker::Address.city
   profession = Faker::Job.title
